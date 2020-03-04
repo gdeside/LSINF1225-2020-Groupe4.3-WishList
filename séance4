@@ -1,0 +1,34 @@
+séance vdd semaine 4:
+
+1) schéma ORM
+
+-problème au niveau compte-ami-catégorie si on veut correspondre aux tables préconçues on doit introduire une relation ternaire. 
+
+-Choisir si on oblige ou pas un nom au groupe
+
+-Voir si nous avons des contraintes extérieurs ou de sous ensemble?
+Pour moi la seule est qu'un objet ne peut pas être rajouter à une liste qui n'a pas été créée.
+
+2)Mock up 
+
+le rendre plus cohérent pas rapport aux changements. On peut avoir un mock up moins complet mais plus cohérent pour donner l'idée de l'application.
+
+Cezary peut travailler là dessus dès que ORM est fait
+
+
+3)Schéma relationnel:
+
+1 personnes dessus 
+
+
+4)Faits élémentaires 
+
+Regarder si tjrs bon et en choisir certains pour les mettre directement dans le rapport. 
+
+
+
+
+
+
+
+
