@@ -1,0 +1,114 @@
+COMMANDES APPLIQUEES A LA DATABASE 
+(CONFORMEMENT AU TP4)
+============================================
+COMPTER
+============================================
+->Nombre total d'utilisateurs:
+select count(*) FROM Account 
+
+->Nombre d'amis d'un utilisateur(ici 'adgiot'):
+select count(*) FROM Friends WHERE ID_User="adgiot" 
+
+->Le nombre de souhaits d'une lsite(ici celle avec le numéro 1):
+select count(*) FROM Objects_and_Lists WHERE Number_List=1 
+
+->même commande avec la liste avec le numéro 2
+select count(*) FROM Objects_and_Lists WHERE Number_List=2 
+
+============================================
+TROUVER
+============================================
+->ensemble souhaits d'une personne(ici 'guide')
+SELECT OL.Name_Object from  Objects_And_Lists  OL, Accounts_And_Lists AL WHERE AL.ID_User="guide" and OL.Number_List=AL.Number_List 
+
+->souhaits d'une certaines liste de souhait et utilisateurs(ici 'guide' comme nom d'utilisateur et 'Christmas' pour le nom de la list):
+SELECT Name_Object from Objects_And_Lists WHERE Number_List in 
+(SELECT W.Num_List FROM Accounts_And_Lists A,Wishlists W WHERE A.ID_User='guide' AND W.Name_List='Christmas' and W.Num_List=A.Number_List) 
+
+->Ensemble des amis d'un utilisateurs(ici 'guide'):
+SELECT ID_Friends from Friends WHERE ID_User='guide'
+
+============================================
+VERIFIER
+============================================
+->Vérifier si liste est vide (0 si vide et sinon 1):
+SELECT W.Num_List,W.Name_List,case 
+    when W.Num_List in (SELECT W.Num_List FROM Wishlists W,Objects_And_Lists OL WHERE OL.Number_List=W.Num_List GROUP by W.Num_List) 
+    THEN 1 
+    ELSE 0 end 
+    as 'False/True' from Wishlists W 
+
+
+============================================
+CALCULER
+============================================
+->Le nombre de souhait d'un utilisateur(ici 'guide')
+SELECT count(*) FROM Accounts_and_Lists A, Objects_and_Lists O WHERE A.ID_User='guide' and A.Number_List=O.Number_List
+
+->Le nombre de souhait dans une catégorie:
+SELECT AL.ID_User, count(*) FROM Accounts_And_Lists AL,Object O,Objects_And_Lists OL WHERE AL.Number_List=OL.Number_List AND OL.Name_Object=O.Name AND O.Category='sport' GROUP by AL.ID_User
+ 
+->Prix total des listes de souhaits de chaque liste de souhait:
+SELECT OL.Number_List,AL.ID_User,sum(O.Price) as Prix_Total from Accounts_And_Lists AL,Object O,Objects_And_Lists OL where AL.Number_List=OL.Number_List AND OL.Name_Object=O.Name GROUP By OL.Number_List
+
+
+============================================
+RECUPERER
+============================================
+->Nom et prénom à qui apprtient les différentes listes:
+SELECT AL.Number_List, AL.ID_User, A.Name,A.Surname from Accounts_And_Lists AL,Account A where A.Id_User=AL.ID_User  GROUP by AL.Number_List
+OK
+
+
+
+=============================================
+Commandes supplémentaires
+=============================================
+->récupérer membres d'un groupe donnée(nom):
+SELECT A.Name,A.Surname from Account A,Groups G,Group_Members GM where G.Name='COO' and G.ID_Group=GM.ID_Group and GM.ID_User=A.ID_User
+(COO est le nom d'un groupe)
+
+->récupérer le nombre de membres de chaque groupe:
+SELECT G.Name,count(*)as 'Nombre de membre'  from Account A,Groups G,Group_Members GM where G.ID_Group=GM.ID_Group and GM.ID_User=A.ID_User GROUP by G.Name
+
+
+->Commande pour récupérer toutes les listes publics d'un compte(exemple avec ID_User 'guide')
+SELECT W.Name_List from Wishlists W,Accounts_And_Lists AL where AL.ID_User='guide' and AL.Number_List=W.Num_List and W.Public=1 
+
+============================================
+COMMANDES UTILISEES POUR INSERER DES DONNEES
+============================================
+INSERT INTO Account(ID_user, Password, Name, Surname)
+VALUES
+    ("adgiot","mauxdepasse","Giot","Adrien"),
+    ("guide","motdepasse","Desides","Guillaume");
+
+INSERT INTO Wishlists(Num_List,Name_List,Public)
+VALUES 
+    (1,"Christmas",True)
+
+INSERT INTO Account_And_Lists(Num_List, ID_User)
+VALUES
+    (1,"guide")
+
+INSERT INTO Wishlists(Num_List,Name_List)
+VALUES 
+    (2,"Eve")
+
+
+INSERT INTO Objects(Name,Price)
+VALUES
+	("Smartphone",42),
+	("Pull CI", 42),
+	("T-shirt SINF", 100);
+
+INSERT INTO Objects_And_Lists(Name_Object,Number_List)
+VALUES
+    ("Smartphone",1),
+    ("Pull CI", 1),
+    ("T-shirt SINF", 2);
+
+       
+
+
+
