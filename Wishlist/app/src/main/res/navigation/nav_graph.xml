@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/addItemFragment">
+
+    <fragment
+        android:id="@+id/addItemFragment"
+        android:name="com.example.wishlist.AddItemFragment"
+        android:label="fragment_add_item"
+        tools:layout="@layout/fragment_add_item" />
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.example.wishlist.CreateAccountFragment"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" />
+    <fragment
+        android:id="@+id/friendlistFragment"
+        android:name="com.example.wishlist.FriendlistFragment"
+        android:label="fragment_friendlist"
+        tools:layout="@layout/fragment_friendlist" />
+    <fragment
+        android:id="@+id/friendsProfileFragment"
+        android:name="com.example.wishlist.FriendsProfileFragment"
+        android:label="fragment_friends_profile"
+        tools:layout="@layout/fragment_friends_profile" />
+    <fragment
+        android:id="@+id/friendsWishlistsFragment"
+        android:name="com.example.wishlist.FriendsWishlistsFragment"
+        android:label="fragment_friends_wishlists"
+        tools:layout="@layout/fragment_friends_wishlists" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.wishlist.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.wishlist.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.wishlist.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/viewItemFragment"
+        android:name="com.example.wishlist.ViewItemFragment"
+        android:label="fragment_view_item"
+        tools:layout="@layout/fragment_view_item" />
+    <fragment
+        android:id="@+id/wishlistsFragment"
+        android:name="com.example.wishlist.WishlistsFragment"
+        android:label="fragment_wishlists"
+        tools:layout="@layout/fragment_wishlists" />
+</navigation>
