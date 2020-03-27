@@ -9,12 +9,21 @@ import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button button;
+    private View.OnClickListener Login_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+           openMainActivity();
+        }
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Button login_btn = findViewById(R.id.login_btn);
+        login_btn.setOnClickListener(Login_listener);
     }
 
     public void openMainActivity()

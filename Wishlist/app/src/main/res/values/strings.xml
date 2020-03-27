@@ -1,9 +1,3 @@
 <resources>
     <string name="app_name">Wishlist</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="logo">logo</string>
-    <string name="login">log in</string>
-    <string name="singup">Sign up</string>
 </resources>
