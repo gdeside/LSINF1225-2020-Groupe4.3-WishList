@@ -9,15 +9,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".WelcomeScreen" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+=======
+
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName="com.example.wishlist.MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.wishlist.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".WishlistsActivity"
+            android:parentActivityName="com.example.wishlist.MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.wishlist.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".FriendlistActivity"
+            android:parentActivityName="com.example.wishlist.MainActivity">
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.wishlist.MainActivity" />
+        </activity>
+
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".LoginActivity">
+>>>>>>> 975838163094f45bf34713c8ba3fba91f0e06419
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".LoginActivity"></activity>
+=======
+>>>>>>> 975838163094f45bf34713c8ba3fba91f0e06419
         <activity android:name=".MainActivity" />
     </application>
 
