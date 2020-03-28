@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mainFragment"
+        android:id="@+id/bottomNavHome_btn"
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/bottomNavProfile_btn"
         android:icon="@drawable/ic_person"
         android:title="Profile" />
     <item
-        android:id="@+id/friendlistFragment"
+        android:id="@+id/bottomNavFriendlist_btn"
         android:icon="@drawable/ic_people"
         android:title="Friendlist" />
     <item
-        android:id="@+id/wishlistsFragment"
+        android:id="@+id/bottomNavWishlists_btn"
         android:icon="@drawable/ic_wishlists"
         android:title="Wishlists" />
 </menu>
