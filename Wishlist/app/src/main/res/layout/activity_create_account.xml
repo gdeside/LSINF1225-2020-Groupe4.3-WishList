@@ -8,11 +8,28 @@
 
     <Button
         android:id="@+id/CreateAccount_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Account"
+        android:layout_width="141dp"
+        android:layout_height="48dp"
+        android:background="@color/buttoncolor"
+        android:text="@string/createacc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.682" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="228dp"
+        android:layout_height="27dp"
+        android:background="@drawable/rounded_button"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/lblPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.441" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
