@@ -10,9 +10,42 @@
         android:id="@+id/CreateAccount_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Account"
+        android:text="@string/createaccount"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.429" />
+
+    <EditText
+        android:id="@+id/identifiant"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/identifiant"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/passeword"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/CreateAccount_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
