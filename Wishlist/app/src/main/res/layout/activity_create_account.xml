@@ -6,46 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".CreateAccountActivity">
 
+    <EditText
+        android:id="@+id/surnamecreateaccount"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="364dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Surnamecreateaccount"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="301dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/surname"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/CreateAccount_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="506dp"
         android:text="@string/createaccount"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/identifiant"
+        android:id="@+id/identifiantlogin"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="185dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginTop="229dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
+        android:hint="@string/identifiant"
         android:inputType="textPersonName"
-        android:text="@string/identifiant"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="425dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
+        android:hint="@string/passeword"
         android:inputType="textPersonName"
-        android:text="@string/passeword"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/CreateAccount_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="163dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
