@@ -39,8 +39,6 @@ public class Wishlist {
 
 
     //setter
-
-
     /**
      * @param name Nouveau nom de la wishlist
      */
@@ -55,4 +53,9 @@ public class Wishlist {
     public void setOption(Boolean option) {
         this.option = option;
     }
+
+
+    //autres fonctions
+
+
 }
