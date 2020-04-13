@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
     <EditText
-        android:id="@+id/identifiantlogin"
+        android:id="@+id/edt_create_id"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="75dp"
@@ -60,11 +60,11 @@
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/passeword"
+        android:text="@string/password"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/identifiantlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_create_id" />
 
     <ImageView
         android:id="@+id/logologin"
@@ -72,7 +72,7 @@
         android:layout_height="163dp"
         android:layout_marginTop="84dp"
         android:layout_marginBottom="29dp"
-        app:layout_constraintBottom_toTopOf="@+id/identifiantlogin"
+        app:layout_constraintBottom_toTopOf="@+id/edt_create_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"

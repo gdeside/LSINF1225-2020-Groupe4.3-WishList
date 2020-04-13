@@ -1,33 +1,58 @@
 package com.example.wishlist.Classesapp;
 
-import java.util.Date;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+
+@Entity
 public class User {
-    public String ID;
 
+    @PrimaryKey
+    @ColumnInfo(name = "id")
+    private int ID;
+
+    @ColumnInfo(name = "mot_de_passe")
     private String password;
 
-    public User(String password) {
+
+
+
+    @ColumnInfo(name = "Prénom")
+    private String name;
+
+    @ColumnInfo(name = "Nom_de_famille")
+    private String surname;
+
+    @ColumnInfo(name = "Date_de_naissance")
+    private String DOB; // date de naissance
+
+    @ColumnInfo(name = "Description_compte")
+    private String description;
+
+    public User(int ID, String password, String name, String surname, String DOB, String description) {
+        this.ID = ID;
         this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.DOB = DOB;
+        this.description = description;
     }
-   
-    public boolean connect(String Id,String password) {
-        return this.ID.equals(Id) && this.password.equals(password);
-    }
-
-    private String password; //ne peut pas être get
-    public String name;
-    public String surname;
-    public Date DOB; // date de naissance
-    public String description;
-
 
     /**
      * @return ID de l'utilisateur
      */
     //Getter
-    public String getID(){
+    public int getID(){
         return this.ID;
+    }
+
+    /**
+     * @return le Mot de Passe
+     */
+    public String getPassword() {
+        return password;
     }
 
     /**
@@ -47,7 +72,7 @@ public class User {
     /**
      * @return la date de naissance
      */
-    public Date getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
@@ -63,7 +88,7 @@ public class User {
     /**
      * @param ID nouveau ID
      */
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -92,7 +117,7 @@ public class User {
     /**
      * @param DOB nouvelle dâte de naissance
      */
-    public void setDOB(Date DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
 
     }

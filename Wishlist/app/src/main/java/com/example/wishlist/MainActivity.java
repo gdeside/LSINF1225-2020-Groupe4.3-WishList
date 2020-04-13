@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.wishlist.Classesapp.UserRepository;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        UserRepository userRepository = new UserRepository(getApplicationContext());
     }
 
     @Override
@@ -139,4 +142,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
+
+
 }

@@ -7,7 +7,7 @@
     tools:context=".CreateAccountActivity">
 
     <EditText
-        android:id="@+id/surnamecreateaccount"
+        android:id="@+id/edt_create_name"
         android:layout_width="290dp"
         android:layout_height="41dp"
         android:layout_marginTop="364dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/Surnamecreateaccount"
+        android:id="@+id/edt_create_surname"
         android:layout_width="290dp"
         android:layout_height="41dp"
         android:layout_marginTop="301dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/identifiantlogin"
+        android:id="@+id/edt_create_id"
         android:layout_width="290dp"
         android:layout_height="41dp"
         android:layout_marginTop="229dp"
@@ -62,13 +62,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edt_create_password"
         android:layout_width="290dp"
         android:layout_height="41dp"
         android:layout_marginTop="425dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
-        android:hint="@string/passeword"
+        android:hint="@string/password"
         android:inputType="textPersonName"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
