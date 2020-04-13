@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void openMainActivity()
     {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
 
         // Clear back stack : Empeche l'utilisateur de revenir à l'écran de login sans se logout
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
