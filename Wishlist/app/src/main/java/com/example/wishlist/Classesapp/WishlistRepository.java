@@ -6,31 +6,31 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
-public class ObjectRepository {
+public class WishlistRepository {
 
-    private String DB_NAME = "objectdb";
+    private String DB_NAME = "wishlistdb";
 
-    private ObjectDatabase objectDatabase;
+    private WishlistDatabase wishlistDatabase;
     Context context;
 
-    public ObjectRepository(Context context) {
+    public WishlistRepository(Context context) {
         this.context = context;
-        objectDatabase = Room.databaseBuilder(context, ObjectDatabase.class, DB_NAME).build();
+        wishlistDatabase = Room.databaseBuilder(context, WishlistDatabase.class, DB_NAME).build();
     }
 
-    public void InsertTask(final Object object)
+    public void InsertTask(final Wishlist wishlist)
     {
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... voids){
-                objectDatabase.objectDAO().insertTask(object);
+                wishlistDatabase.wishlistDAO().insertTask(wishlist);
                 return null;
             }
 
             @Override
             protected  void onPostExecute(Void aVoid){
                 super.onPostExecute(aVoid);
-                Toast.makeText(context,object.getName()+" is inserted",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,wishlist.getName()+" is inserted",Toast.LENGTH_LONG).show();
             }
 
 

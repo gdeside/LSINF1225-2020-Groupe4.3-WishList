@@ -16,7 +16,7 @@ public class Object {
     private int prix;
 
     @ColumnInfo(name = "Catégorie")
-    private String Categorie;
+    private String categorie;
 
     @ColumnInfo(name = "Note")
     private int note;
@@ -27,7 +27,7 @@ public class Object {
     public Object(@NonNull String name, int prix, String categorie) {
         this.name = name;
         this.prix = prix;
-        Categorie = categorie;
+        this.categorie = categorie;
     }
 
     @NonNull
@@ -48,11 +48,11 @@ public class Object {
     }
 
     public String getCategorie() {
-        return Categorie;
+        return categorie;
     }
 
     public void setCategorie(String categorie) {
-        Categorie = categorie;
+        categorie = categorie;
     }
 
     public int getNote() {

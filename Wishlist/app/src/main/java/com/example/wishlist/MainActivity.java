@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.wishlist.Classesapp.UserRepository;
 import com.example.wishlist.Classesapp.ObjectRepository;
+import com.example.wishlist.Classesapp.WishlistRepository;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
         UserRepository userRepository = new UserRepository(getApplicationContext());
         ObjectRepository objectRepository = new ObjectRepository(getApplicationContext());
-        
+        WishlistRepository WishlistRepository = new WishlistRepository(getApplicationContext());
+
 
         openWelcomescreen();
     }

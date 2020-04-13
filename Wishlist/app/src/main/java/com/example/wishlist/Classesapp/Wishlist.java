@@ -1,61 +1,64 @@
 package com.example.wishlist.Classesapp;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Wishlist {
-    public int number; //pourait devenir privé et vraiment necessaire?
-    public String name; //nom de la wishlist
-    public Boolean option;
-    public String description;
+
+    @NonNull
+    @PrimaryKey
+    @ColumnInfo(name = "Num_liste")
+    private int num_list;
+
+    @ColumnInfo(name = "Nom_liste")
+    private String name;
+
+    @ColumnInfo(name = "Option")
+    private Boolean option;
+
+    @ColumnInfo(name = "Description")
+    private String description;
 
 
-
-    //getter
-    /**
-     * @return la description de la wishlist
-     */
-    public String getDescription() {
-        return description;
+    public Wishlist(int num_list, String name, Boolean option, String description) {
+        this.num_list = num_list;
+        this.name = name;
+        this.option = option;
+        this.description = description;
     }
 
-    /**
-     * @return retourne le numéro de whislist
-     */
-    public int getNumber() {
-        return number;
+    public int getNum_list() {
+        return num_list;
     }
 
-    /**
-     * @return nom de la wishlist
-     */
+    public void setNum_list(int num_list) {
+        this.num_list = num_list;
+    }
+
     public String getName() {
         return name;
     }
 
-    /**
-     * @return si la liste est publique ou non (true=publique)
-     */
-    public boolean isPublic(){//peut-être changer en getOption
-        return option;
-    }
-
-
-    //setter
-    /**
-     * @param name Nouveau nom de la wishlist
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public Boolean getOption() {
+        return option;
     }
 
     public void setOption(Boolean option) {
         this.option = option;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
-    //autres fonctions
-
-
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
