@@ -4,18 +4,17 @@ import java.util.Date;
 
 public class User {
     public String ID;
-<<<<<<< HEAD
+
     private String password;
 
     public User(String password) {
         this.password = password;
     }
-    public String getID(){
-        return this.ID;
-    }
-    public boolean connect(String Id,String password){
+   
+    public boolean connect(String Id,String password) {
         return this.ID.equals(Id) && this.password.equals(password);
-=======
+    }
+
     private String password; //ne peut pas être get
     public String name;
     public String surname;
@@ -95,7 +94,7 @@ public class User {
      */
     public void setDOB(Date DOB) {
         this.DOB = DOB;
->>>>>>> 5125a93832fadb369f795316c6f8e2c10b1b9bb8
+
     }
 
     /**
