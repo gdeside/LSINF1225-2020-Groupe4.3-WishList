@@ -9,14 +9,23 @@ public class Wishlist {
 
 
     //getter
+    /**
+     * @return la description de la wishlist
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * @return retourne le numéro de whislist
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * @return nom de la wishlist
+     */
     public String getName() {
         return name;
     }
@@ -25,14 +34,14 @@ public class Wishlist {
      * @return si la liste est publique ou non (true=publique)
      */
     public boolean isPublic(){//peut-être changer en getOption
-
         return option;
     }
 
 
     //setter
-
-
+    /**
+     * @param name Nouveau nom de la wishlist
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -44,4 +53,9 @@ public class Wishlist {
     public void setOption(Boolean option) {
         this.option = option;
     }
+
+
+    //autres fonctions
+
+
 }
