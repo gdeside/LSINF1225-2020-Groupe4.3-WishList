@@ -82,7 +82,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        UserRepository userRepository = new UserRepository(getApplicationContext());
+
     }
 
     @Override
