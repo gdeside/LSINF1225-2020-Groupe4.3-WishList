@@ -2,16 +2,16 @@ package com.example.wishlist.Classesapp;
 
 public class User {
     public String ID;
-    private String passeword;
+    private String password;
 
-    public User(String passeword) {
-        this.passeword = passeword;
+    public User(String password) {
+        this.password = password;
     }
     public String getID(){
         return this.ID;
     }
-    public boolean connect(String Id,String passeword){
-        return this.ID.equals(Id) && this.passeword.equals(passeword);
+    public boolean connect(String Id,String password){
+        return this.ID.equals(Id) && this.password.equals(password);
     }
 }
 
