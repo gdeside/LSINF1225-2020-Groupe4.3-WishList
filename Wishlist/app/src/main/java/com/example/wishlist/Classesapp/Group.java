@@ -1,8 +1,11 @@
 package com.example.wishlist.Classesapp;
 
+import java.util.List;
+
 public class Group {
     public Integer ID; //fonction setter?
     public String name;
+    public List<User> members;
 
     /*
     Getter
@@ -23,7 +26,12 @@ public class Group {
         return name;
     }
 
-
+    /**
+     * @return les membres du groupes
+     */
+    public List<User> getMembers() {
+        return members;
+    }
 
     /*
     Setter
@@ -42,13 +50,19 @@ public class Group {
     Autres fonctions
      */
 
-
-
-    public void addMember(){
-
+    /**
+     * @param user nouveau membre du groupe
+     */
+    public void addMember(User user) {
+        this.members.add(user);
     }
 
-    public void deleteMember(){
+
+    /**
+     * @param user membres à retirer
+     */
+    public void deleteMember(User user){
+        this.members.remove(user);
     }
 
 }
