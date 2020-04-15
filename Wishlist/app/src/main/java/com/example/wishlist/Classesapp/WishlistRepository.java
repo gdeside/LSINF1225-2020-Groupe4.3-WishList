@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
+import java.util.List;
+
 public class WishlistRepository {
 
     private String DB_NAME = "wishlistdb";
@@ -37,5 +39,10 @@ public class WishlistRepository {
 
         }.execute();
 
+    }
+
+    public List<Wishlist> getWishlists(){
+        List<Wishlist> wishlistsList = wishlistDatabase.wishlistDAO().getAll();
+        return  wishlistsList;
     }
 }

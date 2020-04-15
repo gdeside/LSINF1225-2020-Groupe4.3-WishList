@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateWishlistActivity"
+        <activity android:name=".ViewActivity"></activity>
+        <activity
+            android:name=".CreateWishlistActivity"
             android:parentActivityName=".WishlistsActivity">
-
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.wishlist.WishlistsActivity" />
         </activity>
         <activity
             android:name=".Welcome_Screen"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -57,7 +57,7 @@
                 android:value="com.example.wishlist.HomeActivity" />
         </activity>
         <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
     </application>
 

@@ -10,8 +10,9 @@ import java.util.List;
 @Entity
 public class Wishlist {
 
+
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Num_liste")
     private int num_list;
 
@@ -24,6 +25,11 @@ public class Wishlist {
     @ColumnInfo(name = "Description")
     private String description;
 
+
+    public Wishlist(){
+
+
+    }
 
     public Wishlist(String name, Boolean option) {
         this.name = name;
