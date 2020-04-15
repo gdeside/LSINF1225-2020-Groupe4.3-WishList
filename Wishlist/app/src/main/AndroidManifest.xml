@@ -9,9 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Welcome_Screen" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".CreateWishlistActivity">
+            android:parentActivityName=".WishlistsActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.wishlist.WishlistsActivity" />
         </activity>
-        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".Welcome_Screen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,8 +57,7 @@
                 android:value="com.example.wishlist.HomeActivity" />
         </activity>
         <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".LoginActivity">
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".HomeActivity" />
     </application>
 
