@@ -6,14 +6,14 @@ import androidx.room.Insert;
 import androidx.room.Update;
 
 @Dao
-public interface ObjectDAO {
+public interface ProductDAO {
 
     @Insert
-    Long insertTask(Object objet);
+    Long insertTask(Product product);
 
     @Update
-    void updateTask(Object objet);
+    void updateTask(Product product);
 
     @Delete
-    void delete(Object objet);
+    void delete(Product product);
 }

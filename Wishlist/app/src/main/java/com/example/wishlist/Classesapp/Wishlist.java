@@ -25,8 +25,7 @@ public class Wishlist {
     private String description;
 
 
-    public Wishlist(int num_list, String name, Boolean option, String description) {
-        this.num_list = num_list;
+    public Wishlist(String name, Boolean option, String description) {
         this.name = name;
         this.option = option;
         this.description = description;

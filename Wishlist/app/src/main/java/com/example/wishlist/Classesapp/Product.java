@@ -5,11 +5,11 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Object {
+public class Product {
 
     @NonNull
     @PrimaryKey
-    @ColumnInfo(name = "Nom_Objet")
+    @ColumnInfo(name = "Nom_Product")
     private String name;
 
     @ColumnInfo(name = "Prix")
@@ -24,7 +24,7 @@ public class Object {
     @ColumnInfo(name = "Lien")
     private String lien;
 
-    public Object(@NonNull String name, int prix, String categorie) {
+    public Product(@NonNull String name, int prix, String categorie) {
         this.name = name;
         this.prix = prix;
         this.categorie = categorie;

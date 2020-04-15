@@ -33,9 +33,6 @@ public class User {
     @ColumnInfo(name = "Description_compte")
     private String description;
 
-    private List<Wishlist> wishlists;
-    private List<Friendship> friendships;
-    private List<Group> groups;
 
     public User(int ID, String password, String name, String surname, String DOB, String description) {
         this.ID = ID;
@@ -91,12 +88,6 @@ public class User {
 
 
 
-    /**
-     * @return  retourne les wishlists
-     */
-    public List<Wishlist> getWishlists() {
-        return wishlists;
-    }
 
     //Setter
 
@@ -147,13 +138,6 @@ public class User {
     //autres fonctions
 
 
-    /**
-     * @param wishlist wishlist à rajouter
-     *
-     */
-    public void createWishlist(Wishlist wishlist){
-        this.wishlists.add(wishlist);
-    }
 
 
 

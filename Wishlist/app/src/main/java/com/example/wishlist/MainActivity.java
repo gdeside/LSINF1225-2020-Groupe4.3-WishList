@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.wishlist.Classesapp.UserRepository;
-import com.example.wishlist.Classesapp.ObjectRepository;
+import com.example.wishlist.Classesapp.ProductRepository;
 import com.example.wishlist.Classesapp.WishlistRepository;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         UserRepository userRepository = new UserRepository(getApplicationContext());
-        ObjectRepository objectRepository = new ObjectRepository(getApplicationContext());
+        ProductRepository objectRepository = new ProductRepository(getApplicationContext());
         WishlistRepository WishlistRepository = new WishlistRepository(getApplicationContext());
 
 

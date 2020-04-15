@@ -6,31 +6,31 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
-public class ObjectRepository {
+public class ProductRepository {
 
-    private String DB_NAME = "objectdb";
+    private String DB_NAME = "productdb";
 
-    private ObjectDatabase objectDatabase;
+    private ProductDatabase productDatabase;
     Context context;
 
-    public ObjectRepository(Context context) {
+    public ProductRepository(Context context) {
         this.context = context;
-        objectDatabase = Room.databaseBuilder(context, ObjectDatabase.class, DB_NAME).build();
+        productDatabase = Room.databaseBuilder(context, ProductDatabase.class, DB_NAME).build();
     }
 
-    public void InsertTask(final Object object)
+    public void InsertTask(final Product product)
     {
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... voids){
-                objectDatabase.objectDAO().insertTask(object);
+                productDatabase.productDAO().insertTask(product);
                 return null;
             }
 
             @Override
             protected  void onPostExecute(Void aVoid){
                 super.onPostExecute(aVoid);
-                Toast.makeText(context,object.getName()+" is inserted",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,product.getName()+" is inserted",Toast.LENGTH_LONG).show();
             }
 
 
