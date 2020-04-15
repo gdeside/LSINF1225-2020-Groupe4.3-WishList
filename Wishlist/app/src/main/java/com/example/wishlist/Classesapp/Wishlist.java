@@ -26,10 +26,6 @@ public class Wishlist {
     private String description;
 
 
-    public Wishlist(){
-
-
-    }
 
     public Wishlist(String name, Boolean option) {
         this.name = name;
