@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     private View.OnClickListener ViewWishlists_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            openViewActivity();
+            openViewWishlistsActivity();
         }
     };
 
@@ -153,9 +153,9 @@ public class HomeActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
 
-    public void openViewActivity()
+    public void openViewWishlistsActivity()
     {
-        Intent intent = new Intent(this, ViewActivity.class);
+        Intent intent = new Intent(this, ViewWishlistsActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }

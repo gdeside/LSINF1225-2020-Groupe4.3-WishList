@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +42,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
                 option = public_btn.isChecked();
 
                 WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
-                Wishlist wishlist = new Wishlist(name,option);
+                Wishlist wishlist = new Wishlist(name,option,getUsername());
                 wishlistRepository.InsertTask(wishlist);
 
                 edt_wishlist_name.setText("");
@@ -120,6 +121,19 @@ public class CreateWishlistActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
+
+    public String getUsername(){
+        // Retrieving the value using its keys
+        // the file name must be same in both saving
+        // and retrieving the data
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+
+        // The value will be default as empty string
+        // because for the very first time
+        // when the app is opened,
+        // there is nothing to show
+        return sh.getString("ID", "");
     }
 
 

@@ -25,11 +25,15 @@ public class Wishlist {
     @ColumnInfo(name = "Description")
     private String description;
 
+    @ColumnInfo(name = "Creator")
+    private String creator;
 
 
-    public Wishlist(String name, Boolean option) {
+
+    public Wishlist(String name, Boolean option, String creator) {
         this.name = name;
         this.option = option;
+        this.creator = creator;
     }
 
 
@@ -80,4 +84,16 @@ public class Wishlist {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+
+
+
 }

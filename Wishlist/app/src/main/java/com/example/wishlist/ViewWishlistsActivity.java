@@ -14,7 +14,7 @@ import com.example.wishlist.Classesapp.WishlistRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewActivity extends AppCompatActivity {
+public class ViewWishlistsActivity extends AppCompatActivity {
 
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -71,7 +71,7 @@ public class ViewActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            WishlistAdapter wishlistAdapter = new WishlistAdapter(wishlistArrayList, ViewActivity.this);
+            WishlistAdapter wishlistAdapter = new WishlistAdapter(wishlistArrayList, ViewWishlistsActivity.this);
             recyclerView.setAdapter(wishlistAdapter);
         }
 

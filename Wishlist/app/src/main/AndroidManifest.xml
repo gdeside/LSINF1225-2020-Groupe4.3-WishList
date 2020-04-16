@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewActivity"></activity>
+        <activity android:name=".ViewWishlistsActivity"></activity>
         <activity
             android:name=".CreateWishlistActivity"
             android:parentActivityName=".WishlistsActivity">
