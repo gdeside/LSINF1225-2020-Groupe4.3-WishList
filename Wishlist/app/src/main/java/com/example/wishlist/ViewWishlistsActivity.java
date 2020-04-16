@@ -7,19 +7,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import com.example.wishlist.Classesapp.Wishlist;
 import com.example.wishlist.Classesapp.WishlistRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ViewWishlistsActivity extends AppCompatActivity {
 
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    ArrayList<Wishlist> wishlistArrayList;
+    WishlistAdapter wishlistAdapter;
+    ArrayList<Wishlist> wishlistArrayList, wishlistArrayList_search;
+    EditText edt_wishlist_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,27 @@ public class ViewWishlistsActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        edt_wishlist_search = findViewById(R.id.edt_wishlist_search);
+
+        edt_wishlist_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String text=s.toString();
+                Filter(text);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         new LoadDataTask().execute();
 
@@ -55,10 +82,12 @@ public class ViewWishlistsActivity extends AppCompatActivity {
         {
             wishlistList = wishlistRepository.getWishlists();
             wishlistArrayList = new ArrayList<>();
+            wishlistArrayList_search = new ArrayList<>();
 
             for(int i =0; i <wishlistList.size();i++)
             {
                 wishlistArrayList.add(wishlistList.get(i));
+                wishlistArrayList_search.add(wishlistList.get(i));
             }
 
 
@@ -71,10 +100,30 @@ public class ViewWishlistsActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            WishlistAdapter wishlistAdapter = new WishlistAdapter(wishlistArrayList, ViewWishlistsActivity.this);
+            wishlistAdapter = new WishlistAdapter(wishlistArrayList, ViewWishlistsActivity.this);
             recyclerView.setAdapter(wishlistAdapter);
         }
+    }
 
+    ///Filter wishlists by name
+    public void Filter(String charText)
+    {
+        charText = charText.toLowerCase(Locale.getDefault());
 
+        wishlistArrayList.clear();
+
+        if(charText.length() == 0)
+            wishlistArrayList.addAll(wishlistArrayList_search);
+        else
+        {
+            for( Wishlist wishlist : wishlistArrayList_search)
+            {
+                if(wishlist.getName().toString().toLowerCase(Locale.getDefault()).contains(charText))
+                {
+                    wishlistArrayList.add(wishlist);
+                }
+            }
+            wishlistAdapter.notifyDataSetChanged();
+        }
     }
 }
