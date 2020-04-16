@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WishlistsActivity"
-    android:background="@android:color/holo_red_light">
+    android:background="@android:color/holo_red_light"
+    tools:context=".WishlistsActivity">
 
     <include
         layout="@layout/bottom_navigation"
@@ -14,14 +14,17 @@
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <Button
-        android:id="@+id/CreateWishlist_btn"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/create_wishlist_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="86dp"
-        android:text="Create Wishlist"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="72dp"
+        android:clickable="false"
+        app:backgroundTint="#D1C5C5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/ic_add_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
