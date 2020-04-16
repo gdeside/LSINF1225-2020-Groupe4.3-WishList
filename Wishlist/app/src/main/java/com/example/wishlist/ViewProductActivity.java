@@ -8,32 +8,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import com.example.wishlist.Classesapp.Product;
+import com.example.wishlist.Classesapp.ProductRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 import com.example.wishlist.Classesapp.WishlistRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewWishlistsActivity extends AppCompatActivity {
+public class ViewProductActivity extends AppCompatActivity {
+
 
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    ArrayList<Wishlist> wishlistArrayList;
+    ArrayList<Product> productArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_wishlists);
+        setContentView(R.layout.activity_view_product);
 
-        recyclerView = (RecyclerView)findViewById(R.id.Wishlist_recycler_view);
+        recyclerView = (RecyclerView)findViewById(R.id.Product_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        new LoadDataTask().execute();
+        new ViewProductActivity.LoadDataTask().execute();
 
 
 
@@ -41,24 +44,24 @@ public class ViewWishlistsActivity extends AppCompatActivity {
 
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
-        WishlistRepository wishlistRepository;
-        List<Wishlist> wishlistList;
+        ProductRepository productRepository;
+        List<Product> productList;
 
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
-            wishlistRepository= new WishlistRepository(getApplicationContext());
+            productRepository= new ProductRepository(getApplicationContext());
         }
 
         @Override
         protected Void doInBackground(Void... voids)
         {
-            wishlistList = wishlistRepository.getWishlists();
-            wishlistArrayList = new ArrayList<>();
+            productList = productRepository.getProducts();
+            productArrayList = new ArrayList<>();
 
-            for(int i =0; i <wishlistList.size();i++)
+            for(int i =0; i <productList.size();i++)
             {
-                wishlistArrayList.add(wishlistList.get(i));
+                productArrayList.add(productList.get(i));
             }
 
 
@@ -71,8 +74,8 @@ public class ViewWishlistsActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            WishlistAdapter wishlistAdapter = new WishlistAdapter(wishlistArrayList, ViewWishlistsActivity.this);
-            recyclerView.setAdapter(wishlistAdapter);
+            ProductAdapter productAdapter = new ProductAdapter(productArrayList, ViewProductActivity.this);
+            recyclerView.setAdapter(productAdapter);
         }
 
 

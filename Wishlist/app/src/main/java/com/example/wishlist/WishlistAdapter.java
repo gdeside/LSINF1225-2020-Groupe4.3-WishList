@@ -29,10 +29,10 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.tv_card_view_name = (TextView) itemView.findViewById(R.id.tv_card_view_name);
-            this.tv_card_view_creator = (TextView) itemView.findViewById(R.id.tv_card_view_creator);
-            this.img_card_view_privacy = (ImageView) itemView.findViewById(R.id.img_card_view_privacy);
-            this.btn_card_view_title = (Button) itemView.findViewById(R.id.btn_card_view_title);
+            this.tv_card_view_name = (TextView) itemView.findViewById(R.id.tv_card_view_wishlist_name);
+            this.tv_card_view_creator = (TextView) itemView.findViewById(R.id.tv_card_view_wishlist_creator);
+            this.img_card_view_privacy = (ImageView) itemView.findViewById(R.id.img_card_view_wishlist_privacy);
+            this.btn_card_view_title = (Button) itemView.findViewById(R.id.btn_card_view_wishlist_title);
         }
 
     }

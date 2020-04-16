@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewActivity">
+    tools:context=".ViewProductActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Wishlist_recycler_view"
+        android:id="@+id/Product_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"

@@ -24,10 +24,9 @@ public class Product {
     @ColumnInfo(name = "Lien")
     private String lien;
 
-    public Product(@NonNull String name, int prix, String categorie) {
+    public Product(@NonNull String name, int prix) {
         this.name = name;
         this.prix = prix;
-        this.categorie = categorie;
     }
 
     @NonNull
