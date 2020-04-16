@@ -6,6 +6,9 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 public class UserRepository {
 
     private String DB_NAME = "userdb";
@@ -38,4 +41,35 @@ public class UserRepository {
         }.execute();
 
     }
+
+    ///Check if ID is used (User Creation)
+    public Boolean isUsed(final String string)
+    {
+        Boolean FOO = false;
+        try {
+             FOO = new AsyncTask<Void, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Void... voids) {
+                    List<User> userList = userDatabase.userDAO().getID(string);
+                    return userList.size() > 0;
+                }
+
+                @Override
+                protected void onPostExecute(Boolean result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+
+        return FOO;
+    }
+
+
+
 }

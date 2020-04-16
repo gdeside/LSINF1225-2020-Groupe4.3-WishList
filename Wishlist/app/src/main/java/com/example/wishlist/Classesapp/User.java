@@ -11,13 +11,13 @@ import java.util.List;
 @Entity
 public class User {
 
+    @NonNull
     @PrimaryKey
     @ColumnInfo(name = "id")
-    private int ID;
+    private String ID;
 
     @ColumnInfo(name = "mot_de_passe")
     private String password;
-
 
 
 
@@ -34,20 +34,20 @@ public class User {
     private String description;
 
 
-    public User(int ID, String password, String name, String surname, String DOB, String description) {
+
+
+    public User(String ID, String password, String name, String surname) {
         this.ID = ID;
         this.password = password;
         this.name = name;
         this.surname = surname;
-        this.DOB = DOB;
-        this.description = description;
     }
 
     /**
      * @return ID de l'utilisateur
      */
     //Getter
-    public int getID(){
+    public String getID(){
         return this.ID;
     }
 
@@ -94,14 +94,14 @@ public class User {
     /**
      * @param ID nouveau ID
      */
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
     /**
      * @param password nouveau mot de passe
      */
-    public void setpassword(String password) {
+     public void setPassword(String password) {
         this.password = password;
     }
 

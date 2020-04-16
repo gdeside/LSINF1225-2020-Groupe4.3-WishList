@@ -23,6 +23,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
     EditText edt_wishlist_name;
     RadioButton public_btn, private_btn;
 
+
     String name;
     Boolean option;
 
