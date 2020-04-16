@@ -6,13 +6,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.wishlist.Classesapp.UserRepository;
 
 public class LoginActivity extends AppCompatActivity {
+
+    EditText edt_ID_login, edt_password_login;
+    String S_id, S_password;
 
     private View.OnClickListener Login_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-           openMainActivity();
+
+            UserRepository userRepository = new UserRepository(getApplicationContext());
+
+            if(edt_ID_login.getText().toString().isEmpty() ||
+                    edt_password_login.getText().toString().isEmpty())
+            {
+                Toast.makeText(getApplicationContext(),"Please fills Details",Toast.LENGTH_LONG).show();
+            }
+            else if(userRepository.CheckLogin(edt_ID_login.getText().toString(), edt_password_login.getText().toString()))
+            {
+                Toast.makeText(getApplicationContext(),"No User with those credentials",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                openMainActivity();
+            }
         }
     };
 
@@ -31,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
 
         Button login_btn = findViewById(R.id.login_btn);
         login_btn.setOnClickListener(Login_listener);
+        edt_ID_login = findViewById(R.id.edt_ID_login);
+        edt_password_login = findViewById(R.id.edt_password_login);
 
         Button NewAccount_btn = findViewById(R.id.NewAccount_btn);
         NewAccount_btn.setOnClickListener(NewAccount_listener);

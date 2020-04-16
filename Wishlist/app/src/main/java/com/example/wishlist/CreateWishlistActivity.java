@@ -35,7 +35,8 @@ public class CreateWishlistActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(),"Please fill name",Toast.LENGTH_LONG).show();
 
-            } else {
+            } ///Create Wishlist
+            else {
                 name = edt_wishlist_name.getText().toString().trim();
                 option = public_btn.isChecked();
 
@@ -103,7 +104,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    @Override
+    @Override ///I'm not sure what it does but i'm too afraid to delete it
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
 
         case android.R.id.home :
