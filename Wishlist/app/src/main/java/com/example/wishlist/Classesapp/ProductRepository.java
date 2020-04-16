@@ -6,6 +6,9 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 public class ProductRepository {
 
     private String DB_NAME = "productdb";
@@ -37,5 +40,38 @@ public class ProductRepository {
 
         }.execute();
 
+    }
+
+    ///Check if product name is used (Product Creation)
+    /// return true if already used
+    public Boolean isNameUsed(final String Name_Product)
+    {
+        Boolean FOO = false;
+        try {
+            FOO = new AsyncTask<Void, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Void... voids) {
+                    List<Product> userList = productDatabase.productDAO().getID(Name_Product);
+                    return userList.size() > 0;
+                }
+
+                @Override
+                protected void onPostExecute(Boolean result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
+
+    public List<Product> getProducts(){
+        List<Product> productList = productDatabase.productDAO().getAll();
+        return  productList;
     }
 }

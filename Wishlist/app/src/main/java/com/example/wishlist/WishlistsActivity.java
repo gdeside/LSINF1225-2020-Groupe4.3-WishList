@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class WishlistsActivity extends AppCompatActivity {
 
@@ -26,7 +25,7 @@ public class WishlistsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wishlists);
 
-        FloatingActionButton createWishlists_btn = findViewById(R.id.create_wishlist_button);
+        Button createWishlists_btn = findViewById(R.id.CreateWishlist_btn);
 
         createWishlists_btn.setOnClickListener(CreateWishlist_listener);
 

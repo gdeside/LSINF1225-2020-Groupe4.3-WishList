@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,12 +36,13 @@ public class CreateWishlistActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(),"Please fill name",Toast.LENGTH_LONG).show();
 
-            } else {
+            } ///Create Wishlist
+            else {
                 name = edt_wishlist_name.getText().toString().trim();
                 option = public_btn.isChecked();
 
                 WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
-                Wishlist wishlist = new Wishlist(name,option);
+                Wishlist wishlist = new Wishlist(name,option,getUsername());
                 wishlistRepository.InsertTask(wishlist);
 
                 edt_wishlist_name.setText("");
@@ -103,7 +105,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    @Override
+    @Override ///I'm not sure what it does but i'm too afraid to delete it
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
 
         case android.R.id.home :
@@ -119,6 +121,19 @@ public class CreateWishlistActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
+
+    public String getUsername(){
+        // Retrieving the value using its keys
+        // the file name must be same in both saving
+        // and retrieving the data
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+
+        // The value will be default as empty string
+        // because for the very first time
+        // when the app is opened,
+        // there is nothing to show
+        return sh.getString("ID", "");
     }
 
 

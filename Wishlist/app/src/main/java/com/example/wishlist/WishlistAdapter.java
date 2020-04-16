@@ -23,14 +23,16 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv_card_view_name;
+        TextView tv_card_view_creator;
         ImageView img_card_view_privacy;
         Button btn_card_view_title;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.tv_card_view_name = (TextView) itemView.findViewById(R.id.tv_card_view_name);
-            this.img_card_view_privacy = (ImageView) itemView.findViewById(R.id.img_card_view_privacy);
-            this.btn_card_view_title = (Button) itemView.findViewById(R.id.btn_card_view_title);
+            this.tv_card_view_name = (TextView) itemView.findViewById(R.id.tv_card_view_wishlist_name);
+            this.tv_card_view_creator = (TextView) itemView.findViewById(R.id.tv_card_view_wishlist_creator);
+            this.img_card_view_privacy = (ImageView) itemView.findViewById(R.id.img_card_view_wishlist_privacy);
+            this.btn_card_view_title = (Button) itemView.findViewById(R.id.btn_card_view_wishlist_title);
         }
 
     }
@@ -55,10 +57,12 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         TextView tv_card_view_name = holder.tv_card_view_name;
+        TextView tv_card_view_creator = holder.tv_card_view_creator;
         ImageView img_card_view_privacy = holder.img_card_view_privacy;
         Button btn_card_view_title = holder.btn_card_view_title;
 
         tv_card_view_name.setText(dataset.get(position).getName() + "");
+        tv_card_view_creator.setText(dataset.get(position).getCreator() + "");
 
         if (dataset.get(position).getOption())
             img_card_view_privacy.setImageResource(R.drawable.cadenas2);

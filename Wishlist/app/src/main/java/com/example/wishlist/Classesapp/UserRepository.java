@@ -43,14 +43,14 @@ public class UserRepository {
     }
 
     ///Check if ID is used (User Creation)
-    public Boolean isUsed(final String string)
+    public Boolean isIDUsed(final String ID)
     {
         Boolean FOO = false;
         try {
              FOO = new AsyncTask<Void, Void, Boolean>() {
                 @Override
                 protected Boolean doInBackground(Void... voids) {
-                    List<User> userList = userDatabase.userDAO().getID(string);
+                    List<User> userList = userDatabase.userDAO().getID(ID);
                     return userList.size() > 0;
                 }
 
@@ -66,7 +66,34 @@ public class UserRepository {
         } catch (ExecutionException e) {
             e.printStackTrace();//handle it the way you like
         }
+        return FOO;
+    }
 
+    ///Return true if there is no user with this id + this password
+    public Boolean CheckLogin(final String ID, final String PASSWORD)
+    {
+        Boolean FOO = false;
+        try {
+            FOO = new AsyncTask<Void, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Void... voids) {
+                    List<User> userList = userDatabase.userDAO().login(ID,PASSWORD);
+                    return userList.size() == 0;
+                }
+
+                @Override
+                protected void onPostExecute(Boolean result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
         return FOO;
     }
 

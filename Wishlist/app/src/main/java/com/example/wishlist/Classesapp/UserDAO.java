@@ -20,6 +20,9 @@ public interface UserDAO {
     @Delete
     void delete(User user);
 
-    @Query("Select * from user where id == :IDB")
-    List<User> getID(String IDB);
+    @Query("Select * from user where id == :ID")
+    List<User> getID(String ID);
+
+    @Query("Select * from user where id == :ID and mot_de_passe == :PASSWORD")
+    List<User> login(String ID, String PASSWORD);
 }

@@ -19,6 +19,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         public void onClick(View v) {
             UserRepository userRepository = new UserRepository(getApplicationContext());
 
+            /// Check if texts fields are filled
             if(edt_id.getText().toString().isEmpty() ||
                 edt_name.getText().toString().isEmpty() ||
                 edt_surname.getText().toString().isEmpty() ||
@@ -26,11 +27,12 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(),"Please fills Details",Toast.LENGTH_LONG).show();
 
-            } else if(userRepository.isUsed(edt_id.getText().toString())) {
+            } /// check if User ID is already used
+            else if(userRepository.isIDUsed(edt_id.getText().toString())) {
 
                 Toast.makeText(getApplicationContext(),"ID Already Used, please use another",Toast.LENGTH_LONG).show();
 
-            }
+            } ///Create Account
             else {
                 S_id = edt_id.getText().toString().trim();
                 S_password = edt_password.getText().toString();
@@ -56,7 +58,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         Button CreateAccount_btn = findViewById(R.id.CreateAccount_btn);
         CreateAccount_btn.setOnClickListener(CreateAccount_listener);
 
-        edt_id = (EditText) findViewById(R.id.edt_create_id);
+        edt_id = (EditText) findViewById(R.id.edt_ID_login);
         edt_name = (EditText) findViewById(R.id.edt_create_name);
         edt_surname = (EditText) findViewById(R.id.edt_create_surname);
         edt_password = (EditText) findViewById(R.id.edt_create_password);

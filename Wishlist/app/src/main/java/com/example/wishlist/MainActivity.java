@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         UserRepository userRepository = new UserRepository(getApplicationContext());
-        ProductRepository objectRepository = new ProductRepository(getApplicationContext());
+        ProductRepository productRepository = new ProductRepository(getApplicationContext());
         WishlistRepository WishlistRepository = new WishlistRepository(getApplicationContext());
 
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this, Welcome_Screen.class);
 
-        // Clear back stack : Empeche l'utilisateur de revenir à l'écran de login sans se logout
+        // Clear back stack : Empeche l'utilisateur de revenir cet écra,
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         overridePendingTransition(0,0); // Animation entre écran
