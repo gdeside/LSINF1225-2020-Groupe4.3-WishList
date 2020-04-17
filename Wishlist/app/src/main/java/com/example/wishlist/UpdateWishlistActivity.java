@@ -1,7 +1,9 @@
 package com.example.wishlist;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,6 +27,47 @@ public class UpdateWishlistActivity extends AppCompatActivity {
     Boolean option;
 
 
+    private View.OnClickListener Update_Listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(edt_wishlist_name.getText().toString().isEmpty() ) {
+
+                Toast.makeText(getApplicationContext(),"Please fill name",Toast.LENGTH_LONG).show();
+
+            } ///Create Wishlist
+            else {
+                name = edt_wishlist_name.getText().toString().trim();
+                option = public_btn.isChecked();
+                description = edt_wishlist_description.getText().toString().trim();
+
+                WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
+                Wishlist wishlist = new Wishlist(name,option,getUsername(),description);
+                wishlist.setNum_list(wishlist_num);
+                wishlistRepository.UpdateTask(wishlist);
+
+                openViewWishlistsActivity();
+            }
+
+        }
+    };
+
+    private View.OnClickListener Delete_Listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            name = edt_wishlist_name.getText().toString().trim();
+            option = public_btn.isChecked();
+            description = edt_wishlist_description.getText().toString().trim();
+
+            WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
+            Wishlist wishlist = new Wishlist(name,option,getUsername(),description);
+            wishlist.setNum_list(wishlist_num);
+            generate_delete_dialog(wishlist);
+
+            ////openViewWishlistsActivity();
+
+        }
+    };
+
 
 
     @Override
@@ -33,29 +76,12 @@ public class UpdateWishlistActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_wishlist);
 
         Button UpdateWishlist_btn = findViewById(R.id.UpdateWishlist_btn);
-        UpdateWishlist_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(edt_wishlist_name.getText().toString().isEmpty() ) {
+        UpdateWishlist_btn.setOnClickListener(Update_Listener);
 
-                    Toast.makeText(getApplicationContext(),"Please fill name",Toast.LENGTH_LONG).show();
+        Button DeleteWishlist_btn = findViewById(R.id.DeleteWishlist_btn);
+        DeleteWishlist_btn.setOnClickListener(Delete_Listener);
 
-                } ///Create Wishlist
-                else {
-                    name = edt_wishlist_name.getText().toString().trim();
-                    option = public_btn.isChecked();
-                    description = edt_wishlist_description.getText().toString().trim();
 
-                    WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
-                    Wishlist wishlist = new Wishlist(name,option,getUsername(),description);
-                    wishlist.setNum_list(wishlist_num);
-                    wishlistRepository.UpdateTask(wishlist);
-
-                    openViewWishlistsActivity();
-                }
-
-            }
-        });
 
 
         edt_wishlist_name = (EditText) findViewById(R.id.edt_wishlist_name);
@@ -103,6 +129,35 @@ public class UpdateWishlistActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewWishlistsActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
+
+    public void generate_delete_dialog(Wishlist wishlist)
+    {
+        final Wishlist wishlist_delete = wishlist;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(UpdateWishlistActivity.this); //do not write getapplicationContextg
+        builder.setTitle("WARNING");
+        builder.setMessage("Are you sure to delete ?" + "\n Name : " + wishlist_delete.getName() + "\n Description : " + wishlist_delete.getDescription());
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
+                wishlistRepository.DeleteTask(wishlist_delete);
+
+                finish();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setIcon(android.R.drawable.ic_delete);
+
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 }

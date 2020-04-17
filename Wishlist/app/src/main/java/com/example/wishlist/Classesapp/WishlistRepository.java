@@ -56,4 +56,15 @@ public class WishlistRepository {
             }
         }.execute();
     }
+
+    public void DeleteTask(final Wishlist wishlist)
+    {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                wishlistDatabase.wishlistDAO().delete(wishlist);
+                return null;
+            }
+        }.execute();
+    }
 }
