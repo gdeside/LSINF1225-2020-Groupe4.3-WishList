@@ -1,11 +1,14 @@
 package com.example.wishlist;
 
 import android.content.Context;
+import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +29,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
         TextView tv_card_view_creator;
         ImageView img_card_view_privacy;
         Button btn_card_view_title;
+        LinearLayout ll_card_wishlist;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -33,6 +37,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
             this.tv_card_view_creator = (TextView) itemView.findViewById(R.id.tv_card_view_wishlist_creator);
             this.img_card_view_privacy = (ImageView) itemView.findViewById(R.id.img_card_view_wishlist_privacy);
             this.btn_card_view_title = (Button) itemView.findViewById(R.id.btn_card_view_wishlist_title);
+            this.ll_card_wishlist = (LinearLayout) itemView.findViewById(R.id.ll_card_wishlist);
         }
 
     }
@@ -54,12 +59,13 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         TextView tv_card_view_name = holder.tv_card_view_name;
         TextView tv_card_view_creator = holder.tv_card_view_creator;
         ImageView img_card_view_privacy = holder.img_card_view_privacy;
         Button btn_card_view_title = holder.btn_card_view_title;
+        LinearLayout ll_card_wishlist = holder.ll_card_wishlist;
 
         tv_card_view_name.setText(dataset.get(position).getName() + "");
         tv_card_view_creator.setText(dataset.get(position).getCreator() + "");
@@ -68,6 +74,29 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
             img_card_view_privacy.setImageResource(R.drawable.cadenas2);
         else
             img_card_view_privacy.setImageResource(R.drawable.cadenas1);
+
+        ll_card_wishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String wishlist_name = dataset.get(position).getName();
+                String wishlist_creator = dataset.get(position).getCreator();
+                String wishlist_description = dataset.get(position).getDescription();
+                Boolean wishlist_option = dataset.get(position).getOption();
+                int wishlist_num = dataset.get(position).getNum_list();
+
+                Intent intent = new Intent(context,UpdateWishlistActivity.class);
+                intent.putExtra("wishlist_name",wishlist_name);
+                intent.putExtra("wishlist_description",wishlist_description);
+                intent.putExtra("wishlist_option",wishlist_option);
+                intent.putExtra("wishlist_num",wishlist_num);
+
+                context.startActivity(intent);
+
+
+
+
+            }
+        });
 
 
     }

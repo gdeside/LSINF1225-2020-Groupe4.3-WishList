@@ -30,10 +30,13 @@ public class Wishlist {
 
 
 
-    public Wishlist(String name, Boolean option, String creator) {
+
+
+    public Wishlist(String name, Boolean option, String creator,String description) {
         this.name = name;
         this.option = option;
         this.creator = creator;
+        this.description = description;
     }
 
 

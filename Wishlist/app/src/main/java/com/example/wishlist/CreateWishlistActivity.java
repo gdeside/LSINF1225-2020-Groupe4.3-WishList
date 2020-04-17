@@ -42,7 +42,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
                 option = public_btn.isChecked();
 
                 WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
-                Wishlist wishlist = new Wishlist(name,option,getUsername());
+                Wishlist wishlist = new Wishlist(name,option,getUsername(),"");
                 wishlistRepository.InsertTask(wishlist);
 
                 edt_wishlist_name.setText("");

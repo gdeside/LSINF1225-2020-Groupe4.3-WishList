@@ -45,4 +45,15 @@ public class WishlistRepository {
         List<Wishlist> wishlistsList = wishlistDatabase.wishlistDAO().getAll();
         return  wishlistsList;
     }
+
+    public void UpdateTask(final Wishlist wishlist)
+    {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                wishlistDatabase.wishlistDAO().updateTask(wishlist);
+                return null;
+            }
+        }.execute();
+    }
 }

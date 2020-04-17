@@ -126,4 +126,10 @@ public class ViewWishlistsActivity extends AppCompatActivity {
             wishlistAdapter.notifyDataSetChanged();
         }
     }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        new LoadDataTask().execute();
+    }
 }

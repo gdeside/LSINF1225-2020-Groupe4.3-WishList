@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateWishlistActivity">
+
+
+    <EditText
+        android:id="@+id/edt_wishlist_name"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_wishlist_description"
+        android:layout_width="361dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_wishlist_name" />
+
+    <RadioGroup
+        android:id="@+id/rgroup_privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/edt_wishlist_description">
+
+        <RadioButton
+            android:id="@+id/rbtn_public"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Public" />
+
+        <RadioButton
+            android:id="@+id/rbtn_private"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Private" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/UpdateWishlist_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="468dp"
+        android:text="Update Wishlist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
