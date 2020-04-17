@@ -24,8 +24,8 @@
 
     <EditText
         android:id="@+id/edt_wishlist_description"
-        android:layout_width="361dp"
-        android:layout_height="121dp"
+        android:layout_width="312dp"
+        android:layout_height="48dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_text"
         android:ems="10"

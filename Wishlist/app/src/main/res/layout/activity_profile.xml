@@ -42,7 +42,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/edit_profil"
             android:layout_width="45dp"
             android:layout_height="46dp"
             android:layout_alignParentTop="true"
@@ -51,6 +51,7 @@
             android:layout_marginTop="18dp"
             android:layout_marginEnd="13dp"
             android:layout_marginRight="13dp"
+            android:contentDescription="@string/edit"
             app:srcCompat="@drawable/ic_settings_black_24dp" />
     </RelativeLayout>
 
@@ -84,9 +85,9 @@
         android:id="@+id/textView2"
         android:layout_width="312dp"
         android:layout_height="31dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="362dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="360dp"
         android:background="@drawable/rounded_text"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"

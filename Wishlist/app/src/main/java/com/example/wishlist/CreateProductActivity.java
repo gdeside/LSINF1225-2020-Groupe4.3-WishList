@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.wishlist.Classesapp.Product;
@@ -16,11 +17,13 @@ import com.example.wishlist.Classesapp.WishlistRepository;
 
 public class CreateProductActivity extends AppCompatActivity {
 
-    EditText edt_product_price, edt_product_name;
+    EditText edt_product_price, edt_product_name, edt_product_link,edt_product_category;
     Button Create_Product_btn;
+    RatingBar ratingBar;
 
     String name;
     int price;
+
 
     private View.OnClickListener CreateProduct_listener = new View.OnClickListener() {
         @Override
@@ -54,9 +57,14 @@ public class CreateProductActivity extends AppCompatActivity {
 
         edt_product_name = findViewById(R.id.edt_product_name);
         edt_product_price = findViewById(R.id.edt_product_price);
+        edt_product_link=findViewById(R.id.edt_product_link);
         Create_Product_btn = findViewById(R.id.create_product_btn);
+        edt_product_category=findViewById(R.id.edt_product_category);
+
+        ratingBar =findViewById(R.id.ratingBar);
 
         Create_Product_btn.setOnClickListener(CreateProduct_listener);
+
     }
 
     @Override  //required for back animation

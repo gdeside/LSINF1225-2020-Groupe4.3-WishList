@@ -6,35 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".CreateProductActivity">
 
+
+    <EditText
+        android:id="@+id/edt_product_category"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="428dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/category"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_product_link"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="360dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/link"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/edt_product_name"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="236dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
     <EditText
-        android:inputType="number"
         android:id="@+id/edt_product_price"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="296dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="price"
+        android:inputType="number"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,11 +71,22 @@
         android:id="@+id/create_product_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="540dp"
         android:text="Create Product"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_product_price" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="188dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

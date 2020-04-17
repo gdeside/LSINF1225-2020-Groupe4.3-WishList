@@ -14,4 +14,7 @@
     <string name="surname">Surname</string>
     <string name="name">Name</string>
     <string name="photo">photoprofile</string>
+    <string name="edit">edit</string>
+    <string name="link">Link</string>
+    <string name="category">Category</string>
 </resources>
