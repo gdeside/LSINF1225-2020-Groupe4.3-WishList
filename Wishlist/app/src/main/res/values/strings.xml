@@ -17,4 +17,5 @@
     <string name="edit">edit</string>
     <string name="link">Link</string>
     <string name="category">Category</string>
+    <string name="creategroup">Create Group</string>
 </resources>

@@ -9,8 +9,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/SINF12BA/SINF12BA_Q2/COO/GIT/LSINF1225/Wishlist" />
-            <option value="$USER_HOME$/SINF12BA/SINF12BA_Q2/COO/GIT/LSINF1225/Wishlist/app" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

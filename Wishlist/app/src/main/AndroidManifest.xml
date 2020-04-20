@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateWishlistActivity"></activity>
+        <activity android:name=".create_group"></activity>
+        <activity android:name=".UpdateWishlistActivity" />
         <activity android:name=".ViewProductActivity" />
         <activity android:name=".CreateProductActivity" />
         <activity android:name=".ViewWishlistsActivity" />
