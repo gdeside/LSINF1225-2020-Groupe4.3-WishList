@@ -18,4 +18,12 @@
     <string name="link">Link</string>
     <string name="category">Category</string>
     <string name="creategroup">Create Group</string>
+    <string name="nickname">Nickname</string>
+    <string name="createfriendship">Create Friendship</string>
+    <string name="deletewishlist">Delete Wishlist</string>
+    <string name="updatewishlist">Update Wishlist</string>
+    <string name="public">Public</string>
+    <string name="public">Public</string>
+    <string name="public">Public</string>
+    <string name="public">Public</string>
 </resources>

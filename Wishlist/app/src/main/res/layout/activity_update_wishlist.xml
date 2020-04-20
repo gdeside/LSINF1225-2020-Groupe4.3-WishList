@@ -63,8 +63,8 @@
         android:id="@+id/UpdateWishlist_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="468dp"
-        android:text="Update Wishlist"
+        android:layout_marginTop="432dp"
+        android:text="@string/updatewishlist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -73,11 +73,11 @@
         android:id="@+id/DeleteWishlist_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
-        android:text="Delete Wishlist"
+        android:layout_marginTop="516dp"
+        android:text="@string/deletewishlist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
