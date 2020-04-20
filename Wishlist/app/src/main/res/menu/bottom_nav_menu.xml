@@ -8,19 +8,19 @@
         android:title="@string/home" />
     <item
         android:id="@+id/bottomNavProfile_btn"
-        android:icon="@drawable/ic_person"
+        android:icon="@drawable/ic_profile"
         android:title="@string/profile" />
     <item
         android:id="@+id/bottomNavFriendlist_btn"
-        android:icon="@drawable/ic_people"
+        android:icon="@drawable/ic_friendlist"
         android:title="@string/friendlist" />
     <item
         android:id="@+id/bottomNavWishlists_btn"
         android:icon="@drawable/ic_wishlists"
         android:title="@string/wishlist" />
-    <item
+   <item
         android:id="@+id/bottomNavGroup_btn"
-        android:icon="@drawable/groups"
+        android:icon="@drawable/ic_group"
         />
 
 </menu>
