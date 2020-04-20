@@ -19,7 +19,7 @@
         android:icon="@drawable/ic_wishlists"
         android:title="@string/wishlist" />
     <item
-        android:id="@+id/bottomNavWishlists_btn"
-        android:icon="@drawable/ic_wishlists"
+        android:id="@+id/bottomNavGroup_btn"
+        android:icon="@drawable/ic_groups"
         android:title="groups" />
 </menu>
