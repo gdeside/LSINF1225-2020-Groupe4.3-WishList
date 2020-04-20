@@ -97,6 +97,16 @@ public class UserRepository {
         return FOO;
     }
 
+    public void DeleteTask(final User user) {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                userDatabase.userDAO().delete(user);
+                return null;
+            }
+        }.execute();
+    }
+
 
 
 }
