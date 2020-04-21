@@ -22,8 +22,7 @@
     <string name="createfriendship">Create Friendship</string>
     <string name="deletewishlist">Delete Wishlist</string>
     <string name="updatewishlist">Update Wishlist</string>
-    <string name="public">Public</string>
-    <string name="public">Public</string>
-    <string name="public">Public</string>
-    <string name="public">Public</string>
+    <string name="username">Username</string>
+    <string name="friendName">Name</string>
+    <string name="birthday">Birthday</string>
 </resources>
