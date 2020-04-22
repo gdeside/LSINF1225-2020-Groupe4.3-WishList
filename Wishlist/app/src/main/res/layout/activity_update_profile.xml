@@ -4,15 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
-    tools:context=".ProfileActivity">
-
-    <include
-        layout="@layout/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    tools:context=".update_profile">
 
 
     <RelativeLayout
@@ -41,35 +33,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/edit_profil"
-            android:layout_width="45dp"
-            android:layout_height="46dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginRight="13dp"
-            android:contentDescription="@string/edit"
-            app:srcCompat="@drawable/ic_settings_black_24dp" />
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="332dp"
-        android:text="@string/name"
-        android:textColor="#FDFCFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
-        android:id="@+id/photoprofile"
+        android:id="@+id/edit_photoprofile"
         android:layout_width="132dp"
         android:layout_height="133dp"
         android:layout_marginTop="84dp"
@@ -81,16 +48,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_friendlist" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="312dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="360dp"
-        android:background="@drawable/rounded_text"
-        android:text="TextView"
+    <Button
+        android:id="@+id/save_profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="652dp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
