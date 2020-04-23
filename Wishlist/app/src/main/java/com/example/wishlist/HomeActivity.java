@@ -202,13 +202,8 @@ public class HomeActivity extends AppCompatActivity {
         // because for the very first time
         // when the app is opened,
         // there is nothing to show
-
         return sh.getString("ID", "");
     }
 
-    ///test
 
-
-    ///now this is a checkpoint
-    ///test
 }
