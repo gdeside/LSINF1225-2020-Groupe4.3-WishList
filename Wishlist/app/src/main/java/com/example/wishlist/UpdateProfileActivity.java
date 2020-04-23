@@ -17,8 +17,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private View.OnClickListener UpdateAccount_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //UserRepository userRepository = new UserRepository(getApplicationContext());
+            UserRepository userRepository = new UserRepository(getApplicationContext());
+            if ( up_id.getText().toString().isEmpty() ||
+                    up_name.getText().toString().isEmpty() ||
+                    up_surname.getText().toString().isEmpty() ||
+                    up_password.getText().toString().isEmpty() ) {
 
+                Toast.makeText(getApplicationContext(),"Please fills Details",Toast.LENGTH_LONG).show();
+
+            } else {
 
 
                 New_id = up_id.getText().toString().trim();
@@ -26,11 +33,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
 
-                //if (!New_id.isEmpty()) user.setId ?
-                //User user = new User(S_id,S_password,S_name,S_surname);
-                //userRepository.InsertTask(user);
+                User user = new User(New_id,New_password,New_name,New_surname);
+                userRepository.InsertTask(user);
 
-                //openLoginActivity();
+            }
         }
     };
 
