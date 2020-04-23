@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".update_profile">
+    tools:context=".UpdateProfileActivity">
 
 
     <RelativeLayout
@@ -47,6 +47,66 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_friendlist" />
+
+    <EditText
+        android:id="@+id/edt_update_name"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="456dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_update_surname"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="392dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/surname"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_update_ID_login"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="328dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/identifiant"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_update_password"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="524dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/save_profil"
