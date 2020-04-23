@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
     tools:context=".CreateProductActivity">
 
 
@@ -12,195 +11,82 @@
         android:id="@+id/edt_product_category"
         android:layout_width="290dp"
         android:layout_height="41dp"
+        android:layout_marginTop="428dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/category"
         android:inputType="textPersonName"
-        android:textColorHint="#009688"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edt_product_link"
         android:layout_width="290dp"
         android:layout_height="41dp"
+        android:layout_marginTop="360dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/link"
         android:inputType="textPersonName"
-        android:textColorHint="#009688"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edt_product_name"
         android:layout_width="290dp"
         android:layout_height="41dp"
+        android:layout_marginTop="236dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
-        android:textColorHint="#009688"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.359" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edt_product_price"
         android:layout_width="290dp"
         android:layout_height="41dp"
+        android:layout_marginTop="296dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
-        android:hint="Price"
+        android:hint="price"
         android:inputType="number"
-        android:textColorHint="#009688"
-        android:textSize="18sp"
-        android:textStyle="normal"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/create_product_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="540dp"
         android:text="Create Product"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="243dp"
-        android:layout_height="54dp"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19" />
-
-    <TextView
-        android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="486dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313" />
-
-    <TextView
-        android:id="@+id/product_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444" />
-
-    <TextView
-        android:id="@+id/product_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Link"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566" />
-
-    <TextView
-        android:id="@+id/product_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Category"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
-
-    <ImageView
-        android:id="@+id/product_photo"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@android:drawable/ic_menu_gallery"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07"
-        android:contentDescription="TODO" />
-
-    <TextView
-        android:id="@+id/product_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rating"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.154" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
