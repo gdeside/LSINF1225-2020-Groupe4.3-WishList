@@ -1,7 +1,3 @@
-package com.example.wishlist;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +6,14 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.wishlist.Classesapp.Product;
 import com.example.wishlist.Classesapp.ProductRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 import com.example.wishlist.Classesapp.WishlistRepository;
+import com.example.wishlist.HomeActivity;
+import com.example.wishlist.R;
 
 public class CreateProductActivity extends AppCompatActivity {
 
