@@ -12,7 +12,20 @@
         android:layout_height="wrap_content"
         android:text="Settings"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="27dp" />
+        android:layout_marginLeft="50dp"
+        tools:layout_editor_absoluteY="27dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+        android:id="@+id/AddProductWishlist_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        tools:layout_editor_absoluteX="148dp"
+        android:layout_marginLeft="250dp"
+        tools:layout_editor_absoluteY="27dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ViewWishlistProduct_recycler_view"

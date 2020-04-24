@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.wishlist.Classesapp.ListAndProductRepository;
 import com.example.wishlist.Classesapp.Product;
@@ -18,7 +17,7 @@ import com.example.wishlist.Classesapp.ProductRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewWishlistProductActivity extends AppCompatActivity {
+public class WishlistAddProductActivity extends AppCompatActivity {
 
     String name, description;
     int wishlist_num;
@@ -29,30 +28,19 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
     private static RecyclerView recyclerView;
     ArrayList<Product> productArrayList;
 
-    private View.OnClickListener SettingsWishlist_listener = new View.OnClickListener() {
+    private View.OnClickListener openwis_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            openUpdateWishlistsActivity();
-        }
-    };
 
-    private View.OnClickListener WishlistAddProduct_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            openWishlistAddProductActivity();
+            openViewWishlistProductActivity();
+
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_wishlist_product);
-
-        Button SettingsWishlist_btn = findViewById(R.id.SettingsWishlist_btn);
-        SettingsWishlist_btn.setOnClickListener(SettingsWishlist_listener);
-
-        Button AddProduct_btn = findViewById(R.id.AddProductWishlist_btn);
-        AddProduct_btn.setOnClickListener(WishlistAddProduct_listener);
+        setContentView(R.layout.activity_wishlist_add_product);
 
         ///Get values
         Bundle data = getIntent().getExtras();
@@ -64,66 +52,61 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
             wishlist_num = data.getInt("wishlist_num");
         }
 
-        recyclerView = (RecyclerView)findViewById(R.id.ViewWishlistProduct_recycler_view);
+        recyclerView = (RecyclerView)findViewById(R.id.AddProduct_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        new ViewWishlistProductActivity.LoadDataTask().execute();
+        new WishlistAddProductActivity.LoadDataTask().execute();
 
     }
 
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
         ProductRepository productRepository;
-        ListAndProductRepository listAndProductRepository;
-        List<String> productName;
         List<Product> productList;
 
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
             productRepository= new ProductRepository(getApplicationContext());
-            listAndProductRepository = new ListAndProductRepository(getApplicationContext());
         }
 
         @Override
         protected Void doInBackground(Void... voids)
         {
-            productName = listAndProductRepository.getWishlistProductNames(wishlist_num);
+            productList = productRepository.getProducts();
             productArrayList = new ArrayList<>();
 
-            for(int i =0; i <productName.size();i++)
+            for(int i =0; i <productList.size();i++)
             {
-                String ProductID = productName.get(i);
-                Product product = productRepository.getProductByID(ProductID);
-                productArrayList.add(product);
+                productArrayList.add(productList.get(i));
             }
 
 
             return null;
         }
 
+
+
         @Override
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            ProductAdapter productAdapter = new ProductAdapter(productArrayList, ViewWishlistProductActivity.this);
+            ProductAdapter productAdapter = new ProductAdapter(productArrayList, WishlistAddProductActivity.this,wishlist_num);
             recyclerView.setAdapter(productAdapter);
         }
+
+
+
+
     }
 
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        new ViewWishlistProductActivity.LoadDataTask().execute();
-    }
-
-    public void openUpdateWishlistsActivity()
+    public void openViewWishlistProductActivity()
     {
-        Intent intent = new Intent(this, UpdateWishlistActivity.class);
+        Intent intent = new Intent(this, ViewWishlistProductActivity.class);
         intent.putExtra("wishlist_name",name);
         intent.putExtra("wishlist_description",description);
         intent.putExtra("wishlist_option",option);
@@ -131,16 +114,4 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
-
-    public void openWishlistAddProductActivity()
-    {
-        Intent intent = new Intent(this, WishlistAddProductActivity.class);
-        intent.putExtra("wishlist_name",name);
-        intent.putExtra("wishlist_description",description);
-        intent.putExtra("wishlist_option",option);
-        intent.putExtra("wishlist_num",wishlist_num);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
-    }
-
 }

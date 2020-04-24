@@ -60,7 +60,6 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-
         TextView tv_card_view_name = holder.tv_card_view_name;
         TextView tv_card_view_creator = holder.tv_card_view_creator;
         ImageView img_card_view_privacy = holder.img_card_view_privacy;
@@ -91,14 +90,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
                 intent.putExtra("wishlist_num",wishlist_num);
 
                 context.startActivity(intent);
-
-
-
-
             }
         });
-
-
     }
 
     @Override

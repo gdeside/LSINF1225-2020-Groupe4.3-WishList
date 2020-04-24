@@ -48,4 +48,6 @@ public class ListAndUserRepository {
         List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getAll();
         return  listAndUserList;
     }
+
+
 }

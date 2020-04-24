@@ -23,6 +23,10 @@ public interface ListAndProductDAO {
     @Query("select * from listAndProduct")
     List<ListAndProduct> getAll();
 
+
+    @Query("Select * from ListAndProduct where Num_List == :num_list and Product_Name == :id")
+    List<ListAndProduct> getid(String id,int num_list);
+
     @Query("Select * from ListAndProduct where Num_List == :id")
     List<ListAndProduct> getObjectList(int id);
 

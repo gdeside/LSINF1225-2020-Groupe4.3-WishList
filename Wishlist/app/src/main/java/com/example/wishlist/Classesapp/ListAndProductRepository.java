@@ -53,4 +53,31 @@ public class ListAndProductRepository {
         List<String> list = listAndProductDatabase.listAndProductDAO().getAllObject(ListID);
         return list;
     }
+
+    ///Check if product already in it
+    public Boolean isObjectInList(final String ID,final int Num_list)
+    {
+        Boolean FOO = false;
+        try {
+            FOO = new AsyncTask<Void, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Void... voids) {
+                    List<ListAndProduct> userList = listAndProductDatabase.listAndProductDAO().getid(ID,Num_list);
+                    return userList.size() > 0;
+                }
+
+                @Override
+                protected void onPostExecute(Boolean result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
 }
