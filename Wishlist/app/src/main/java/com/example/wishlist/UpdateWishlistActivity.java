@@ -45,7 +45,7 @@ public class UpdateWishlistActivity extends AppCompatActivity {
                 wishlist.setNum_list(wishlist_num);
                 wishlistRepository.UpdateTask(wishlist);
 
-                openViewWishlistsActivity();
+                openViewWishlistProductActivity();
             }
 
         }
@@ -124,9 +124,9 @@ public class UpdateWishlistActivity extends AppCompatActivity {
         // there is nothing to show
         return sh.getString("ID", "");
     }
-    public void openViewWishlistsActivity()
+    public void openViewWishlistProductActivity()
     {
-        Intent intent = new Intent(this, ViewWishlistsActivity.class);
+        Intent intent = new Intent(this, ViewWishlistProductActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }

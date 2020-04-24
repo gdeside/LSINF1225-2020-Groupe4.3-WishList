@@ -9,6 +9,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.wishlist.Classesapp.Wishlist;
@@ -26,6 +28,8 @@ public class ViewWishlistsActivity extends AppCompatActivity {
     WishlistAdapter wishlistAdapter;
     ArrayList<Wishlist> wishlistArrayList, wishlistArrayList_search;
     EditText edt_wishlist_search;
+
+  
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

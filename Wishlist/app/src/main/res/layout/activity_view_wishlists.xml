@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ViewWishlistsActivity">
 
+
+
     <EditText
         android:id="@+id/edt_wishlist_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:hint="Search wishlist"
         android:textSize="20sp"
         android:textColor="@color/colorPrimaryDark"

@@ -49,5 +49,4 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview-selection:$recyclerview_version"
 
 
-
 }
