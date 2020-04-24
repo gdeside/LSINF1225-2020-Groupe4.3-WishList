@@ -84,7 +84,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
                 Boolean wishlist_option = dataset.get(position).getOption();
                 int wishlist_num = dataset.get(position).getNum_list();
 
-                Intent intent = new Intent(context,UpdateWishlistActivity.class);
+                Intent intent = new Intent(context,ViewWishlistProductActivity.class);
                 intent.putExtra("wishlist_name",wishlist_name);
                 intent.putExtra("wishlist_description",wishlist_description);
                 intent.putExtra("wishlist_option",wishlist_option);

@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ViewProductActivity">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Product_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
