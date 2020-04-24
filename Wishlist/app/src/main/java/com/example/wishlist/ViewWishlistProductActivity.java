@@ -110,7 +110,7 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            ProductAdapter productAdapter = new ProductAdapter(productArrayList, ViewWishlistProductActivity.this);
+            ProductAdapter productAdapter = new ProductAdapter(productArrayList,wishlist_num, ViewWishlistProductActivity.this,getApplicationContext()); //No num list == -1, constructor shadowing seemms to not work
             recyclerView.setAdapter(productAdapter);
         }
     }
@@ -141,6 +141,11 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         intent.putExtra("wishlist_num",wishlist_num);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
+
+    public void Reload()
+    {
+        new ViewWishlistProductActivity.LoadDataTask().execute();
     }
 
 }

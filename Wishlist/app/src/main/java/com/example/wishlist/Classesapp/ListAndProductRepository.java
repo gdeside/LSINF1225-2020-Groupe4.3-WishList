@@ -80,4 +80,15 @@ public class ListAndProductRepository {
         }
         return FOO;
     }
+
+    public void DeleteTask(final ListAndProduct listAndProduct)
+    {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                listAndProductDatabase.listAndProductDAO().delete(listAndProduct);
+                return null;
+            }
+        }.execute();
+    }
 }

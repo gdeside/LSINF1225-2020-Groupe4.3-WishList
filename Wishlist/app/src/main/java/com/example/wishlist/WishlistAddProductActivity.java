@@ -95,7 +95,7 @@ public class WishlistAddProductActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            ProductAdapter productAdapter = new ProductAdapter(productArrayList, WishlistAddProductActivity.this,wishlist_num);
+            ProductAdapter productAdapter = new ProductAdapter(productArrayList, wishlist_num,WishlistAddProductActivity.this,getApplicationContext());
             recyclerView.setAdapter(productAdapter);
         }
 

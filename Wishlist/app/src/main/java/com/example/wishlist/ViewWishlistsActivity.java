@@ -109,6 +109,7 @@ public class ViewWishlistsActivity extends AppCompatActivity {
         }
     }
 
+
     ///Filter wishlists by name
     public void Filter(String charText)
     {
