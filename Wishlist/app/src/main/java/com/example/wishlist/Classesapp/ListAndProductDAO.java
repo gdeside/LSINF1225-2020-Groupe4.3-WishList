@@ -25,4 +25,7 @@ public interface ListAndProductDAO {
 
     @Query("Select * from ListAndProduct where Num_List == :id")
     List<ListAndProduct> getObjectList(int id);
+
+    @Query("Select Product_Name from ListAndProduct where Num_List == :id")
+    List<String> getAllObject(int id);
 }

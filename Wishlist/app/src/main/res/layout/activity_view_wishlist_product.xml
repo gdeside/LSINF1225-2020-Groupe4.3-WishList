@@ -13,4 +13,14 @@
         android:text="Settings"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="27dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ViewWishlistProduct_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/SettingsWishlist_btn">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

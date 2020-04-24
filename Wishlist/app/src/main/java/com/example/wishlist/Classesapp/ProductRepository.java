@@ -74,4 +74,9 @@ public class ProductRepository {
         List<Product> productList = productDatabase.productDAO().getAll();
         return  productList;
     }
+
+    public Product getProductByID(String name){
+        List<Product> list = productDatabase.productDAO().getID(name);
+        return list.get(0);
+    }
 }

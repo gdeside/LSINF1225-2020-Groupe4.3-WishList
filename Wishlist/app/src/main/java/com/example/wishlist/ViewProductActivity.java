@@ -10,8 +10,6 @@ import android.os.Bundle;
 
 import com.example.wishlist.Classesapp.Product;
 import com.example.wishlist.Classesapp.ProductRepository;
-import com.example.wishlist.Classesapp.Wishlist;
-import com.example.wishlist.Classesapp.WishlistRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +27,7 @@ public class ViewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_product);
 
-        recyclerView = (RecyclerView)findViewById(R.id.Product_recycler_view);
+        recyclerView = (RecyclerView)findViewById(R.id.ViewProduct_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
