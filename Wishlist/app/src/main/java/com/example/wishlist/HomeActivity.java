@@ -64,6 +64,12 @@ public class HomeActivity extends AppCompatActivity {
             openUpdateFriendship();
         }
     };
+    private View.OnClickListener FriendProfile_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openFriendProfile();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,7 @@ public class HomeActivity extends AppCompatActivity {
         Button create_product_btn = findViewById(R.id.Create_Product_btn);
         Button view_product_btn = findViewById(R.id.View_Product_btn);
         Button updatefrien_btn=findViewById(R.id.btn_updatefriend);
+        Button friendprofil_btn = findViewById(R.id.friendProfile_btn);
 
         wishlists_btn.setOnClickListener(Wishlists_listener);
         profile_btn.setOnClickListener(Profile_listener);
@@ -85,6 +92,8 @@ public class HomeActivity extends AppCompatActivity {
         create_product_btn.setOnClickListener(CreateProduct_listener);
         view_product_btn.setOnClickListener(ViewProduct_listener);
         updatefrien_btn.setOnClickListener(UpdateFriend_listener);
+        friendprofil_btn.setOnClickListener(FriendProfile_listener);
+
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -201,6 +210,10 @@ public class HomeActivity extends AppCompatActivity {
     }
     public void openUpdateFriendship(){
         Intent intent=new Intent(this,UpdateFriendship.class);
+        startActivity(intent);
+    }
+    public void openFriendProfile(){
+        Intent intent = new Intent(this, FriendProfileActivity.class);
         startActivity(intent);
     }
 
