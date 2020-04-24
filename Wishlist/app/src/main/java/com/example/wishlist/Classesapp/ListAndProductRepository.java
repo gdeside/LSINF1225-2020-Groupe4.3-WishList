@@ -48,4 +48,9 @@ public class ListAndProductRepository {
         List<ListAndProduct> listAndProductList = listAndProductDatabase.listAndProductDAO().getAll();
         return  listAndProductList;
     }
+
+    public List<String> getWishlistProductNames(int ListID){
+        List<String> list = listAndProductDatabase.listAndProductDAO().getAllObject(ListID);
+        return list;
+    }
 }
