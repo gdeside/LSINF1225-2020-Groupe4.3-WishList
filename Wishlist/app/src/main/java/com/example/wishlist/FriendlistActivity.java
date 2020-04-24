@@ -1,20 +1,37 @@
 package com.example.wishlist;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FriendlistActivity extends AppCompatActivity {
+
+
+    FloatingActionButton add_friend;
+
+
+    private View.OnClickListener add_friend_listener=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openCreateFrienship();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friendlist);
+
+        add_friend=findViewById(R.id.btn_add_friend);
+        add_friend.setOnClickListener(add_friend_listener);
+
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -66,4 +83,8 @@ public class FriendlistActivity extends AppCompatActivity {
         return(super.onOptionsItemSelected(item));
     }
 
+    public void openCreateFrienship(){
+        Intent intent=new Intent(this,create_friendship.class);
+        startActivity(intent);
+    }
 }
