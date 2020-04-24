@@ -26,4 +26,5 @@
     <string name="friendName">Name</string>
     <string name="save">Save</string>
     <string name="birthday">Birthday</string>
+    <string name="searchfriend">Search a new friend</string>
 </resources>
