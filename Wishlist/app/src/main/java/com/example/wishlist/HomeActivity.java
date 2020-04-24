@@ -58,6 +58,12 @@ public class HomeActivity extends AppCompatActivity {
             openViewProductActivity();
         }
     };
+    private View.OnClickListener UpdateFriend_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openUpdateFriendship();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +76,7 @@ public class HomeActivity extends AppCompatActivity {
         Button viewWishlists_btn = findViewById(R.id.View_Wishlists_btn);
         Button create_product_btn = findViewById(R.id.Create_Product_btn);
         Button view_product_btn = findViewById(R.id.View_Product_btn);
+        Button updatefrien_btn=findViewById(R.id.btn_updatefriend);
 
         wishlists_btn.setOnClickListener(Wishlists_listener);
         profile_btn.setOnClickListener(Profile_listener);
@@ -77,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
         viewWishlists_btn.setOnClickListener(ViewWishlists_listener);
         create_product_btn.setOnClickListener(CreateProduct_listener);
         view_product_btn.setOnClickListener(ViewProduct_listener);
+        updatefrien_btn.setOnClickListener(UpdateFriend_listener);
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -190,6 +198,10 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewProductActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
+    public void openUpdateFriendship(){
+        Intent intent=new Intent(this,UpdateFriendship.class);
+        startActivity(intent);
     }
 
     public String getUsername(){
