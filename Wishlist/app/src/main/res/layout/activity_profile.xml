@@ -41,18 +41,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/edit_profil"
-            android:layout_width="45dp"
-            android:layout_height="46dp"
+            android:layout_width="60dp"
+            android:layout_height="69dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginRight="13dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginRight="27dp"
+            android:background="@drawable/ic_settings_black_24dp"
             android:contentDescription="@string/edit"
             app:srcCompat="@drawable/ic_settings_black_24dp" />
+
     </RelativeLayout>
 
     <TextView
@@ -90,6 +92,17 @@
         android:layout_marginTop="360dp"
         android:background="@drawable/rounded_text"
         android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="576dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

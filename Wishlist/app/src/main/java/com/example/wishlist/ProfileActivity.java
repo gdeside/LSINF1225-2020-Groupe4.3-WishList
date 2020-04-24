@@ -1,20 +1,35 @@
 package com.example.wishlist;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    ImageButton edit_profil;
+
+
+    private View.OnClickListener Edit_profil_listener=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openUpdateActivity();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        edit_profil=findViewById(R.id.edit_profil);
+        edit_profil.setOnClickListener(Edit_profil_listener);
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -65,6 +80,14 @@ public class ProfileActivity extends AppCompatActivity {
             return true;
     }
         return(super.onOptionsItemSelected(item));
+    }
+
+
+    public void openUpdateActivity()
+    {
+        Intent intent = new Intent(this, UpdateProfileActivity.class);
+        startActivity(intent);
+
     }
 
 }

@@ -29,7 +29,7 @@
             android:layout_marginTop="243dp"
             android:text="@string/identifiant"
             android:textColor="#FEFEFF"
-            android:textSize="32dp"
+            android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

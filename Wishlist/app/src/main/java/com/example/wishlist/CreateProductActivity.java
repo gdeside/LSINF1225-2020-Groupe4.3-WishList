@@ -43,8 +43,8 @@ public class CreateProductActivity extends AppCompatActivity {
 
 
                 Product product = new Product(name,price);
+                product.setCategorie(category);
                 productRepository.InsertTask(product);
-
                 openHomeActivity();
             }
         }

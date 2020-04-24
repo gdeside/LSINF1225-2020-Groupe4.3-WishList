@@ -13,6 +13,7 @@
         <activity android:name=".FriendProfileActivity" />
         <activity android:name=".create_friendship" />
         <activity android:name=".create_group" />
+        <activity android:name=".UpdateProfileActivity"/>
         <activity android:name=".UpdateWishlistActivity" />
         <activity android:name=".ViewProductActivity" />
         <activity android:name=".CreateProductActivity" />
