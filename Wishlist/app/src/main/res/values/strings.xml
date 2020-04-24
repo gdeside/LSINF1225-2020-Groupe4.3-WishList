@@ -24,6 +24,6 @@
     <string name="updatewishlist">Update Wishlist</string>
     <string name="username">Username</string>
     <string name="friendName">Name</string>
-    <string name="birthday">Birthday</string>
     <string name="save">Save</string>
+    <string name="birthday">Birthday</string>
 </resources>
