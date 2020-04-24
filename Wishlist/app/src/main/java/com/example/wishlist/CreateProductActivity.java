@@ -1,7 +1,5 @@
 package com.example.wishlist;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +8,10 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.wishlist.Classesapp.Product;
 import com.example.wishlist.Classesapp.ProductRepository;
-import com.example.wishlist.Classesapp.Wishlist;
-import com.example.wishlist.Classesapp.WishlistRepository;
 
 public class CreateProductActivity extends AppCompatActivity {
 
@@ -21,7 +19,7 @@ public class CreateProductActivity extends AppCompatActivity {
     Button Create_Product_btn;
     RatingBar ratingBar;
 
-    String name;
+    String name,category;
     int price;
 
 
@@ -40,6 +38,8 @@ public class CreateProductActivity extends AppCompatActivity {
             else {
                 name = edt_product_name.getText().toString().trim();
                 price = Integer.parseInt(edt_product_price.getText().toString().trim());
+
+                category=edt_product_category.getText().toString().trim();
 
 
                 Product product = new Product(name,price);
