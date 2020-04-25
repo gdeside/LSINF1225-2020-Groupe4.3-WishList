@@ -41,15 +41,15 @@ public class ViewWishlistsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_wishlists);
 
+        ////To see Cards
         recyclerView = (RecyclerView)findViewById(R.id.Wishlist_recycler_view);
         recyclerView.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        ///Search bar
         edt_wishlist_search = findViewById(R.id.edt_wishlist_search);
-
         edt_wishlist_search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -68,11 +68,7 @@ public class ViewWishlistsActivity extends AppCompatActivity {
 
             }
         });
-
         new LoadDataTask().execute();
-
-
-
     }
 
     class LoadDataTask extends AsyncTask<Void,Void,Void>

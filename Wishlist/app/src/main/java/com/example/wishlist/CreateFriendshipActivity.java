@@ -1,5 +1,6 @@
 package com.example.wishlist;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -46,6 +47,7 @@ public class CreateFriendshipActivity extends AppCompatActivity {
                 {
                     Friend friend1 = new Friend(SearchQuerry,username,friendship_nickname.getText().toString());
                    friendRepository.InsertTask(friend1);
+                    openFriendlistActivity();
                 }
             }
 
@@ -79,4 +81,12 @@ public class CreateFriendshipActivity extends AppCompatActivity {
         // there is nothing to show
         return sh.getString("ID", "");
     }
+
+    public void openFriendlistActivity()
+    {
+        Intent intent = new Intent(this, FriendlistActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
+
 }

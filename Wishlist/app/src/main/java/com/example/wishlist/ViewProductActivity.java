@@ -66,8 +66,6 @@ public class ViewProductActivity extends AppCompatActivity {
             return null;
         }
 
-
-
         @Override
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
@@ -75,7 +73,5 @@ public class ViewProductActivity extends AppCompatActivity {
             ProductAdapter productAdapter = new ProductAdapter(productArrayList, -1,ViewProductActivity.this,getApplicationContext()); //No num list == -1, constructor shadowing seemms to not work
             recyclerView.setAdapter(productAdapter);
         }
-
-
     }
 }
