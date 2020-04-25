@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wishlist.Classesapp.ListAndProductRepository;
@@ -24,7 +25,7 @@ import java.util.List;
 public class ViewWishlistProductActivity extends AppCompatActivity {
 
     String name, description;
-    int wishlist_num;
+    int wishlist_num,total_price;
     Boolean option;
     ListAndUserRepository listAndUserRepository;
 
@@ -32,6 +33,7 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     ArrayList<Product> productArrayList;
+    TextView totalprice_tv;
 
     private View.OnClickListener SettingsWishlist_listener = new View.OnClickListener() {
         @Override
@@ -66,7 +68,11 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         Button AddProduct_btn = findViewById(R.id.AddProductWishlist_btn);
         AddProduct_btn.setOnClickListener(WishlistAddProduct_listener);
 
+        totalprice_tv = findViewById(R.id.WishlistProduct_price_tv);
+
         listAndUserRepository = new ListAndUserRepository(getApplicationContext());
+
+        total_price = 0;
 
         ///Get values
         Bundle data = getIntent().getExtras();
@@ -86,6 +92,7 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         new ViewWishlistProductActivity.LoadDataTask().execute();
+
 
     }
 
@@ -108,15 +115,16 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         {
             productName = listAndProductRepository.getWishlistProductNames(wishlist_num);
             productArrayList = new ArrayList<>();
+            total_price = 0;
 
             for(int i =0; i <productName.size();i++)
             {
                 String ProductID = productName.get(i);
                 Product product = productRepository.getProductByID(ProductID);
+                total_price += product.getPrix();
                 productArrayList.add(product);
             }
-
-
+            totalprice_tv.setText(Integer.toString(total_price)+" €");
             return null;
         }
 
