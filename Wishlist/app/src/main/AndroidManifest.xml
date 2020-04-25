@@ -12,10 +12,9 @@
         <activity android:name=".WishlistAddProductActivity"></activity>
         <activity android:name=".UpdateFriendship" />
         <activity android:name=".ViewWishlistProductActivity" />
-        <activity android:name=".update_product" />
         <activity android:name=".FriendProfileActivity" />
-        <activity android:name=".create_friendship" />
-        <activity android:name=".create_group" />
+        <activity android:name=".CreateFriendshipActivity" />
+        <activity android:name=".CreateGroupActivity" />
         <activity android:name=".UpdateProfileActivity" />
         <activity android:name=".UpdateWishlistActivity" />
         <activity android:name=".ViewProductActivity" />

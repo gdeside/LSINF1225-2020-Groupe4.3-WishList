@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class create_friendship extends AppCompatActivity {
+public class CreateFriendshipActivity extends AppCompatActivity {
 
     SearchView searchfriend;
     Button btn_friendship;

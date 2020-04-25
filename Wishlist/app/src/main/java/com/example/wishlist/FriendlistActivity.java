@@ -84,7 +84,7 @@ public class FriendlistActivity extends AppCompatActivity {
     }
 
     public void openCreateFrienship(){
-        Intent intent=new Intent(this,create_friendship.class);
+        Intent intent=new Intent(this, CreateFriendshipActivity.class);
         startActivity(intent);
     }
 }

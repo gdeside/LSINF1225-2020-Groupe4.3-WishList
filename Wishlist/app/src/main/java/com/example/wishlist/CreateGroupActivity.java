@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class create_group extends AppCompatActivity {
+public class CreateGroupActivity extends AppCompatActivity {
 
     Button btn_creatgr;
     EditText name_group;
