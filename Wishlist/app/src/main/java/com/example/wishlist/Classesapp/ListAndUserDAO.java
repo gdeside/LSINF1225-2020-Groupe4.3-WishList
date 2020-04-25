@@ -23,6 +23,9 @@ public interface ListAndUserDAO {
     @Query("select * from listAndUser")
     List<ListAndUser> getAll();
 
-    @Query("Select * from  listAndUser where id_user == :name")
+    @Query("Select * from  listAndUser where ID_User == :name")
     List<ListAndUser> getID(String name);
+
+    @Query("Select * from  listAndUser where Num_List == :num_list ")
+    List<ListAndUser> getListCreator(int num_list);
 }

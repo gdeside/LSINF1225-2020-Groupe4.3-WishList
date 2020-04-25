@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.wishlist.Classesapp.ListAndProductRepository;
+import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.Product;
 import com.example.wishlist.Classesapp.ProductRepository;
 
@@ -23,6 +26,7 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
     String name, description;
     int wishlist_num;
     Boolean option;
+    ListAndUserRepository listAndUserRepository;
 
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -39,7 +43,15 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
     private View.OnClickListener WishlistAddProduct_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            openWishlistAddProductActivity();
+            if(listAndUserRepository.isCreator(getUsername(),wishlist_num))
+            {
+                openWishlistAddProductActivity();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"What are you doing? NOT YOUR LIST!",Toast.LENGTH_LONG).show();
+            }
+
         }
     };
 
@@ -53,6 +65,8 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
 
         Button AddProduct_btn = findViewById(R.id.AddProductWishlist_btn);
         AddProduct_btn.setOnClickListener(WishlistAddProduct_listener);
+
+        listAndUserRepository = new ListAndUserRepository(getApplicationContext());
 
         ///Get values
         Bundle data = getIntent().getExtras();
@@ -146,6 +160,19 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
     public void Reload()
     {
         new ViewWishlistProductActivity.LoadDataTask().execute();
+    }
+
+    public String getUsername(){
+        // Retrieving the value using its keys
+        // the file name must be same in both saving
+        // and retrieving the data
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+
+        // The value will be default as empty string
+        // because for the very first time
+        // when the app is opened,
+        // there is nothing to show
+        return sh.getString("ID", "");
     }
 
 }

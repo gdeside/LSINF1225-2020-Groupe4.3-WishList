@@ -49,11 +49,73 @@ public class ListAndUserRepository {
         return  listAndUserList;
     }
 
+    ///Return All List from an user
     public List<ListAndUser> getIDUser(String id)
     {
         List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getID(id);
         return listAndUserList;
     }
+
+
+
+    ///Return true if there is no user with this id + this password
+    public Boolean isCreator(final String username, final int Num_list)
+    {
+        Boolean FOO = false;
+        try {
+            FOO = new AsyncTask<Void, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Void... voids) {
+                    List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getListCreator(Num_list);
+                    String foo = listAndUserList.get(0).getId_user();
+                    return foo.equals(username);
+                }
+
+                @Override
+                protected void onPostExecute(Boolean result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
+
+    ///Return true if there is no user with this id + this password
+    public String showCreator(final int Num_list)
+    {
+        String FOO = "";
+        try {
+            FOO = new AsyncTask<Void, Void, String>() {
+                @Override
+                protected String doInBackground(Void... voids) {
+                    List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getListCreator(Num_list);
+
+                    return listAndUserList.get(0).getId_user();
+                }
+
+                @Override
+                protected void onPostExecute(String result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
+
 
 
 }
