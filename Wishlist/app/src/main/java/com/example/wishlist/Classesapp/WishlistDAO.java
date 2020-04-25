@@ -22,4 +22,7 @@ public interface WishlistDAO {
 
     @Query("select * from wishlist")
     List<Wishlist> getAll();
+
+    @Query("select * from wishlist where Num_liste == :id")
+    List<Wishlist> getID(int id);
 }

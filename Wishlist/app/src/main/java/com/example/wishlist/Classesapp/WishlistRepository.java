@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.room.Room;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class WishlistRepository {
 
@@ -20,30 +21,42 @@ public class WishlistRepository {
         wishlistDatabase = Room.databaseBuilder(context, WishlistDatabase.class, DB_NAME).build();
     }
 
-    public void InsertTask(final Wishlist wishlist)
+    public Long InsertTask(final Wishlist wishlist)
     {
-        new AsyncTask<Void,Void,Void>(){
-            @Override
-            protected Void doInBackground(Void... voids){
-                wishlistDatabase.wishlistDAO().insertTask(wishlist);
-                return null;
-            }
+        Long num_list = Integer.toUnsignedLong(0);
+        try {
+            num_list = new AsyncTask<Void, Void, Long>() {
+                @Override
+                protected Long doInBackground(Void... voids) {
+                    return wishlistDatabase.wishlistDAO().insertTask(wishlist);
+                }
 
-            @Override
-            protected  void onPostExecute(Void aVoid){
-                super.onPostExecute(aVoid);
-                Toast.makeText(context,wishlist.getName()+" is inserted",Toast.LENGTH_LONG).show();
-            }
+                @Override
+                protected void onPostExecute(Long result) {
+                    super.onPostExecute(result);
+                    Toast.makeText(context, wishlist.getName() + " is inserted", Toast.LENGTH_LONG).show();
+                }
 
 
-
-        }.execute();
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return num_list;
 
     }
 
     public List<Wishlist> getWishlists(){
         List<Wishlist> wishlistsList = wishlistDatabase.wishlistDAO().getAll();
         return  wishlistsList;
+    }
+
+    public List<Wishlist> getByID(int num){
+        List<Wishlist> wishlistList = wishlistDatabase.wishlistDAO().getID(num);
+        return wishlistList;
     }
 
     public void UpdateTask(final Wishlist wishlist)

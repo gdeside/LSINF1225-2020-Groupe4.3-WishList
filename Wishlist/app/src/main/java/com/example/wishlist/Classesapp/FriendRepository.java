@@ -69,6 +69,13 @@ public class FriendRepository {
     }
 
 
+    public List<Friend> getAllFriend(String username)
+    {
+        List<Friend> friendList = friendDatabase.friendDAO().getAllFriend(username);
+        return friendList;
+    }
+
+
 
 
 

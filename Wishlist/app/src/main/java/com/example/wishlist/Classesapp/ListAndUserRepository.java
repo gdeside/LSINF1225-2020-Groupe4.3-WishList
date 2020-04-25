@@ -49,5 +49,11 @@ public class ListAndUserRepository {
         return  listAndUserList;
     }
 
+    public List<ListAndUser> getIDUser(String id)
+    {
+        List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getID(id);
+        return listAndUserList;
+    }
+
 
 }

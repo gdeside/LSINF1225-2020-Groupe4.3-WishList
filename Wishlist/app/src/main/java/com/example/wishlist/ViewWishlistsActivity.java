@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.wishlist.Classesapp.Friend;
+import com.example.wishlist.Classesapp.FriendRepository;
+import com.example.wishlist.Classesapp.ListAndUser;
+import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 import com.example.wishlist.Classesapp.WishlistRepository;
 
@@ -73,28 +78,61 @@ public class ViewWishlistsActivity extends AppCompatActivity {
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
         WishlistRepository wishlistRepository;
+        FriendRepository friendRepository;
+        ListAndUserRepository listAndUserRepository;
         List<Wishlist> wishlistList;
+        List<Friend> friendList;
+        ArrayList<ListAndUser> listAndUserArrayList;
+        ArrayList<Integer> WishlistNumArrayList;
 
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
             wishlistRepository= new WishlistRepository(getApplicationContext());
+            friendRepository = new FriendRepository(getApplicationContext());
+            listAndUserRepository = new ListAndUserRepository(getApplicationContext());
         }
 
         @Override
         protected Void doInBackground(Void... voids)
         {
-            wishlistList = wishlistRepository.getWishlists();
             wishlistArrayList = new ArrayList<>();
             wishlistArrayList_search = new ArrayList<>();
+            listAndUserArrayList = new ArrayList<>();
+            WishlistNumArrayList = new ArrayList<>();
 
-            for(int i =0; i <wishlistList.size();i++)
+            String username = getUsername();
+            friendList = friendRepository.getAllFriend(username);
+
+            ///get friend Lists
+            for(Friend friend : friendList)
             {
-                wishlistArrayList.add(wishlistList.get(i));
-                wishlistArrayList_search.add(wishlistList.get(i));
+                List<ListAndUser> foo = listAndUserRepository.getIDUser(friend.getId_ami());
+                for(ListAndUser listAndUser : foo)
+                {
+                    WishlistNumArrayList.add(listAndUser.getNum_list());
+                }
+            }
+
+            ///get user List
+            List<ListAndUser> foo = listAndUserRepository.getIDUser(username);
+            for(ListAndUser listAndUser : foo)
+            {
+                WishlistNumArrayList.add(listAndUser.getNum_list());
             }
 
 
+            /// convert Num_List into wishlists
+            for(int num : WishlistNumArrayList)
+            {
+                List<Wishlist> wishlistList = wishlistRepository.getByID(num);
+                for(Wishlist wishlist : wishlistList)
+                {
+                    wishlistArrayList.add(wishlist);
+                    wishlistArrayList_search.add(wishlist);
+                }
+
+            }
             return null;
         }
 
@@ -136,5 +174,18 @@ public class ViewWishlistsActivity extends AppCompatActivity {
     protected void onRestart(){
         super.onRestart();
         new LoadDataTask().execute();
+    }
+
+    public String getUsername(){
+        // Retrieving the value using its keys
+        // the file name must be same in both saving
+        // and retrieving the data
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+
+        // The value will be default as empty string
+        // because for the very first time
+        // when the app is opened,
+        // there is nothing to show
+        return sh.getString("ID", "");
     }
 }

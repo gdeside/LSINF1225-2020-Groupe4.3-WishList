@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.wishlist.Classesapp.ListAndUser;
+import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 import com.example.wishlist.Classesapp.WishlistRepository;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -43,7 +45,14 @@ public class CreateWishlistActivity extends AppCompatActivity {
 
                 WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
                 Wishlist wishlist = new Wishlist(name,option,getUsername(),"");
-                wishlistRepository.InsertTask(wishlist);
+
+                Long numListLong = wishlistRepository.InsertTask(wishlist);
+                int numList = Math.toIntExact(numListLong);
+                Toast.makeText(getApplicationContext(),Integer.toString(numList),Toast.LENGTH_LONG).show();
+
+                ListAndUserRepository listAndUserRepository = new ListAndUserRepository(getApplicationContext());
+                ListAndUser listAndUser = new ListAndUser(numList,getUsername());
+                listAndUserRepository.InsertTask(listAndUser);
 
                 edt_wishlist_name.setText("");
                 openHomeActivity();
