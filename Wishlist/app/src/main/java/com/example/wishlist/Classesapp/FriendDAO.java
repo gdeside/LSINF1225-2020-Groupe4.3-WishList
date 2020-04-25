@@ -20,7 +20,7 @@ public interface FriendDAO {
     @Delete
     void delete(Friend friend);
 
-    @Query("Select * from friend where id_user == :ID")
-    List<Friend> getID(String ID);
+    @Query("Select * from friend where ID_User == :ID_User and ID_Ami = :ID_Friend")
+    List<Friend> getID(String ID_User, String ID_Friend);
 
 }

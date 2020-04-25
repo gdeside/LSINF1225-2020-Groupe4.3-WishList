@@ -5,11 +5,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(primaryKeys ={"ID_User", "ID_Ami"})
 public class Friend {
 
     @NonNull
-    @PrimaryKey
     @ColumnInfo(name = "ID_Ami")
     private String id_ami;
 

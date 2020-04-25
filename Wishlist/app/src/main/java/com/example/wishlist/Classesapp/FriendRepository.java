@@ -42,6 +42,32 @@ public class FriendRepository {
 
     }
 
+    public Boolean isAlreadyFriend(final String ID_User, final String ID_Friend)
+    {
+        Boolean FOO = false;
+        try {
+            FOO = new AsyncTask<Void, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Void... voids) {
+                    List<Friend> friendList = friendDatabase.friendDAO().getID(ID_User,ID_Friend);
+                    return friendList.size() > 0;
+                }
+
+                @Override
+                protected void onPostExecute(Boolean result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
+
 
 
 

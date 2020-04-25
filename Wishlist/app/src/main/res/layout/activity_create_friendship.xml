@@ -7,7 +7,7 @@
     tools:context=".CreateFriendshipActivity">
 
     <EditText
-        android:id="@+id/createfd_nickname"
+        android:id="@+id/createfd_nickname_edt"
         android:layout_width="305dp"
         android:layout_height="45dp"
         android:layout_marginTop="264dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
-        android:id="@+id/search_friend"
+        android:id="@+id/search_friend_sw"
         android:layout_width="377dp"
         android:layout_height="35dp"
         android:layout_marginTop="208dp"
