@@ -55,7 +55,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
                 listAndUserRepository.InsertTask(listAndUser);
 
                 edt_wishlist_name.setText("");
-                openHomeActivity();
+                openWishlistsActivity();
             }
         }
     };
@@ -125,9 +125,10 @@ public class CreateWishlistActivity extends AppCompatActivity {
         return(super.onOptionsItemSelected(item));
     }
 
-    public void openHomeActivity()
+
+    public void openWishlistsActivity()
     {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, WishlistsActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }

@@ -19,7 +19,6 @@
         <activity android:name=".UpdateWishlistActivity" />
         <activity android:name=".ViewProductActivity" />
         <activity android:name=".CreateProductActivity" />
-        <activity android:name=".ViewWishlistsActivity" />
         <activity
             android:name=".CreateWishlistActivity"
             android:parentActivityName=".WishlistsActivity">

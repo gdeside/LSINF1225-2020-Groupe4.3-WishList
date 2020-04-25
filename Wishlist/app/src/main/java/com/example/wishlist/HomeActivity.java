@@ -38,12 +38,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener ViewWishlists_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            openViewWishlistsActivity();
-        }
-    };
 
     private View.OnClickListener CreateProduct_listener = new View.OnClickListener() {
         @Override
@@ -79,7 +73,6 @@ public class HomeActivity extends AppCompatActivity {
         Button wishlists_btn = findViewById(R.id.wishlists_btn);
         Button profile_btn = findViewById(R.id.profile_btn);
         Button friendlist_btn = findViewById(R.id.friendlist_btn);
-        Button viewWishlists_btn = findViewById(R.id.View_Wishlists_btn);
         Button create_product_btn = findViewById(R.id.Create_Product_btn);
         Button view_product_btn = findViewById(R.id.View_Product_btn);
         Button updatefrien_btn=findViewById(R.id.btn_updatefriend);
@@ -88,7 +81,6 @@ public class HomeActivity extends AppCompatActivity {
         wishlists_btn.setOnClickListener(Wishlists_listener);
         profile_btn.setOnClickListener(Profile_listener);
         friendlist_btn.setOnClickListener(Friendlist_listener);
-        viewWishlists_btn.setOnClickListener(ViewWishlists_listener);
         create_product_btn.setOnClickListener(CreateProduct_listener);
         view_product_btn.setOnClickListener(ViewProduct_listener);
         updatefrien_btn.setOnClickListener(UpdateFriend_listener);
@@ -188,12 +180,7 @@ public class HomeActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
 
-    public void openViewWishlistsActivity()
-    {
-        Intent intent = new Intent(this, ViewWishlistsActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
-    }
+
 
     public void openCreateProductActivity()
     {
