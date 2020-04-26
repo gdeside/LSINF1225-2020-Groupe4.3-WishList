@@ -1,12 +1,16 @@
 package com.example.wishlist;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wishlist.Classesapp.Friend;
+import com.example.wishlist.Classesapp.FriendRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 
 import java.util.ArrayList;
@@ -22,7 +27,9 @@ import java.util.ArrayList;
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHolder> {
 
     private ArrayList<Friend> dataset;
-    Context context;
+    Context ActivityContext;
+    Context ApplicationContext;
+    FriendRepository friendRepository;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -44,9 +51,10 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
     }
 
     // Constructeur
-    public FriendAdapter(ArrayList<Friend> data, Context context) {
-        this.dataset = data;
-        this.context = context;
+    public FriendAdapter(ArrayList<Friend> dataset, Context activityContext, Context applicationContext) {
+        this.dataset = dataset;
+        ActivityContext = activityContext;
+        ApplicationContext = applicationContext;
     }
 
     @NonNull
@@ -55,6 +63,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_friend, parent, false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
+        friendRepository = new FriendRepository(ApplicationContext);
 
         return myViewHolder;
     }
@@ -90,10 +99,45 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
                 intent.putExtra("wishlist_num",wishlist_num);
 
                 context.startActivity(intent); */
+                String Friend_ID = dataset.get(position).getId_ami();
+                String User_ID = dataset.get(position).getId_user();
+                if((Activity) ActivityContext instanceof FriendlistActivity)
+                {
+                    generate_change_nickname_dialog(User_ID, Friend_ID);
+                }
             }
         });
+
+
     }
 
+    public void generate_change_nickname_dialog(final String User_ID, final String Friend_ID)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(ActivityContext);
+        final EditText edittext = new EditText(ActivityContext);
+
+        ///alert.setMessage("Enter Your Message");
+        alert.setTitle("Change Nickname ?");
+
+        alert.setView(edittext);
+
+        alert.setPositiveButton("Change", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String nickname = edittext.getText().toString();
+                Friend friend = new Friend(Friend_ID,User_ID,nickname);
+                friendRepository.UpdateTask(friend);
+                ((FriendlistActivity) ActivityContext).Reload();
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // what ever you want to do with No option.
+            }
+        });
+
+        alert.show();
+    }
     @Override
     public int getItemCount(){
         return dataset.size();

@@ -127,7 +127,7 @@ public class FriendlistActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
-            FriendAdapter friendAdapter = new FriendAdapter(friendArrayList,FriendlistActivity.this);
+            FriendAdapter friendAdapter = new FriendAdapter(friendArrayList,FriendlistActivity.this, getApplicationContext());
             recyclerView.setAdapter(friendAdapter);
         }
     }
@@ -152,6 +152,11 @@ public class FriendlistActivity extends AppCompatActivity {
             return true;
     }
         return(super.onOptionsItemSelected(item));
+    }
+
+    public void Reload()
+    {
+        new FriendlistActivity.LoadDataTask().execute();
     }
 
     public void openCreateFrienship(){

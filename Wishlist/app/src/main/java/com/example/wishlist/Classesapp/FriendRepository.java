@@ -39,8 +39,29 @@ public class FriendRepository {
 
 
         }.execute();
+    }
+
+    public void UpdateTask(final Friend friend)
+    {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids){
+                friendDatabase.friendDAO().updateTask(friend);
+                return null;
+            }
+
+            @Override
+            protected  void onPostExecute(Void aVoid){
+                super.onPostExecute(aVoid);
+                Toast.makeText(context,"is updated",Toast.LENGTH_LONG).show();
+            }
+
+
+
+        }.execute();
 
     }
+
 
     public Boolean isAlreadyFriend(final String ID_User, final String ID_Friend)
     {

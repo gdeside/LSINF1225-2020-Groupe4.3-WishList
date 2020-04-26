@@ -98,6 +98,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     }
 
+    ////Les différents onClick Listener selon l'activité
+    ////
+    ////Pour WishlistAddProduct
     private void setOnClickAdd(final LinearLayout linearLayout, final int pos,final int num)
     {
 
@@ -118,6 +121,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             }
         });
     }
+    ////Pour ViewWishlistProduct
     private void setOnClickViewWishlistProduct(final LinearLayout ll, final int pos,final  int num)
     {
         ll.setOnClickListener(new View.OnClickListener() {
@@ -129,11 +133,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             }
         });
     }
+    ///
+
+    ///Nécessaire, je crois
     @Override
     public int getItemCount(){
         return dataset.size();
     }
 
+    ///Crée l'écran de "Voulez vous supprimer"
     public void generate_delete_dialog(ListAndProduct lAP)
     {
         final ListAndProduct listAndProduct = lAP;
@@ -150,7 +158,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
                 ListAndProductRepository listAndProductRepository = new ListAndProductRepository(ApplicationContext);
                 listAndProductRepository.DeleteTask(listAndProduct);
                 ((ViewWishlistProductActivity)ActivityContext).Reload();
-
                /// finish();
             }
         });
@@ -161,8 +168,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             }
         });
         builder.setIcon(android.R.drawable.ic_delete);
-
-
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
