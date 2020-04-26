@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.wishlist.Classesapp.User;
 import com.example.wishlist.Classesapp.UserRepository;
 
+import java.util.Date;
+
 public class UpdateProfileActivity extends AppCompatActivity {
 
     private View.OnClickListener UpdateAccount_listener = new View.OnClickListener() {
@@ -33,6 +35,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
 
+
+
                 User user = new User(New_id,New_password,New_name,New_surname);
                 userRepository.InsertTask(user);
 
@@ -40,8 +44,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
         }
     };
 
-    EditText up_id, up_name, up_surname, up_password;
+    EditText up_id, up_name, up_surname, up_password,up_date;
     String New_id, New_name, New_surname, New_password;
+    Date dateofbith;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         up_name = (EditText) findViewById(R.id.edt_update_name);
         up_surname = (EditText) findViewById(R.id.edt_update_surname);
         up_password = (EditText) findViewById(R.id.edt_update_password);
+        up_date=(EditText) findViewById(R.id.edt_update_DateofBirth);
 
 
 
