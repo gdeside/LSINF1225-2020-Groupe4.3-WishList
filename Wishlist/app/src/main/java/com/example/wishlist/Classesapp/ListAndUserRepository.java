@@ -63,10 +63,10 @@ public class ListAndUserRepository {
     {
         Boolean FOO = false;
         try {
-            FOO = new AsyncTask<Void, Void, Boolean>() {
+            FOO = new  AsyncTask<Void, Void, Boolean>() {
                 @Override
                 protected Boolean doInBackground(Void... voids) {
-                    List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getListCreator(Num_list);
+                    List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getList(Num_list);
                     String foo = listAndUserList.get(0).getId_user();
                     return foo.equals(username);
                 }
@@ -95,7 +95,7 @@ public class ListAndUserRepository {
             FOO = new AsyncTask<Void, Void, String>() {
                 @Override
                 protected String doInBackground(Void... voids) {
-                    List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getListCreator(Num_list);
+                    List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getList(Num_list);
 
                     return listAndUserList.get(0).getId_user();
                 }
@@ -114,6 +114,25 @@ public class ListAndUserRepository {
             e.printStackTrace();//handle it the way you like
         }
         return FOO;
+    }
+
+    public void DeleteWishlist(final int wishlist_num)
+    {
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getList(wishlist_num);
+                for(ListAndUser listAndUser : listAndUserList)
+                    listAndUserDatabase.listAndUserDAO().delete(listAndUser);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+            }
+        }.execute();
     }
 
 

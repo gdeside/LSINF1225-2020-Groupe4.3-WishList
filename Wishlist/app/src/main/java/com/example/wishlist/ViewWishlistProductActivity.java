@@ -68,7 +68,7 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         Button AddProduct_btn = findViewById(R.id.AddProductWishlist_btn);
         AddProduct_btn.setOnClickListener(WishlistAddProduct_listener);
 
-        totalprice_tv = findViewById(R.id.WishlistProduct_price_tv);
+        totalprice_tv = (TextView) findViewById(R.id.WishlistProduct_price_tv);
 
         listAndUserRepository = new ListAndUserRepository(getApplicationContext());
 
@@ -124,7 +124,7 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
                 total_price += product.getPrix();
                 productArrayList.add(product);
             }
-            totalprice_tv.setText(Integer.toString(total_price)+" €");
+
             return null;
         }
 
@@ -132,6 +132,7 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
 
+            totalprice_tv.setText(Integer.toString(total_price)+" €");
             ProductAdapter productAdapter = new ProductAdapter(productArrayList,wishlist_num, ViewWishlistProductActivity.this,getApplicationContext()); //No num list == -1, constructor shadowing seemms to not work
             recyclerView.setAdapter(productAdapter);
         }

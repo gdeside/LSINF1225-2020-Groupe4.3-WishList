@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.wishlist.Classesapp.ListAndProductRepository;
+import com.example.wishlist.Classesapp.ListAndUser;
+import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 import com.example.wishlist.Classesapp.WishlistRepository;
 
@@ -62,8 +65,6 @@ public class UpdateWishlistActivity extends AppCompatActivity {
             Wishlist wishlist = new Wishlist(name,option,getUsername(),description);
             wishlist.setNum_list(wishlist_num);
             generate_delete_dialog(wishlist);
-
-            ////openViewWishlistsActivity();
 
         }
     };
@@ -127,6 +128,17 @@ public class UpdateWishlistActivity extends AppCompatActivity {
     public void openViewWishlistProductActivity()
     {
         Intent intent = new Intent(this, ViewWishlistProductActivity.class);
+        intent.putExtra("wishlist_name",name);
+        intent.putExtra("wishlist_description",description);
+        intent.putExtra("wishlist_option",option);
+        intent.putExtra("wishlist_num",wishlist_num);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
+
+    public void openWishlistsActivity()
+    {
+        Intent intent = new Intent(this, WishlistsActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
@@ -141,10 +153,9 @@ public class UpdateWishlistActivity extends AppCompatActivity {
         builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
-                wishlistRepository.DeleteTask(wishlist_delete);
+                delete_wishlist(wishlist_delete);
+                openWishlistsActivity();
 
-                finish();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -158,6 +169,17 @@ public class UpdateWishlistActivity extends AppCompatActivity {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    public void delete_wishlist(final Wishlist wishlist)
+    {
+        WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
+        ListAndUserRepository listAndUserRepository = new ListAndUserRepository(getApplicationContext());
+        ListAndProductRepository listAndProductRepository = new ListAndProductRepository(getApplicationContext());
+
+        wishlistRepository.DeleteTask(wishlist);
+        listAndUserRepository.DeleteWishlist(wishlist.getNum_list());
+        listAndProductRepository.DeleteWishlist(wishlist.getNum_list());
     }
 
 }

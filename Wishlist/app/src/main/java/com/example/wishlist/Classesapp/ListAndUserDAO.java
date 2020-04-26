@@ -27,5 +27,5 @@ public interface ListAndUserDAO {
     List<ListAndUser> getID(String name);
 
     @Query("Select * from  listAndUser where Num_List == :num_list ")
-    List<ListAndUser> getListCreator(int num_list);
+    List<ListAndUser> getList(int num_list);
 }

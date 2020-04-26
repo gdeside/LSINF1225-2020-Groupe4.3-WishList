@@ -91,4 +91,17 @@ public class ListAndProductRepository {
             }
         }.execute();
     }
+
+    public void DeleteWishlist(final int wishlist_num)
+    {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                List<ListAndProduct> listAndProductList = listAndProductDatabase.listAndProductDAO().getObjectList(wishlist_num);
+                for(ListAndProduct listAndProduct : listAndProductList)
+                    listAndProductDatabase.listAndProductDAO().delete(listAndProduct);
+                return null;
+            }
+        }.execute();
+    }
 }
