@@ -26,20 +26,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/Profile_ID_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="140dp"
-            android:layout_marginLeft="140dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="243dp"
             android:text="@string/identifiant"
             android:textColor="#FEFEFF"
             android:textSize="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+             />
 
         <ImageButton
             android:id="@+id/edit_profil"
@@ -57,18 +52,7 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="332dp"
-        android:text="@string/name"
-        android:textColor="#FDFCFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/photoprofile"
@@ -84,15 +68,100 @@
         app:srcCompat="@drawable/ic_friendlist" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="312dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="360dp"
-        android:background="@drawable/rounded_text"
-        android:text="TextView"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="@string/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FDFCFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/Profile_Name_tv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
+
+    <TextView
+        android:id="@+id/Profile_Surname_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/surname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+    <TextView
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Surname"
+        android:textColor="#FDFCFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/Profile_Surname_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/Profile_Name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="130dp"
+        android:text="Date of birth"
+        android:textColor="#FDFCFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Profile_DOB_tv" />
+
+    <TextView
+        android:id="@+id/Profile_DOB_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="187dp"
+        android:text="01/23/4567"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="Description"
+        android:textColor="#FDFCFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Profile_Description_tv" />
+
+    <TextView
+        android:id="@+id/Profile_Description_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="165dp"
+        android:background="@drawable/rounded_text"
+        android:text="Description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

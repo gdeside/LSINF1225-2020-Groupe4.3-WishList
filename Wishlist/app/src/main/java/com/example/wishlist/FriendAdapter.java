@@ -121,6 +121,12 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
 
         alert.setView(edittext);
 
+        alert.setNeutralButton("View Profile", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // what ever you want to do with No option.
+            }
+        });
+
         alert.setPositiveButton("Change", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String nickname = edittext.getText().toString();

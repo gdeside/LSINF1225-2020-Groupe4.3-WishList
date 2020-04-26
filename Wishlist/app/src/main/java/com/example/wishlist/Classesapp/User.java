@@ -41,6 +41,7 @@ public class User {
         this.password = password;
         this.name = name;
         this.surname = surname;
+        this.DOB = "01/01/2020";
     }
 
     /**

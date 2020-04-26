@@ -39,11 +39,19 @@ public class UserRepository {
 
 
         }.execute();
+    }
 
+    public void DeleteTask(final User user) {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                userDatabase.userDAO().delete(user);
+                return null;
+            }
+        }.execute();
     }
 
     ///Check if ID is used (User Creation)
-
     public Boolean isIDUsed(final String ID)
     {
         Boolean FOO = false;
@@ -98,15 +106,35 @@ public class UserRepository {
         return FOO;
     }
 
-    public void DeleteTask(final User user) {
-        new AsyncTask<Void,Void,Void>(){
-            @Override
-            protected Void doInBackground(Void... voids) {
-                userDatabase.userDAO().delete(user);
-                return null;
-            }
-        }.execute();
+    public User getUserByID(final String ID)
+    {
+        User FOO = new User("A","A","A","A"); /// wont be inserted anyway
+        try {
+            FOO = new AsyncTask<Void, Void, User>() {
+                @Override
+                protected User doInBackground(Void... voids) {
+                    List<User> userList = userDatabase.userDAO().getID(ID);
+                    return userList.get(0);
+                }
+
+                @Override
+                protected void onPostExecute(User result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+
     }
+
+
 
 
 
