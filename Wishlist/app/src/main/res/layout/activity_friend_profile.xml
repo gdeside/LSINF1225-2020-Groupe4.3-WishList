@@ -55,11 +55,11 @@
         android:layout_marginStart="152dp"
         android:layout_marginLeft="152dp"
         android:layout_marginTop="324dp"
+        android:gravity="center"
         android:text="@string/friendName"
         android:textColor="#FDFCFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,11 +81,11 @@
         android:layout_marginStart="152dp"
         android:layout_marginLeft="152dp"
         android:layout_marginTop="396dp"
+        android:gravity="center"
         android:text="@string/birthday"
         android:textColor="#FDFCFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -104,13 +104,13 @@
         android:id="@+id/btnWishlistFriend"
         android:layout_width="94dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginTop="40dp"
         android:drawableTop="@drawable/ic_wishlists"
-        android:text="WishList"
-        app:layout_constraintBottom_toTopOf="@+id/include"
+        android:text="@string/wishlist"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friendBirthday"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
