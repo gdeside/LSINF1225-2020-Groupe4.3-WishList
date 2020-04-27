@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.wishlist.Classesapp.User;
 import com.example.wishlist.Classesapp.UserRepository;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 public class UpdateProfileActivity extends AppCompatActivity {
@@ -35,16 +37,21 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
 
+                //date
+                dateofbith= (Date) up_date.getText();
+                String datecurrent= DateFormat.getDateInstance().format(dateofbith);
+
 
 
                 User user = new User(New_id,New_password,New_name,New_surname);
+                //user.setDOB(datecurrent);
                 userRepository.InsertTask(user);
-
             }
         }
     };
 
     EditText up_id, up_name, up_surname, up_password,up_date;
+    ImageView delete_profile;
     String New_id, New_name, New_surname, New_password;
     Date dateofbith;
 
@@ -61,6 +68,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         up_surname = (EditText) findViewById(R.id.edt_update_surname);
         up_password = (EditText) findViewById(R.id.edt_update_password);
         up_date=(EditText) findViewById(R.id.edt_update_DateofBirth);
+        delete_profile=findViewById(R.id.edit_deleteprofile);
 
 
 
