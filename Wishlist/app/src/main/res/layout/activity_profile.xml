@@ -38,7 +38,7 @@
 
         <ImageButton
             android:id="@+id/edit_profil"
-            android:layout_width="60dp"
+            android:layout_width="66dp"
             android:layout_height="69dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -46,7 +46,7 @@
             android:layout_marginTop="19dp"
             android:layout_marginEnd="27dp"
             android:layout_marginRight="27dp"
-            android:background="@drawable/ic_settings_black_24dp"
+            android:background="@color/colorPrimaryDark"
             android:contentDescription="@string/edit"
             app:srcCompat="@drawable/ic_settings_black_24dp" />
 
