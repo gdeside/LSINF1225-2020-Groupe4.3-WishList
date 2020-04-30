@@ -112,7 +112,7 @@
         android:id="@+id/edt_update_password"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="576dp"
+        android:layout_marginTop="512dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/password"
@@ -127,25 +127,10 @@
         android:id="@+id/save_profil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="628dp"
+        android:layout_marginTop="580dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edt_update_DateofBirth"
-        android:layout_width="290dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="516dp"
-        android:background="@drawable/rounded_text"
-        android:ems="10"
-        android:hint="@string/birthday"
-        android:inputType="datetime"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

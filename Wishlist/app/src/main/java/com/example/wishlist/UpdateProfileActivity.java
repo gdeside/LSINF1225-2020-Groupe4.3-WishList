@@ -16,8 +16,6 @@ import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.User;
 import com.example.wishlist.Classesapp.UserRepository;
 
-import java.text.DateFormat;
-import java.util.Date;
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
@@ -40,14 +38,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
 
-                //date
-                dateofbith= (Date) up_date.getText();
-                String datecurrent= DateFormat.getDateInstance().format(dateofbith);
-
-
-
                 User user = new User(New_id,New_password,New_name,New_surname);
-                //user.setDOB(datecurrent);
                 userRepository.InsertTask(user);
             }
         }
@@ -56,7 +47,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     EditText up_id, up_name, up_surname, up_password,up_date;
     ImageView delete_profile;
     String New_id, New_name, New_surname, New_password;
-    Date dateofbith;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +61,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         up_name = (EditText) findViewById(R.id.edt_update_name);
         up_surname = (EditText) findViewById(R.id.edt_update_surname);
         up_password = (EditText) findViewById(R.id.edt_update_password);
-        up_date=(EditText) findViewById(R.id.edt_update_DateofBirth);
         delete_profile=(ImageView)findViewById(R.id.edit_deleteprofile);
 
         delete_profile.setOnClickListener(new View.OnClickListener() {
@@ -134,12 +124,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
 
-    public void delete_user(final User user)
-    {
+    public void delete_user(final User user) {
         UserRepository userRepository = new UserRepository(getApplicationContext());
         ListAndUserRepository listAndUserRepository = new ListAndUserRepository(getApplicationContext());
-
         userRepository.DeleteTask(user);
-
     }
 }

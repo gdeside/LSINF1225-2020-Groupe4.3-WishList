@@ -10,13 +10,13 @@
         android:id="@+id/creategr_name"
         android:layout_width="293dp"
         android:layout_height="43dp"
-        android:layout_marginTop="247dp"
+        android:layout_marginTop="296dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +26,20 @@
         android:layout_height="46dp"
         android:layout_marginTop="364dp"
         android:text="@string/creategroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SearchView
+        android:id="@+id/find_friends_grp"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/searchfriend"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
