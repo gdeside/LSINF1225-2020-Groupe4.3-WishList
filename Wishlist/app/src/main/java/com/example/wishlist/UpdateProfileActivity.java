@@ -2,6 +2,7 @@ package com.example.wishlist;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,9 +13,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.wishlist.Classesapp.ListAndUser;
 import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.User;
 import com.example.wishlist.Classesapp.UserRepository;
+
+import java.util.List;
 
 
 public class UpdateProfileActivity extends AppCompatActivity {
@@ -73,6 +77,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                 UserRepository userRepository = new UserRepository(getApplicationContext());
                 User user = new User(New_id,New_password,New_name,New_surname);
+                user.setID(getUsername());
                 generate_delete_dialog(user);
             }
         });
@@ -128,5 +133,19 @@ public class UpdateProfileActivity extends AppCompatActivity {
         UserRepository userRepository = new UserRepository(getApplicationContext());
         ListAndUserRepository listAndUserRepository = new ListAndUserRepository(getApplicationContext());
         userRepository.DeleteTask(user);
+        List<ListAndUser> listAndUserList = listAndUserRepository.getIDUser(u)
+    }
+
+    public String getUsername(){
+        // Retrieving the value using its keys
+        // the file name must be same in both saving
+        // and retrieving the data
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+
+        // The value will be default as empty string
+        // because for the very first time
+        // when the app is opened,
+        // there is nothing to show
+        return sh.getString("ID", "");
     }
 }
