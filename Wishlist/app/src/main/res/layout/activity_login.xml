@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blanccul"
     tools:context=".LoginActivity">
 
     <Button
@@ -39,8 +40,8 @@
         android:layout_marginBottom="15dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/identifiant"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/edt_password_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
