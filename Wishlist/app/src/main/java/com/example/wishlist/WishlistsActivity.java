@@ -156,17 +156,7 @@ public class WishlistsActivity extends AppCompatActivity {
             WishlistNumArrayList = new ArrayList<>();
 
             String username = getUsername();
-            friendList = friendRepository.getAllFriend(username);
 
-            ///get friend Lists
-            for(Friend friend : friendList)
-            {
-                List<ListAndUser> foo = listAndUserRepository.getIDUser(friend.getId_ami());
-                for(ListAndUser listAndUser : foo)
-                {
-                    WishlistNumArrayList.add(listAndUser.getNum_list());
-                }
-            }
 
             ///get user List
             List<ListAndUser> foo = listAndUserRepository.getIDUser(username);

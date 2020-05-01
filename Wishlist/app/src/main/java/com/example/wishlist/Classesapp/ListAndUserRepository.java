@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -134,6 +135,36 @@ public class ListAndUserRepository {
             }
         }.execute();
     }
+
+
+
+    public List<ListAndUser> getAllList(final String ID)
+    {
+        List<ListAndUser> FOO = new ArrayList<>();
+        try {
+            FOO = new AsyncTask<Void, Void, List<ListAndUser>>() {
+                @Override
+                protected List<ListAndUser>doInBackground(Void... voids) {
+                    List<ListAndUser> listAndUserList = listAndUserDatabase.listAndUserDAO().getID(ID);
+                    return listAndUserList;
+                }
+
+                @Override
+                protected void onPostExecute(List<ListAndUser> result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
+
+
 
 
 

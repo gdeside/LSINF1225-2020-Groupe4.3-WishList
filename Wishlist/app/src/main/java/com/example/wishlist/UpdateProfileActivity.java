@@ -13,10 +13,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.wishlist.Classesapp.Friend;
+import com.example.wishlist.Classesapp.FriendRepository;
+import com.example.wishlist.Classesapp.ListAndProductRepository;
 import com.example.wishlist.Classesapp.ListAndUser;
 import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.User;
 import com.example.wishlist.Classesapp.UserRepository;
+import com.example.wishlist.Classesapp.Wishlist;
+import com.example.wishlist.Classesapp.WishlistRepository;
 
 import java.util.List;
 
@@ -132,9 +137,42 @@ public class UpdateProfileActivity extends AppCompatActivity {
     public void delete_user(final User user) {
         UserRepository userRepository = new UserRepository(getApplicationContext());
         ListAndUserRepository listAndUserRepository = new ListAndUserRepository(getApplicationContext());
+        FriendRepository friendRepository = new FriendRepository(getApplicationContext());
+
+        Toast.makeText(getApplicationContext(),getUsername(),Toast.LENGTH_LONG).show();
+        List<ListAndUser> listAndUserList = listAndUserRepository.getAllList(getUsername());
+        for(ListAndUser listAndUser : listAndUserList)
+        {
+            int num_list = listAndUser.getNum_list();
+            Wishlist foo = new Wishlist("A",true,"A","A");
+            foo.setNum_list(num_list);
+            final Wishlist wishlist = foo;
+
+            delete_wishlist(wishlist);
+        }
+
+        List<Friend> friendList = friendRepository.getAllFriend(getUsername());
+        for(Friend friend : friendList)
+        {
+            friendRepository.DeleteTask(friend);
+        }
+
         userRepository.DeleteTask(user);
-        List<ListAndUser> listAndUserList = listAndUserRepository.getIDUser(u)
     }
+
+    public void delete_wishlist(final Wishlist wishlist)
+    {
+        WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
+        ListAndUserRepository listAndUserRepository = new ListAndUserRepository(getApplicationContext());
+        ListAndProductRepository listAndProductRepository = new ListAndProductRepository(getApplicationContext());
+
+        wishlistRepository.DeleteTask(wishlist);
+        listAndUserRepository.DeleteWishlist(wishlist.getNum_list());
+        listAndProductRepository.DeleteWishlist(wishlist.getNum_list());
+    }
+
+
+
 
     public String getUsername(){
         // Retrieving the value using its keys

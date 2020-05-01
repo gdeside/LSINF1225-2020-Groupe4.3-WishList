@@ -111,7 +111,7 @@ public class FriendlistActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids)
         {
-            friendList = friendRepository.getAllFriend(username);
+            friendList = friendRepository.getAllFriend_unsync(username);
             friendArrayList = new ArrayList<>();
 
             for(int i =0; i <friendList.size();i++)
