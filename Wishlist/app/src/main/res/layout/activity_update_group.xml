@@ -6,4 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".UpdateGroupActivity">
 
+    <SearchView
+        android:id="@+id/up_group_seeach"
+        android:layout_width="364dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="216dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/searchfriend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/up_namegroup"
+        android:layout_width="258dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="387dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/up_savegroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="472dp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
