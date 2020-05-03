@@ -46,16 +46,18 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_password = up_password.getText().toString();
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
+                //description=up_description.getText().toString().trim();
 
                 User user = new User(New_id,New_password,New_name,New_surname);
+                //user.setDescription(description);
                 userRepository.InsertTask(user);
             }
         }
     };
 
-    EditText up_id, up_name, up_surname, up_password,up_date;
+    EditText up_id, up_name, up_surname, up_password,up_description;
     ImageView delete_profile;
-    String New_id, New_name, New_surname, New_password;
+    String New_id, New_name, New_surname, New_password,description;
 
 
     @Override
@@ -70,6 +72,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         up_name = (EditText) findViewById(R.id.edt_update_name);
         up_surname = (EditText) findViewById(R.id.edt_update_surname);
         up_password = (EditText) findViewById(R.id.edt_update_password);
+        up_description=(EditText)findViewById(R.id.up_profile_description);
         delete_profile=(ImageView)findViewById(R.id.edit_deleteprofile);
 
         delete_profile.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +82,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_password = up_password.getText().toString();
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
+
 
                 UserRepository userRepository = new UserRepository(getApplicationContext());
                 User user = new User(New_id,New_password,New_name,New_surname);
