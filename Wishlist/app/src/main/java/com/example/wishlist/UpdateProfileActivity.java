@@ -2,6 +2,7 @@ package com.example.wishlist;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,12 +13,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.wishlist.Classesapp.Friend;
+import com.example.wishlist.Classesapp.FriendRepository;
+import com.example.wishlist.Classesapp.ListAndProductRepository;
+import com.example.wishlist.Classesapp.ListAndUser;
 import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.User;
 import com.example.wishlist.Classesapp.UserRepository;
+import com.example.wishlist.Classesapp.Wishlist;
+import com.example.wishlist.Classesapp.WishlistRepository;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.List;
+
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
@@ -39,24 +46,19 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_password = up_password.getText().toString();
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
-
-                //date
-                dateofbith= (Date) up_date.getText();
-                String datecurrent= DateFormat.getDateInstance().format(dateofbith);
-
-
+                //description=up_description.getText().toString().trim();
 
                 User user = new User(New_id,New_password,New_name,New_surname);
-                //user.setDOB(datecurrent);
+                //user.setDescription(description);
                 userRepository.InsertTask(user);
             }
         }
     };
 
-    EditText up_id, up_name, up_surname, up_password,up_date;
+    EditText up_id, up_name, up_surname, up_password,up_description;
     ImageView delete_profile;
-    String New_id, New_name, New_surname, New_password;
-    Date dateofbith;
+    String New_id, New_name, New_surname, New_password,description;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         up_name = (EditText) findViewById(R.id.edt_update_name);
         up_surname = (EditText) findViewById(R.id.edt_update_surname);
         up_password = (EditText) findViewById(R.id.edt_update_password);
-        up_date=(EditText) findViewById(R.id.edt_update_DateofBirth);
+        up_description=(EditText)findViewById(R.id.up_profile_description);
         delete_profile=(ImageView)findViewById(R.id.edit_deleteprofile);
 
         delete_profile.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +83,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
 
+
                 UserRepository userRepository = new UserRepository(getApplicationContext());
                 User user = new User(New_id,New_password,New_name,New_surname);
+                user.setID(getUsername());
                 generate_delete_dialog(user);
             }
         });
@@ -134,12 +138,56 @@ public class UpdateProfileActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
 
-    public void delete_user(final User user)
-    {
+    public void delete_user(final User user) {
         UserRepository userRepository = new UserRepository(getApplicationContext());
         ListAndUserRepository listAndUserRepository = new ListAndUserRepository(getApplicationContext());
+        FriendRepository friendRepository = new FriendRepository(getApplicationContext());
+
+        Toast.makeText(getApplicationContext(),getUsername(),Toast.LENGTH_LONG).show();
+        List<ListAndUser> listAndUserList = listAndUserRepository.getAllList(getUsername());
+        for(ListAndUser listAndUser : listAndUserList)
+        {
+            int num_list = listAndUser.getNum_list();
+            Wishlist foo = new Wishlist("A",true,"A","A");
+            foo.setNum_list(num_list);
+            final Wishlist wishlist = foo;
+
+            delete_wishlist(wishlist);
+        }
+
+        List<Friend> friendList = friendRepository.getAllFriend(getUsername());
+        for(Friend friend : friendList)
+        {
+            friendRepository.DeleteTask(friend);
+        }
 
         userRepository.DeleteTask(user);
+    }
 
+    public void delete_wishlist(final Wishlist wishlist)
+    {
+        WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
+        ListAndUserRepository listAndUserRepository = new ListAndUserRepository(getApplicationContext());
+        ListAndProductRepository listAndProductRepository = new ListAndProductRepository(getApplicationContext());
+
+        wishlistRepository.DeleteTask(wishlist);
+        listAndUserRepository.DeleteWishlist(wishlist.getNum_list());
+        listAndProductRepository.DeleteWishlist(wishlist.getNum_list());
+    }
+
+
+
+
+    public String getUsername(){
+        // Retrieving the value using its keys
+        // the file name must be same in both saving
+        // and retrieving the data
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+
+        // The value will be default as empty string
+        // because for the very first time
+        // when the app is opened,
+        // there is nothing to show
+        return sh.getString("ID", "");
     }
 }

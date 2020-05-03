@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Wishlist</string>
+    <string name="app_name">Wish World</string>
     <string name="home">home</string>
     <string name="profile">profile</string>
     <string name="friendlist">friendslist</string>
@@ -29,4 +29,6 @@
     <string name="searchfriend">Search a new friend</string>
     <string name="updatefrienship">Update Friendship</string>
     <string name="delte">Delete Profile</string>
+    <string name="deletefriend">Delete Friendship</string>
+    <string name="description">Description</string>
 </resources>

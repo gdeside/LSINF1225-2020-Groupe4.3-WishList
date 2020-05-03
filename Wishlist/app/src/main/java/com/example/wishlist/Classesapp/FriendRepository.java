@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -59,8 +60,18 @@ public class FriendRepository {
 
 
         }.execute();
-
     }
+
+    public void DeleteTask(final Friend friend) {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                friendDatabase.friendDAO().delete(friend);
+                return null;
+            }
+        }.execute();
+    }
+
 
 
     public Boolean isAlreadyFriend(final String ID_User, final String ID_Friend)
@@ -89,11 +100,37 @@ public class FriendRepository {
         return FOO;
     }
 
-
-    public List<Friend> getAllFriend(String username)
+    public List<Friend> getAllFriend_unsync(final String ID)
     {
-        List<Friend> friendList = friendDatabase.friendDAO().getAllFriend(username);
+        List<Friend> friendList = friendDatabase.friendDAO().getAllFriend(ID);
         return friendList;
+    }
+
+
+    public List<Friend> getAllFriend(final String ID)
+    {
+        List<Friend> FOO = new ArrayList<>();
+        try {
+            FOO = new AsyncTask<Void, Void, List<Friend>>() {
+                @Override
+                protected List<Friend> doInBackground(Void... voids) {
+                    List<Friend> friendList = friendDatabase.friendDAO().getAllFriend(ID);
+                    return friendList;
+                }
+
+                @Override
+                protected void onPostExecute(List<Friend> result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
     }
 
 

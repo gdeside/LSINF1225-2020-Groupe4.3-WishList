@@ -18,7 +18,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="411dp"
-        android:layout_height="300dp"
+        android:layout_height="296dp"
         android:background="@drawable/rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -33,8 +33,7 @@
             android:layout_marginTop="243dp"
             android:text="@string/identifiant"
             android:textColor="#FEFEFF"
-            android:textSize="32dp"
-             />
+            android:textSize="32dp" />
 
         <ImageButton
             android:id="@+id/edit_profil"
@@ -50,22 +49,21 @@
             android:contentDescription="@string/edit"
             app:srcCompat="@drawable/ic_settings_black_24dp" />
 
+        <ImageView
+            android:id="@+id/photoprofile"
+            android:layout_width="132dp"
+            android:layout_height="133dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="139dp"
+            android:layout_marginLeft="139dp"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/circle"
+            android:contentDescription="@string/photo"
+            app:srcCompat="@drawable/ic_friendlist" />
+
     </RelativeLayout>
 
-
-
-    <ImageView
-        android:id="@+id/photoprofile"
-        android:layout_width="132dp"
-        android:layout_height="133dp"
-        android:layout_marginTop="84dp"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_friendlist" />
 
     <TextView
 
