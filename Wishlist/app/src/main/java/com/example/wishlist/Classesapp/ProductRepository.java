@@ -39,7 +39,17 @@ public class ProductRepository {
 
 
         }.execute();
+    }
 
+    public void UpdateTask(final Product product)
+    {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                productDatabase.productDAO().updateTask(product);
+                return null;
+            }
+        }.execute();
     }
 
     ///Check if product name is used (Product Creation)

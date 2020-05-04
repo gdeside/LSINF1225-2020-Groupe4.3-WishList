@@ -51,6 +51,17 @@ public class UserRepository {
         }.execute();
     }
 
+    public void UpdateTask(final User user)
+    {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                userDatabase.userDAO().updateTask(user);
+                return null;
+            }
+        }.execute();
+    }
+
     ///Check if ID is used (User Creation)
     public Boolean isIDUsed(final String ID)
     {

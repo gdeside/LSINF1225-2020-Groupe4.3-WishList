@@ -32,8 +32,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             UserRepository userRepository = new UserRepository(getApplicationContext());
-            if ( up_id.getText().toString().isEmpty() ||
-                    up_name.getText().toString().isEmpty() ||
+            if (    up_name.getText().toString().isEmpty() ||
                     up_surname.getText().toString().isEmpty() ||
                     up_password.getText().toString().isEmpty() ) {
 
@@ -42,7 +41,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
             } else {
 
 
-                New_id = up_id.getText().toString().trim();
                 New_password = up_password.getText().toString();
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
@@ -50,12 +48,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                 User user = new User(New_id,New_password,New_name,New_surname);
                 //user.setDescription(description);
-                userRepository.InsertTask(user);
+                userRepository.UpdateTask(user);
             }
         }
     };
 
-    EditText up_id, up_name, up_surname, up_password,up_description;
+    EditText  up_name, up_surname, up_password,up_description;
     ImageView delete_profile;
     String New_id, New_name, New_surname, New_password,description;
 
@@ -68,7 +66,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         Button UpdateAccount_btn = findViewById(R.id.save_profil);
         UpdateAccount_btn.setOnClickListener(UpdateAccount_listener);
 
-        up_id = (EditText) findViewById(R.id.edt_update_ID_login);
         up_name = (EditText) findViewById(R.id.edt_update_name);
         up_surname = (EditText) findViewById(R.id.edt_update_surname);
         up_password = (EditText) findViewById(R.id.edt_update_password);
@@ -78,7 +75,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         delete_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                New_id = up_id.getText().toString().trim();
                 New_password = up_password.getText().toString();
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();

@@ -93,20 +93,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_update_ID_login"
-        android:layout_width="290dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="316dp"
-        android:background="@drawable/rounded_text"
-        android:ems="10"
-        android:hint="@string/identifiant"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edt_update_password"
