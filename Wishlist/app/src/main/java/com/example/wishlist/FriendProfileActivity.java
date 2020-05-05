@@ -34,6 +34,13 @@ public class FriendProfileActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener FriendWishlist_listener=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openViewFriendWishlistActivity(Friend_ID);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +53,7 @@ public class FriendProfileActivity extends AppCompatActivity {
         edit_surname = findViewById(R.id.btn_edit_profile_surname);
 
         edit_surname.setOnClickListener(FriendSurname_listener);
+        btnWishlistFriend.setOnClickListener(FriendWishlist_listener);
 
         Bundle data = getIntent().getExtras();
         if(data != null)
@@ -103,6 +111,12 @@ public class FriendProfileActivity extends AppCompatActivity {
 
     public void openUpdateFriendshipActivity(String ID_Friend){
         Intent intent=new Intent(this,UpdateFriendship.class);
+        intent.putExtra("ID_Friend",ID_Friend);
+        startActivity(intent);
+    }
+
+    public void openViewFriendWishlistActivity(String ID_Friend){
+        Intent intent=new Intent(this,ViewFriendWishlistActivity.class);
         intent.putExtra("ID_Friend",ID_Friend);
         startActivity(intent);
     }

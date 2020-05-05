@@ -38,7 +38,16 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
     private View.OnClickListener SettingsWishlist_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            openUpdateWishlistsActivity();
+
+            if(listAndUserRepository.isCreator(getUsername(),wishlist_num))
+            {
+                openUpdateWishlistsActivity();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"What are you doing? NOT YOUR LIST!",Toast.LENGTH_LONG).show();
+            }
+
         }
     };
 

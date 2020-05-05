@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateGroupActivity"></activity>
+        <activity android:name=".ViewFriendWishlistActivity"></activity>
+        <activity android:name=".UpdateGroupActivity" />
         <activity android:name=".WishlistAddProductActivity" />
         <activity android:name=".UpdateFriendship" />
         <activity android:name=".ViewWishlistProductActivity" />
@@ -42,13 +43,12 @@
         <activity
             android:name=".ProfileActivity"
             android:parentActivityName=".HomeActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.wishlist.HomeActivity" />
-
         </activity>
         <activity
             android:name=".WishlistsActivity"
@@ -68,8 +68,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.wishlist.HomeActivity" />
         </activity>
-        <activity android:name=".CreateAccountActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".CreateAccountActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
     </application>
