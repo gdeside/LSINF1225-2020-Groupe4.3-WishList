@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.wishlist.Classesapp.ListAndProduct;
 import com.example.wishlist.Classesapp.ListAndProductRepository;
 import com.example.wishlist.Classesapp.Product;
-import com.example.wishlist.Classesapp.Wishlist;
-import com.example.wishlist.Classesapp.WishlistRepository;
 
 import java.util.ArrayList;
 
@@ -38,15 +36,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
         TextView tv_card_view_product_name;
         TextView tv_card_view_product_price;
-        ImageView img_card_view_product_note;
         Button btn_card_view_product_title;
         LinearLayout ll_card_product;
+        RatingBar note_product;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             this.tv_card_view_product_name = (TextView) itemView.findViewById(R.id.tv_card_view_product_name);
             this.tv_card_view_product_price = (TextView) itemView.findViewById(R.id.tv_card_view_product_price);
-            this.img_card_view_product_note = (ImageView) itemView.findViewById(R.id.img_card_view_product_note);
+            note_product=(RatingBar)itemView.findViewById(R.id.view_product_rank);
             this.btn_card_view_product_title = (Button) itemView.findViewById(R.id.btn_card_view_product_title);
             this.ll_card_product =(LinearLayout) itemView.findViewById(R.id.ll_card_product);
         }
@@ -77,12 +75,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     public void onBindViewHolder(@NonNull ProductAdapter.MyViewHolder holder, int position) {
         TextView tv_card_view_product_name = holder.tv_card_view_product_name;
         TextView tv_card_view_product_price = holder.tv_card_view_product_price;
-        ImageView img_card_view_privacy = holder.img_card_view_product_note;
+        RatingBar ratingBar_note=holder.note_product;
         Button btn_card_view_title = holder.btn_card_view_product_title;
         LinearLayout ll_card_product = holder.ll_card_product;
 
         tv_card_view_product_name.setText(dataset.get(position).getName() + "");
         tv_card_view_product_price.setText(Integer.toString(dataset.get(position).getPrix()));
+        //ratingBar_note.setNumStars(dataset.get(position).getNote());
+
 
         final int pos = position;
         final int num = Num_List;

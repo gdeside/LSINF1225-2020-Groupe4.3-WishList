@@ -31,4 +31,5 @@
     <string name="delte">Delete Profile</string>
     <string name="deletefriend">Delete Friendship</string>
     <string name="description">Description</string>
+    <string name="price">Price</string>
 </resources>

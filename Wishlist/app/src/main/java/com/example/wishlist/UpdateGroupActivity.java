@@ -27,10 +27,12 @@ public class UpdateGroupActivity extends AppCompatActivity {
                 String SearchQuerry = searcch_friend.getQuery().toString();
                 if(!userRepository.isIDUsed(SearchQuerry.trim()))
                 {
+
                     Toast.makeText(getApplicationContext(),"User doesn't exist",Toast.LENGTH_LONG).show();
                 }else{
                     new_groupename=up_group_name.getText().toString().trim();
                     //grpRepository.UpdateTask(grp);
+
                 }
 
 
