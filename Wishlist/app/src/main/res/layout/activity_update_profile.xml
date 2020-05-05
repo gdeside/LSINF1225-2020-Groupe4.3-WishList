@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="411dp"
-        android:layout_height="300dp"
+        android:layout_height="210dp"
         android:background="@drawable/rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,7 +26,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="140dp"
             android:layout_marginLeft="140dp"
-            android:layout_marginTop="243dp"
+            android:layout_marginTop="160dp"
             android:text="@string/identifiant"
             android:textColor="#FEFEFF"
             android:textSize="32sp"
@@ -54,7 +54,7 @@
         android:id="@+id/edit_photoprofile"
         android:layout_width="132dp"
         android:layout_height="133dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/circle"
         android:contentDescription="@string/photo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
         android:id="@+id/edt_update_name"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="432dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/name"
@@ -76,13 +76,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout2" />
 
     <EditText
         android:id="@+id/edt_update_surname"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="372dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/surname"
@@ -91,14 +91,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_update_name"/>
 
 
     <EditText
         android:id="@+id/edt_update_password"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="484dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/password"
@@ -107,24 +107,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf ="@+id/edt_update_surname" />
 
     <Button
-        android:id="@+id/save_profil"
+        android:id="@+id/btn_save_profil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="664dp"
+        android:layout_marginTop="20dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_update_description" />
 
     <EditText
-        android:id="@+id/up_profil_date"
+        android:id="@+id/edt_update_DOB"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="535dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/birthday"
@@ -133,13 +133,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_update_password" />
 
     <EditText
-        android:id="@+id/up_profile_description"
+        android:id="@+id/edt_update_description"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="593dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/description"
@@ -148,7 +148,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_update_DOB" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -48,22 +49,24 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
                 description=up_description.getText().toString().trim();
-                birthday=(Date)up_date.getText();
+                ///birthday= (Date)up_date.getText().toString().trim();
                 DateFormat dateFormat=new SimpleDateFormat("dd/mm/yyyy");
-                birth=dateFormat.format(birthday);
+                ///birth=dateFormat.format(birthday);
 
-                User user = new User(New_id,New_password,New_name,New_surname);
+                User user = new User(getUsername(),New_password,New_name,New_surname);
                 user.setDescription(description);
-                user.setDOB(birth);
+                ///user.setDOB(birth);
                 userRepository.UpdateTask(user);
+                openProfileActivity();
             }
         }
     };
 
     EditText  up_name, up_surname, up_password,up_description,up_date;
+    TextView profile_id;
     ImageView delete_profile;
     Date birthday;
-    String New_id, New_name, New_surname, New_password,description,birth;
+    String  New_name, New_surname, New_password,description,birth;
 
 
     @Override
@@ -71,15 +74,18 @@ public class UpdateProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
 
-        Button UpdateAccount_btn = findViewById(R.id.save_profil);
+        Button UpdateAccount_btn = findViewById(R.id.btn_save_profil);
         UpdateAccount_btn.setOnClickListener(UpdateAccount_listener);
 
         up_name = (EditText) findViewById(R.id.edt_update_name);
         up_surname = (EditText) findViewById(R.id.edt_update_surname);
         up_password = (EditText) findViewById(R.id.edt_update_password);
-        up_description=(EditText)findViewById(R.id.up_profile_description);
+        up_description=(EditText)findViewById(R.id.edt_update_description);
         delete_profile=(ImageView)findViewById(R.id.edit_deleteprofile);
-        up_date=(EditText)findViewById(R.id.up_profil_date);
+        up_date=(EditText)findViewById(R.id.edt_update_DOB);
+
+        profile_id= (TextView)findViewById(R.id.profile_identifiant);
+        profile_id.setText(getUsername());
 
         delete_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +96,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
 
                 UserRepository userRepository = new UserRepository(getApplicationContext());
-                User user = new User(New_id,New_password,New_name,New_surname);
-                user.setID(getUsername());
+                User user = new User(getUsername(),New_password,New_name,New_surname);
                 generate_delete_dialog(user);
             }
         });
@@ -180,6 +185,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
         listAndProductRepository.DeleteWishlist(wishlist.getNum_list());
     }
 
+    public void openProfileActivity()
+    {
+        Intent intent = new Intent(this,ProfileActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
 
 
 
