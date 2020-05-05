@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.wishlist.Classesapp.GrpAndUserRepository;
 import com.example.wishlist.Classesapp.GrpRepository;
 
 public class CreateGroupActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             GrpRepository grpRepository=new GrpRepository(getApplicationContext());
+
             if (name_group.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(),"Please fills Details", Toast.LENGTH_LONG).show();
             }else {
@@ -26,8 +28,10 @@ public class CreateGroupActivity extends AppCompatActivity {
                     //Grp grp=new Grp(namegrp);
                     //grpRepository.InsertTask(grp);
                 }else {
+                    GrpAndUserRepository grpAndUserRepository=new GrpAndUserRepository(getApplicationContext());
                     //Grp grp=new Grp(namegrp);
                     //grpRepository.InsertTask(grp);
+                    //grpAndUserRepository.InsertTask();
                     //plus rajouter le premier membre
                 }
 

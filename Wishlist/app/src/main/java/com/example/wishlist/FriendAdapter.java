@@ -4,14 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wishlist.Classesapp.Friend;
 import com.example.wishlist.Classesapp.FriendRepository;
-import com.example.wishlist.Classesapp.Wishlist;
 
 import java.util.ArrayList;
 
@@ -35,7 +31,6 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
 
         TextView tv_card_view_nickname;
         TextView tv_card_view_username;
-        ImageView img_card_view_note;
         Button btn_card_view_title;
         LinearLayout ll_card_friend;
 
@@ -43,7 +38,6 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
             super(itemView);
             this.tv_card_view_nickname = (TextView) itemView.findViewById(R.id.tv_card_view_friend_nickname);
             this.tv_card_view_username = (TextView) itemView.findViewById(R.id.tv_card_view_friend_username);
-            this.img_card_view_note = (ImageView) itemView.findViewById(R.id.img_card_view_friend_note);
             this.btn_card_view_title = (Button) itemView.findViewById(R.id.btn_card_view_friend_title);
             this.ll_card_friend = (LinearLayout) itemView.findViewById(R.id.ll_card_friend);
         }
@@ -72,7 +66,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         TextView tv_card_view_nickname = holder.tv_card_view_nickname;
         TextView tv_card_view_username = holder.tv_card_view_username;
-        ImageView img_card_view_note = holder.img_card_view_note;
+
         Button btn_card_view_title = holder.btn_card_view_title;
         LinearLayout ll_card_friend = holder.ll_card_friend;
 
@@ -80,7 +74,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
         tv_card_view_username.setText(dataset.get(position).getId_ami() + "");
 
 
-        img_card_view_note.setImageResource(R.drawable.cadenas2);
+
 
 
         ll_card_friend.setOnClickListener(new View.OnClickListener() {
