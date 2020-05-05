@@ -9,17 +9,31 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.wishlist.Classesapp.GrpRepository;
+import com.example.wishlist.Classesapp.UserRepository;
+
 public class UpdateGroupActivity extends AppCompatActivity {
 
 
     //à finir
-    private View.OnClickListener UpdateFriendship_listener=new View.OnClickListener() {
+    private View.OnClickListener UpdateGR_listener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            GrpRepository grpRepository=new GrpRepository(getApplicationContext());
+            UserRepository userRepository=new UserRepository(getApplicationContext());
             if (up_group_name.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(),"Please fills Details",Toast.LENGTH_LONG).show();
             }else {
-                new_groupename=up_group_name.getText().toString().trim();
+                String SearchQuerry = searcch_friend.getQuery().toString();
+                if(!userRepository.isIDUsed(SearchQuerry.trim()))
+                {
+                    Toast.makeText(getApplicationContext(),"User doesn't exist",Toast.LENGTH_LONG).show();
+                }else{
+                    new_groupename=up_group_name.getText().toString().trim();
+                    //grpRepository.UpdateTask(grp);
+                }
+
+
             }
         }
     };

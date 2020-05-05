@@ -23,6 +23,9 @@ import com.example.wishlist.Classesapp.UserRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 import com.example.wishlist.Classesapp.WishlistRepository;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -44,18 +47,23 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_password = up_password.getText().toString();
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
-                //description=up_description.getText().toString().trim();
+                description=up_description.getText().toString().trim();
+                birthday=(Date)up_date.getText();
+                DateFormat dateFormat=new SimpleDateFormat("dd/mm/yyyy");
+                birth=dateFormat.format(birthday);
 
                 User user = new User(New_id,New_password,New_name,New_surname);
-                //user.setDescription(description);
+                user.setDescription(description);
+                user.setDOB(birth);
                 userRepository.UpdateTask(user);
             }
         }
     };
 
-    EditText  up_name, up_surname, up_password,up_description;
+    EditText  up_name, up_surname, up_password,up_description,up_date;
     ImageView delete_profile;
-    String New_id, New_name, New_surname, New_password,description;
+    Date birthday;
+    String New_id, New_name, New_surname, New_password,description,birth;
 
 
     @Override
@@ -71,6 +79,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         up_password = (EditText) findViewById(R.id.edt_update_password);
         up_description=(EditText)findViewById(R.id.up_profile_description);
         delete_profile=(ImageView)findViewById(R.id.edit_deleteprofile);
+        up_date=(EditText)findViewById(R.id.up_profil_date);
 
         delete_profile.setOnClickListener(new View.OnClickListener() {
             @Override
