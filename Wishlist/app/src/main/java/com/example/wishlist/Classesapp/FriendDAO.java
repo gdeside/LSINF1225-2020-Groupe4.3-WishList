@@ -21,7 +21,7 @@ public interface FriendDAO {
     void delete(Friend friend);
 
     @Query("Select * from friend where ID_User == :ID_User and ID_Ami = :ID_Friend")
-    List<Friend> getID(String ID_User, String ID_Friend);
+    List<Friend> getFriendByID(String ID_User, String ID_Friend);
 
     @Query("Select * from friend where ID_User == :ID_User")
     List<Friend> getAllFriend(String ID_User);

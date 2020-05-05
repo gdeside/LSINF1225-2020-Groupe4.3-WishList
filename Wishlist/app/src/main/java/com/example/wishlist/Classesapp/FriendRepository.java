@@ -81,7 +81,7 @@ public class FriendRepository {
             FOO = new AsyncTask<Void, Void, Boolean>() {
                 @Override
                 protected Boolean doInBackground(Void... voids) {
-                    List<Friend> friendList = friendDatabase.friendDAO().getID(ID_User,ID_Friend);
+                    List<Friend> friendList = friendDatabase.friendDAO().getFriendByID(ID_User,ID_Friend);
                     return friendList.size() > 0;
                 }
 
@@ -133,8 +133,29 @@ public class FriendRepository {
         return FOO;
     }
 
+    public Friend getFriendByID(final String ID_Friend, final String ID_User)
+    {
+        Friend FOO = new Friend("A","A","A");
+        try {
+            FOO = new AsyncTask<Void, Void, Friend>() {
+                @Override
+                protected Friend doInBackground(Void... voids) {
+                    Friend friend = friendDatabase.friendDAO().getFriendByID(ID_User,ID_Friend).get(0);
+                    return friend;
+                }
 
+                @Override
+                protected void onPostExecute(Friend result) {
+                    super.onPostExecute(result);
 
-
-
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
 }

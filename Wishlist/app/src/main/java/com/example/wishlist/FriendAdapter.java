@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,9 +96,10 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
                 context.startActivity(intent); */
                 String Friend_ID = dataset.get(position).getId_ami();
                 String User_ID = dataset.get(position).getId_user();
+
                 if((Activity) ActivityContext instanceof FriendlistActivity)
                 {
-                    generate_change_nickname_dialog(User_ID, Friend_ID);
+                    openFriendProfileActivity(Friend_ID);
                 }
             }
         });
@@ -138,6 +140,13 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.MyViewHold
 
         alert.show();
     }
+
+    public void openFriendProfileActivity(String ID_Friend){
+        Intent intent=new Intent(ActivityContext,FriendProfileActivity.class);
+        intent.putExtra("ID_Friend",ID_Friend);
+        ActivityContext.startActivity(intent);
+    }
+
     @Override
     public int getItemCount(){
         return dataset.size();
