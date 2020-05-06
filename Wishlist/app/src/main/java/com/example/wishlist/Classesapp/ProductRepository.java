@@ -18,7 +18,7 @@ public class ProductRepository {
 
     public ProductRepository(Context context) {
         this.context = context;
-        productDatabase = Room.databaseBuilder(context, ProductDatabase.class, DB_NAME).build();
+        productDatabase = ProductDatabase.getInstance(context);
     }
 
     public void InsertTask(final Product product)

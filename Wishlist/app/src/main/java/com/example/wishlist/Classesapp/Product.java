@@ -69,4 +69,14 @@ public class Product {
     public void setLien(String lien) {
         this.lien = lien;
     }
+
+    public static Product[] populateData()
+    {
+        return new Product[]{
+                new Product("Ordinateur", 999),
+                new Product("Smartphone", 599),
+                new Product("Une âme", 999999),
+                new Product("Bierre Corona",1)
+        };
+    }
 }

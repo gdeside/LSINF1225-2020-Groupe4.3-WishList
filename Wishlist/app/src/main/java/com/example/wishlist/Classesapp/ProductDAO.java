@@ -14,6 +14,9 @@ public interface ProductDAO {
     @Insert
     Long insertTask(Product product);
 
+    @Insert
+    void insertAll(Product... products);
+
     @Update
     void updateTask(Product product);
 
