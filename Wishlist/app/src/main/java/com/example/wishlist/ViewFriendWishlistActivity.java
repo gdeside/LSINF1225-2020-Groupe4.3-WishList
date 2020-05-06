@@ -1,15 +1,18 @@
 package com.example.wishlist;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.example.wishlist.Classesapp.Friend;
@@ -18,6 +21,7 @@ import com.example.wishlist.Classesapp.ListAndUser;
 import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 import com.example.wishlist.Classesapp.WishlistRepository;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +71,41 @@ public class ViewFriendWishlistActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {}
+        });
+        ///-----------------------------------------------------------------------------------------
+
+        //-------------------------------------------- Bottom Navigation View ----------------------
+
+        //Initalize and Assign Bottom Navigation View
+        BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
+
+        //Set Wishlists Button Selected
+        navigationView.setSelectedItemId(R.id.bottomNavFriendlist_btn);
+
+        ///Perform ItemSelected
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch(menuItem.getItemId()){
+                    case R.id.bottomNavFriendlist_btn:
+                        //startActivity(new Intent(getApplicationContext(),FriendlistActivity.class));
+                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        return true;
+                    case R.id.bottomNavProfile_btn:
+                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        return true;
+                    case R.id.bottomNavHome_btn :
+                        startActivity(new Intent(getApplicationContext(), WishlistsActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        return true;
+                    case R.id.bottomNavProducts_btn :
+                        startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        return true;
+                }
+                return false;
+            }
         });
         ///-----------------------------------------------------------------------------------------
 

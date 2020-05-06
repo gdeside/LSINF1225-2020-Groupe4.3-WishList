@@ -54,13 +54,13 @@ public class WishlistsActivity extends AppCompatActivity {
         FloatingActionButton createWishlists_btn = findViewById(R.id.floatingWishlist);
         createWishlists_btn.setOnClickListener(CreateWishlist_listener);
 
-        //-------------------------------------------- Bottom Navigation View -----------------------------------------
+        //-------------------------------------------- Bottom Navigation View ----------------------
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
 
         //Set Wishlists Button Selected
-        navigationView.setSelectedItemId(R.id.bottomNavWishlists_btn);
+        navigationView.setSelectedItemId(R.id.bottomNavHome_btn);
 
         ///Perform ItemSelected
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -76,21 +76,21 @@ public class WishlistsActivity extends AppCompatActivity {
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                     case R.id.bottomNavHome_btn :
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        ///startActivity(new Intent(getApplicationContext(), WishlistsActivity.class));
+                         //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
-                    case R.id.bottomNavWishlists_btn :
-                        // startActivity(new Intent(getApplicationContext(),WishlistsActivity.class));
-                        // overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                    case R.id.bottomNavProducts_btn :
+                         startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
+                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                 }
                 return false;
             }
         });
-        ///--------------------------------------------------------------------------------------------------------------------------------------
+        ///-----------------------------------------------------------------------------------------
 
 
-        ////-------------------------------------------- Card layout management -----------------------------------------------------------------
+        ////-------------------------------------------- Card layout management --------------------
         recyclerView = (RecyclerView)findViewById(R.id.Wishlist_recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -122,6 +122,9 @@ public class WishlistsActivity extends AppCompatActivity {
     /// Required for bottom navigation menu transition animation
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.logout_btn:
+            openLoginActivity();
+            return(true);
 
         case android.R.id.home :
             finish();
@@ -228,10 +231,17 @@ public class WishlistsActivity extends AppCompatActivity {
         return sh.getString("ID", "");
     }
 
-
     public void openCreateWishlistsActivity()
     {
         Intent intent = new Intent(this, CreateWishlistActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+    }
+
+    public void openLoginActivity()
+    {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);// clear la Back stack
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }

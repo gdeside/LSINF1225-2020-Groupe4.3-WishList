@@ -41,7 +41,7 @@ public class CreateProductActivity extends AppCompatActivity {
                 Product product = new Product(name,price);
                 product.setCategorie(category);
                 productRepository.InsertTask(product);
-                openHomeActivity();
+                openViewProductActivity();
             }
         }
     };
@@ -72,9 +72,9 @@ public class CreateProductActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    public void openHomeActivity()
+    public void openViewProductActivity()
     {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, ViewProductActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }

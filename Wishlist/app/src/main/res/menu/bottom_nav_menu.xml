@@ -15,9 +15,9 @@
         android:icon="@drawable/ic_friendlist"
         android:title="@string/friendlist" />
     <item
-        android:id="@+id/bottomNavWishlists_btn"
+        android:id="@+id/bottomNavProducts_btn"
         android:icon="@drawable/ic_wishlists"
-        android:title="@string/wishlist" />
+        android:title="Products" />
    <item
         android:id="@+id/bottomNavGroup_btn"
         android:icon="@drawable/ic_group"

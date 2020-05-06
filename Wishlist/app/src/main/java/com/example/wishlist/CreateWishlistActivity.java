@@ -79,7 +79,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
 
         //Set Wishlists Button Selected
-        navigationView.setSelectedItemId(R.id.bottomNavWishlists_btn);
+        navigationView.setSelectedItemId(R.id.bottomNavHome_btn);
 
         ///Perform ItemSelected
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -95,12 +95,12 @@ public class CreateWishlistActivity extends AppCompatActivity {
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                     case R.id.bottomNavHome_btn :
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        //startActivity(new Intent(getApplicationContext(), WishlistsActivity.class));
+                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
-                    case R.id.bottomNavWishlists_btn :
-                        // startActivity(new Intent(getApplicationContext(),WishlistsActivity.class));
-                        // overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                    case R.id.bottomNavProducts_btn :
+                         startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
+                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                 }
                 return false;

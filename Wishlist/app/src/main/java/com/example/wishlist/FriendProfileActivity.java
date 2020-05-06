@@ -68,7 +68,7 @@ public class FriendProfileActivity extends AppCompatActivity {
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
 
         //Set Home Button Selected
-        navigationView.setSelectedItemId(R.id.bottomNavHome_btn);
+        navigationView.setSelectedItemId(R.id.bottomNavFriendlist_btn);
 
         ///Perform ItemSelected
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -84,11 +84,11 @@ public class FriendProfileActivity extends AppCompatActivity {
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                     case R.id.bottomNavHome_btn :
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        startActivity(new Intent(getApplicationContext(), WishlistsActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
-                    case R.id.bottomNavWishlists_btn :
-                        startActivity(new Intent(getApplicationContext(),WishlistsActivity.class));
+                    case R.id.bottomNavProducts_btn :
+                        startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                 }

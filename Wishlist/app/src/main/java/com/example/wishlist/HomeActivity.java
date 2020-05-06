@@ -114,8 +114,8 @@ public class HomeActivity extends AppCompatActivity {
                         //startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                         //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
-                    case R.id.bottomNavWishlists_btn :
-                        startActivity(new Intent(getApplicationContext(),WishlistsActivity.class));
+                    case R.id.bottomNavProducts_btn :
+                        startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                 }

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.wishlist.Classesapp.User;
 import com.example.wishlist.Classesapp.UserRepository;
+import com.example.wishlist.Classesapp.Wishlist;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -69,11 +70,11 @@ public class ProfileActivity extends AppCompatActivity {
                         //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                     case R.id.bottomNavHome_btn :
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        startActivity(new Intent(getApplicationContext(), WishlistsActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
-                    case R.id.bottomNavWishlists_btn :
-                        startActivity(new Intent(getApplicationContext(),WishlistsActivity.class));
+                    case R.id.bottomNavProducts_btn :
+                        startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                 }
