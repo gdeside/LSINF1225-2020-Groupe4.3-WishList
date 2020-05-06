@@ -18,7 +18,6 @@ public class CreateProductActivity extends AppCompatActivity {
     EditText edt_product_price, edt_product_name, edt_product_link,edt_product_category;
     Button Create_Product_btn;
     RatingBar ratingBar;
-
     String name,category;
     int price;
 
@@ -28,19 +27,16 @@ public class CreateProductActivity extends AppCompatActivity {
         public void onClick(View v) {
             ProductRepository productRepository = new ProductRepository(getApplicationContext());
             if(edt_product_name.getText().toString().isEmpty() || edt_product_price.getText().toString().isEmpty() ) {
-
                 Toast.makeText(getApplicationContext(),"Please fill details",Toast.LENGTH_LONG).show();
-
             }
             else if(productRepository.isNameUsed(edt_product_name.getText().toString())){
                 Toast.makeText(getApplicationContext(),"Name Already Used",Toast.LENGTH_LONG).show();
-            } ///Create Wishlist
+            }
+            ///Create Wishlist
             else {
                 name = edt_product_name.getText().toString().trim();
                 price = Integer.parseInt(edt_product_price.getText().toString().trim());
-
                 category=edt_product_category.getText().toString().trim();
-
 
                 Product product = new Product(name,price);
                 product.setCategorie(category);
@@ -55,15 +51,18 @@ public class CreateProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_product);
 
+        ///---------------- Set EditText -----------------------------------------------------------
         edt_product_name = findViewById(R.id.edt_product_name);
         edt_product_price = findViewById(R.id.edt_product_price);
         edt_product_link=findViewById(R.id.edt_product_link);
-        Create_Product_btn = findViewById(R.id.create_product_btn);
         edt_product_category=findViewById(R.id.edt_product_category);
+        ///-----------------------------------------------------------------------------------------
 
-        ratingBar =findViewById(R.id.ratingBar);
-
+        ///----------------------- Set Buttons -----------------------------------------------------
+        Create_Product_btn = findViewById(R.id.create_product_btn);
+        ratingBar = findViewById(R.id.ratingBar);
         Create_Product_btn.setOnClickListener(CreateProduct_listener);
+        ///-----------------------------------------------------------------------------------------
 
     }
 

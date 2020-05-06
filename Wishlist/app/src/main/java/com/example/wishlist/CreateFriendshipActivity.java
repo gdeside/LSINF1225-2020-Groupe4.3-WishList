@@ -61,24 +61,25 @@ public class CreateFriendshipActivity extends AppCompatActivity {
 
         userRepository = new UserRepository(getApplicationContext());
 
-        //éléments layout
-        btn_friendship=findViewById(R.id.createfd_btn);
+        ///--------------------- Set EditText ------------------------------------------------------
         friendship_nickname=findViewById(R.id.createfd_nickname_edt);
-        searchfriend=findViewById(R.id.search_friend_sw);
+        ///-----------------------------------------------------------------------------------------
+
+        ///------------------------------ Set Button -----------------------------------------------
+        btn_friendship=findViewById(R.id.createfd_btn);
         btn_friendship.setOnClickListener(create_friendship_listener);
+        ///-----------------------------------------------------------------------------------------
+
+
+        /// Set Search Bar
+        searchfriend=findViewById(R.id.search_friend_sw);
+
 
     }
 
+    /// Give logged user ID
     public String getUsername(){
-        // Retrieving the value using its keys
-        // the file name must be same in both saving
-        // and retrieving the data
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
-
-        // The value will be default as empty string
-        // because for the very first time
-        // when the app is opened,
-        // there is nothing to show
         return sh.getString("ID", "");
     }
 

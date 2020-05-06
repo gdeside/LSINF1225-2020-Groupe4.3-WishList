@@ -55,16 +55,17 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+        ///------------------------------------- Set button-----------------------------------------
         Button CreateAccount_btn = findViewById(R.id.CreateAccount_btn);
         CreateAccount_btn.setOnClickListener(CreateAccount_listener);
+        ///-----------------------------------------------------------------------------------------
 
+        ///-------------------------------- Set EditText -------------------------------------------
         edt_id = (EditText) findViewById(R.id.edt_ID_login);
         edt_name = (EditText) findViewById(R.id.edt_create_name);
         edt_surname = (EditText) findViewById(R.id.edt_create_surname);
         edt_password = (EditText) findViewById(R.id.edt_create_password);
-
-
-
+        ///-----------------------------------------------------------------------------------------
     }
     
     @Override  //required for back animation
