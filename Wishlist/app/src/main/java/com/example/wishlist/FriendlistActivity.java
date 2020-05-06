@@ -29,14 +29,10 @@ import java.util.List;
 
 public class FriendlistActivity extends AppCompatActivity {
 
-
-    private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    FriendAdapter friendAdapter;
     ArrayList<Friend> friendArrayList;
     FloatingActionButton add_friend;
-
 
     private View.OnClickListener add_friend_listener = new View.OnClickListener() {
         @Override
@@ -50,17 +46,20 @@ public class FriendlistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friendlist);
 
+        ///-------------------------------- Set Buttons --------------------------------------------
         add_friend = findViewById(R.id.btn_add_friend);
         add_friend.setOnClickListener(add_friend_listener);
+        ///-----------------------------------------------------------------------------------------
 
-        ///To see cards
+        ///------------------------------ Card Management ------------------------------------------
         recyclerView = (RecyclerView) findViewById(R.id.Friendlist_recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        ///-----------------------------------------------------------------------------------------
 
-        new LoadDataTask().execute();
+        ///-------------------------- Bottom Navigation View ---------------------------------------
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -93,8 +92,13 @@ public class FriendlistActivity extends AppCompatActivity {
                 return false;
             }
         });
+        ///-----------------------------------------------------------------------------------------
+
+        /// Load Data
+        new LoadDataTask().execute();
     }
 
+    /// Load Data
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
         FriendRepository friendRepository ;
@@ -118,15 +122,12 @@ public class FriendlistActivity extends AppCompatActivity {
             {
                friendArrayList.add(friendList.get(i));
             }
-
-
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
-
             FriendAdapter friendAdapter = new FriendAdapter(friendArrayList,FriendlistActivity.this, getApplicationContext());
             recyclerView.setAdapter(friendAdapter);
         }

@@ -20,7 +20,6 @@ public class ProfileActivity extends AppCompatActivity {
     ImageButton edit_profil;
     TextView ID_tv, name_tv, surname_tv, DOB_tv, Description_tv;
 
-
     private View.OnClickListener Edit_profil_listener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -33,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        ///--------------------------- Set Variables -----------------------------------------------
         edit_profil=findViewById(R.id.edit_profil);
         edit_profil.setOnClickListener(Edit_profil_listener);
 
@@ -41,10 +41,13 @@ public class ProfileActivity extends AppCompatActivity {
         surname_tv = findViewById(R.id.Profile_Surname_tv);
         DOB_tv = findViewById(R.id.Profile_DOB_tv);
         Description_tv = findViewById(R.id.Profile_Description_tv);
+        ///-----------------------------------------------------------------------------------------
 
+        /// Set Profile
         String username = getUsername();
         setProfile(username);
 
+        //------------------------------ Bottom Navigation View ------------------------------------
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -77,6 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
+        ///-----------------------------------------------------------------------------------------
 
     }
 
@@ -117,17 +121,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-
+    /// Give logged user ID
     public String getUsername(){
-        // Retrieving the value using its keys
-        // the file name must be same in both saving
-        // and retrieving the data
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
-
-        // The value will be default as empty string
-        // because for the very first time
-        // when the app is opened,
-        // there is nothing to show
         return sh.getString("ID", "");
     }
 

@@ -21,8 +21,11 @@ import java.util.List;
 
 public class UpdateFriendship extends AppCompatActivity {
 
-
-
+    FriendRepository friendRepository;
+    EditText up_nickname;
+    Button saveupdate;
+    ImageButton delete_friend;
+    String new_nickname,Friend_ID;
 
     private View.OnClickListener UpdateFriendship_listener=new View.OnClickListener() {
         @Override
@@ -47,25 +50,14 @@ public class UpdateFriendship extends AppCompatActivity {
         }
     };
 
-    FriendRepository friendRepository;
-
-    EditText up_nickname;
-    ImageButton deletebutton;
-    Button saveupdate;
-    ImageButton delete_friend;
-
-
-    String new_nickname,Friend_ID,Old_Surname;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_friendship);
 
+        ///--------------------------- Set Variables -----------------------------------------------
         friendRepository = new FriendRepository(getApplicationContext());
-
         up_nickname=findViewById(R.id.up_friend_nickname);
-        deletebutton=findViewById(R.id.up_friend_delete);
         saveupdate=findViewById(R.id.up_friend_save);
         delete_friend = findViewById(R.id.up_friend_delete);
 
@@ -74,7 +66,7 @@ public class UpdateFriendship extends AppCompatActivity {
         {
             Friend_ID = data.getString("ID_Friend");
         }
-
+        ///-----------------------------------------------------------------------------------------
 
         saveupdate.setOnClickListener(UpdateFriendship_listener);
         delete_friend.setOnClickListener(DeleteFriendship_listener);
@@ -94,6 +86,7 @@ public class UpdateFriendship extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdateFriendship.this); //do not write getapplicationContextg
         builder.setTitle("WARNING");
         builder.setMessage("Are you sure to delete ?" + "\n Userame : " + friend_delete.getId_ami() + "\n Nickname : " + friend_delete.getSurname());
+
         builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -102,31 +95,20 @@ public class UpdateFriendship extends AppCompatActivity {
                 openFriendlistActivity();
             }
         });
+
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
+            public void onClick(DialogInterface dialog, int which) {}
         });
 
-
         builder.setIcon(android.R.drawable.ic_delete);
-
-
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
+    /// Give logged user ID
     public String getUsername(){
-        // Retrieving the value using its keys
-        // the file name must be same in both saving
-        // and retrieving the data
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
-
-        // The value will be default as empty string
-        // because for the very first time
-        // when the app is opened,
-        // there is nothing to show
         return sh.getString("ID", "");
     }
 

@@ -23,7 +23,7 @@ public class ProductRepository {
 
     public void InsertTask(final Product product)
     {
-        new AsyncTask<Void,Void,Void>(){
+        new  AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... voids){
                 productDatabase.productDAO().insertTask(product);

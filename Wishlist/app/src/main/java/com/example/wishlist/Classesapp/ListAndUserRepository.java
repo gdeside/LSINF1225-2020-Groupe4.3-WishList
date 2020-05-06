@@ -88,7 +88,7 @@ public class ListAndUserRepository {
         return FOO;
     }
 
-    ///Return true if there is no user with this id + this password
+    ///Return Creator of the list ID
     public String showCreator(final int Num_list)
     {
         String FOO = "";

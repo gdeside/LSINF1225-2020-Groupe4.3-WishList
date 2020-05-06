@@ -21,12 +21,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CreateWishlistActivity extends AppCompatActivity {
 
-
-
     EditText edt_wishlist_name;
     RadioButton public_btn, private_btn;
-
-
     String name;
     Boolean option;
 
@@ -44,7 +40,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
                 option = public_btn.isChecked();
 
                 WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
-                Wishlist wishlist = new Wishlist(name,option,getUsername(),"");
+                Wishlist wishlist = new Wishlist(name,option,"");
 
                 Long numListLong = wishlistRepository.InsertTask(wishlist);
                 int numList = Math.toIntExact(numListLong);
@@ -65,13 +61,19 @@ public class CreateWishlistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_wishlist);
 
+        ///-------------------------- Set Buttons --------------------------------------------------
         Button CreateWishlist_btn = findViewById(R.id.CreateWishlist_btn);
         CreateWishlist_btn.setOnClickListener(CreateWishlist_listener);
-
-        edt_wishlist_name = (EditText) findViewById(R.id.edt_wishlist_name);
         public_btn = findViewById(R.id.rbtn_public);
         private_btn = findViewById(R.id.rbtn_private);
+        ///-----------------------------------------------------------------------------------------
 
+        ///---------------------------------- Set EditText -----------------------------------------
+        edt_wishlist_name = (EditText) findViewById(R.id.edt_wishlist_name);
+        ///-----------------------------------------------------------------------------------------
+
+
+        ///------------------------------ Bottom Navigation Menu -----------------------------------
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -104,8 +106,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
+        ///-----------------------------------------------------------------------------------------
     }
 
     @Override  //required for back animation
@@ -114,7 +115,7 @@ public class CreateWishlistActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    @Override ///I'm not sure what it does but i'm too afraid to delete it
+    @Override ///Back Animation for bottom Navigation Menu
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
 
         case android.R.id.home :

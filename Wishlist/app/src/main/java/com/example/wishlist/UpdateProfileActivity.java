@@ -158,7 +158,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         for(ListAndUser listAndUser : listAndUserList)
         {
             int num_list = listAndUser.getNum_list();
-            Wishlist foo = new Wishlist("A",true,"A","A");
+            Wishlist foo = new Wishlist("A",true,"A");
             foo.setNum_list(num_list);
             final Wishlist wishlist = foo;
 

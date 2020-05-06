@@ -23,8 +23,7 @@ public class UpdateWishlistActivity extends AppCompatActivity {
 
     EditText edt_wishlist_name,edt_wishlist_description;
     RadioButton public_btn, private_btn;
-
-
+    Button UpdateWishlist_btn, DeleteWishlist_btn;
     String name, description;
     int wishlist_num;
     Boolean option;
@@ -33,18 +32,18 @@ public class UpdateWishlistActivity extends AppCompatActivity {
     private View.OnClickListener Update_Listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            /// If no name is given
             if(edt_wishlist_name.getText().toString().isEmpty() ) {
-
                 Toast.makeText(getApplicationContext(),"Please fill name",Toast.LENGTH_LONG).show();
-
-            } ///Create Wishlist
+            }
+            ///Create Wishlist
             else {
                 name = edt_wishlist_name.getText().toString().trim();
                 option = public_btn.isChecked();
                 description = edt_wishlist_description.getText().toString().trim();
 
                 WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
-                Wishlist wishlist = new Wishlist(name,option,getUsername(),description);
+                Wishlist wishlist = new Wishlist(name,option,description);
                 wishlist.setNum_list(wishlist_num);
                 wishlistRepository.UpdateTask(wishlist);
 
@@ -61,11 +60,9 @@ public class UpdateWishlistActivity extends AppCompatActivity {
             option = public_btn.isChecked();
             description = edt_wishlist_description.getText().toString().trim();
 
-            WishlistRepository wishlistRepository = new WishlistRepository(getApplicationContext());
-            Wishlist wishlist = new Wishlist(name,option,getUsername(),description);
+            Wishlist wishlist = new Wishlist(name,option,description);
             wishlist.setNum_list(wishlist_num);
             generate_delete_dialog(wishlist);
-
         }
     };
 
@@ -76,21 +73,18 @@ public class UpdateWishlistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_wishlist);
 
-        Button UpdateWishlist_btn = findViewById(R.id.UpdateWishlist_btn);
+        ///-------------------------- Set Buttons --------------------------------------------------
+        UpdateWishlist_btn = findViewById(R.id.UpdateWishlist_btn);
         UpdateWishlist_btn.setOnClickListener(Update_Listener);
 
-        Button DeleteWishlist_btn = findViewById(R.id.DeleteWishlist_btn);
+        DeleteWishlist_btn = findViewById(R.id.DeleteWishlist_btn);
         DeleteWishlist_btn.setOnClickListener(Delete_Listener);
 
-
-
-
-        edt_wishlist_name = (EditText) findViewById(R.id.edt_wishlist_name);
-        edt_wishlist_description = findViewById(R.id.edt_wishlist_description);
         public_btn = findViewById(R.id.rbtn_public);
         private_btn = findViewById(R.id.rbtn_private);
+        ///-----------------------------------------------------------------------------------------
 
-        ///Get values
+        ///-------------------------- Set Variables ------------------------------------------------
         Bundle data = getIntent().getExtras();
         if(data != null)
         {
@@ -99,8 +93,12 @@ public class UpdateWishlistActivity extends AppCompatActivity {
             option = data.getBoolean("wishlist_option");
             wishlist_num = data.getInt("wishlist_num");
         }
+        ///-----------------------------------------------------------------------------------------
 
-        //show values
+        ///-------------------------- Set TextView -------------------------------------------------
+        edt_wishlist_name = (EditText) findViewById(R.id.edt_wishlist_name);
+        edt_wishlist_description = findViewById(R.id.edt_wishlist_description);
+
         edt_wishlist_name.setText(name);
         edt_wishlist_description.setText(description);
 
@@ -108,23 +106,15 @@ public class UpdateWishlistActivity extends AppCompatActivity {
             public_btn.setChecked(true);
         else
             private_btn.setChecked(true);
-
-
-
+        ///-----------------------------------------------------------------------------------------
     }
 
+    /// Give logged user ID
     public String getUsername(){
-        // Retrieving the value using its keys
-        // the file name must be same in both saving
-        // and retrieving the data
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
-
-        // The value will be default as empty string
-        // because for the very first time
-        // when the app is opened,
-        // there is nothing to show
         return sh.getString("ID", "");
     }
+
     public void openViewWishlistProductActivity()
     {
         Intent intent = new Intent(this, ViewWishlistProductActivity.class);
@@ -155,17 +145,14 @@ public class UpdateWishlistActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 delete_wishlist(wishlist_delete);
                 openWishlistsActivity();
-
             }
         });
+
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
+            public void onClick(DialogInterface dialog, int which) {}
         });
         builder.setIcon(android.R.drawable.ic_delete);
-
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();

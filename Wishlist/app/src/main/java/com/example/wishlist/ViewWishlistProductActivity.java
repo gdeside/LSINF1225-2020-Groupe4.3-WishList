@@ -47,7 +47,6 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
             {
                 Toast.makeText(getApplicationContext(),"What are you doing? NOT YOUR LIST!",Toast.LENGTH_LONG).show();
             }
-
         }
     };
 
@@ -71,6 +70,7 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_wishlist_product);
 
+        ///-------------------------- Set Buttons TextView and Variables ---------------------------
         Button SettingsWishlist_btn = findViewById(R.id.SettingsWishlist_btn);
         SettingsWishlist_btn.setOnClickListener(SettingsWishlist_listener);
 
@@ -78,12 +78,10 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         AddProduct_btn.setOnClickListener(WishlistAddProduct_listener);
 
         totalprice_tv = (TextView) findViewById(R.id.WishlistProduct_price_tv);
-
+        total_price = 0;
         listAndUserRepository = new ListAndUserRepository(getApplicationContext());
 
-        total_price = 0;
-
-        ///Get values
+        ///Get values given in intent
         Bundle data = getIntent().getExtras();
         if(data != null)
         {
@@ -92,25 +90,28 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
             option = data.getBoolean("wishlist_option");
             wishlist_num = data.getInt("wishlist_num");
         }
+        ///-----------------------------------------------------------------------------------------
 
+        ///--------------------------- Card Management ---------------------------------------------
         recyclerView = (RecyclerView)findViewById(R.id.ViewWishlistProduct_recycler_view);
         recyclerView.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        ///-----------------------------------------------------------------------------------------
 
+        /// Load Data
         new ViewWishlistProductActivity.LoadDataTask().execute();
 
 
     }
 
+    /// Load Data
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
         ProductRepository productRepository;
         ListAndProductRepository listAndProductRepository;
         List<String> productName;
-        List<Product> productList;
 
         @Override
         protected void onPreExecute(){
@@ -133,20 +134,19 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
                 total_price += product.getPrix();
                 productArrayList.add(product);
             }
-
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
-
             totalprice_tv.setText(Integer.toString(total_price)+" €");
-            ProductAdapter productAdapter = new ProductAdapter(productArrayList,wishlist_num, ViewWishlistProductActivity.this,getApplicationContext()); //No num list == -1, constructor shadowing seemms to not work
+            ProductAdapter productAdapter = new ProductAdapter(productArrayList,wishlist_num, ViewWishlistProductActivity.this,getApplicationContext());
             recyclerView.setAdapter(productAdapter);
         }
     }
 
+    /// If you go back to this activity, reload the data
     @Override
     protected void onRestart(){
         super.onRestart();
@@ -175,21 +175,15 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
 
+    ///Reload Data
     public void Reload()
     {
         new ViewWishlistProductActivity.LoadDataTask().execute();
     }
 
+    /// Give logged user ID
     public String getUsername(){
-        // Retrieving the value using its keys
-        // the file name must be same in both saving
-        // and retrieving the data
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
-
-        // The value will be default as empty string
-        // because for the very first time
-        // when the app is opened,
-        // there is nothing to show
         return sh.getString("ID", "");
     }
 

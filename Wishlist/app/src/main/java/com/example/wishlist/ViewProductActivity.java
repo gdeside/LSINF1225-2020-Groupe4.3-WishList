@@ -16,8 +16,6 @@ import java.util.List;
 
 public class ViewProductActivity extends AppCompatActivity {
 
-
-    private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     ArrayList<Product> productArrayList;
@@ -27,19 +25,19 @@ public class ViewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_product);
 
+        ///---------------------------- Card Management --------------------------------------------
         recyclerView = (RecyclerView)findViewById(R.id.ViewProduct_recycler_view);
         recyclerView.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        ///-----------------------------------------------------------------------------------------
 
+        /// Load Data
         new ViewProductActivity.LoadDataTask().execute();
-
-
-
     }
 
+    /// Load Data
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
         ProductRepository productRepository;
@@ -61,16 +59,13 @@ public class ViewProductActivity extends AppCompatActivity {
             {
                 productArrayList.add(productList.get(i));
             }
-
-
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
-
-            ProductAdapter productAdapter = new ProductAdapter(productArrayList, -1,ViewProductActivity.this,getApplicationContext()); //No num list == -1, constructor shadowing seemms to not work
+            ProductAdapter productAdapter = new ProductAdapter(productArrayList, -1,ViewProductActivity.this,getApplicationContext()); ///wishlist num == -1 because we're not in a list.
             recyclerView.setAdapter(productAdapter);
         }
     }

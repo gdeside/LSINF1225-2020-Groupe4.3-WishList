@@ -28,27 +28,17 @@ public class WishlistAddProductActivity extends AppCompatActivity {
     Boolean option;
     EditText edt_AddProduct_search;
 
-    private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     ArrayList<Product> productArrayList,productArrayList_search;
     ProductAdapter productAdapter;
-
-    private View.OnClickListener openwis_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-            openViewWishlistProductActivity();
-
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wishlist_add_product);
 
-        ///Get values
+        ///------------------------ Set Variables --------------------------------------------------
         Bundle data = getIntent().getExtras();
         if(data != null)
         {
@@ -57,39 +47,39 @@ public class WishlistAddProductActivity extends AppCompatActivity {
             option = data.getBoolean("wishlist_option");
             wishlist_num = data.getInt("wishlist_num");
         }
+        ///-----------------------------------------------------------------------------------------
 
+        ///--------------------------- Card Management ---------------------------------------------
         recyclerView = (RecyclerView)findViewById(R.id.AddProduct_recycler_view);
         recyclerView.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        ///-----------------------------------------------------------------------------------------
 
+        ///------------------------------- Search Bar -----------------------------------------------
         edt_AddProduct_search = findViewById(R.id.edt_AddProduct_search);
         edt_AddProduct_search.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text=s.toString();
                 Filter(text);
-
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) {}
         });
+        ///-----------------------------------------------------------------------------------------
 
-
+        /// Load Data
         new WishlistAddProductActivity.LoadDataTask().execute();
 
     }
 
+    /// Load Data
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
         ProductRepository productRepository;
@@ -113,31 +103,21 @@ public class WishlistAddProductActivity extends AppCompatActivity {
                 productArrayList.add(productList.get(i));
                 productArrayList_search.add(productList.get(i));
             }
-
-
             return null;
         }
-
-
 
         @Override
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
-
             productAdapter = new ProductAdapter(productArrayList, wishlist_num,WishlistAddProductActivity.this,getApplicationContext());
             recyclerView.setAdapter(productAdapter);
         }
-
-
-
-
     }
 
     ///Filter wishlists by name
     public void Filter(String charText)
     {
         charText = charText.toLowerCase(Locale.getDefault());
-
         productArrayList.clear();
 
         if(charText.length() == 0)
@@ -146,7 +126,7 @@ public class WishlistAddProductActivity extends AppCompatActivity {
         {
             for( Product product : productArrayList_search)
             {
-                if(product.getName().toString().toLowerCase(Locale.getDefault()).contains(charText))
+                if(product.getName().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                    productArrayList.add(product);
                 }
@@ -155,14 +135,4 @@ public class WishlistAddProductActivity extends AppCompatActivity {
         }
     }
 
-    public void openViewWishlistProductActivity()
-    {
-        Intent intent = new Intent(this, ViewWishlistProductActivity.class);
-        intent.putExtra("wishlist_name",name);
-        intent.putExtra("wishlist_description",description);
-        intent.putExtra("wishlist_option",option);
-        intent.putExtra("wishlist_num",wishlist_num);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
-    }
 }

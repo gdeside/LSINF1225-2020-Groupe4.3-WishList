@@ -23,9 +23,7 @@ public class FriendProfileActivity extends AppCompatActivity {
     TextView friendUsername, friendName, friendBirthday;
     Button btnWishlistFriend;
     ImageButton edit_surname;
-
     String Friend_ID;
-
 
     private View.OnClickListener FriendSurname_listener=new View.OnClickListener() {
         @Override
@@ -46,23 +44,26 @@ public class FriendProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_profile);
 
+        ///-------------------------------- Set Variables ------------------------------------------
         friendUsername = findViewById(R.id.tv_friend_username);
         friendName = findViewById(R.id.tv_friend_name);
         friendBirthday = findViewById(R.id.tv_friend_DOB);
         btnWishlistFriend = findViewById(R.id.btn_friend_wishlist);
         edit_surname = findViewById(R.id.btn_edit_profile_surname);
-
-        edit_surname.setOnClickListener(FriendSurname_listener);
-        btnWishlistFriend.setOnClickListener(FriendWishlist_listener);
-
         Bundle data = getIntent().getExtras();
         if(data != null)
         {
             Friend_ID = data.getString("ID_Friend");
         }
         setProfile(Friend_ID);
+        ///-----------------------------------------------------------------------------------------
 
+        ///------------------------ Set TextView ---------------------------------------------------
+        edit_surname.setOnClickListener(FriendSurname_listener);
+        btnWishlistFriend.setOnClickListener(FriendWishlist_listener);
+        ///-----------------------------------------------------------------------------------------
 
+        ///------------------------------- Bottom Navigation View ----------------------------------
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
 
@@ -94,7 +95,7 @@ public class FriendProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        ///-----------------------------------------------------------------------------------------
     }
 
     public void setProfile(String Username)

@@ -70,6 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        ///---------------------------- Set Variables-----------------------------------------------
         Button wishlists_btn = findViewById(R.id.wishlists_btn);
         Button profile_btn = findViewById(R.id.profile_btn);
         Button friendlist_btn = findViewById(R.id.friendlist_btn);
@@ -85,7 +86,10 @@ public class HomeActivity extends AppCompatActivity {
         view_product_btn.setOnClickListener(ViewProduct_listener);
         updatefrien_btn.setOnClickListener(UpdateFriend_listener);
         friendprofil_btn.setOnClickListener(FriendProfile_listener);
+        ///-----------------------------------------------------------------------------------------
 
+
+        ///------------------------------- Bottom Navigation View ----------------------------------
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -118,8 +122,7 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
+        ///-----------------------------------------------------------------------------------------
     }
 
     @Override

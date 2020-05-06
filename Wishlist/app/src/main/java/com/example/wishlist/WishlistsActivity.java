@@ -52,9 +52,9 @@ public class WishlistsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wishlists);
 
         FloatingActionButton createWishlists_btn = findViewById(R.id.floatingWishlist);
-
         createWishlists_btn.setOnClickListener(CreateWishlist_listener);
 
+        //-------------------------------------------- Bottom Navigation View -----------------------------------------
 
         //Initalize and Assign Bottom Navigation View
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
@@ -87,37 +87,39 @@ public class WishlistsActivity extends AppCompatActivity {
                 return false;
             }
         });
+        ///--------------------------------------------------------------------------------------------------------------------------------------
 
-        ////To see Cards
+
+        ////-------------------------------------------- Card layout management -----------------------------------------------------------------
         recyclerView = (RecyclerView)findViewById(R.id.Wishlist_recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        ///----------------------------------------------------------------------------------------------------------------------------------------
 
-        ///Search bar
+        ///------------------------------------------------- Search Bar ------------------------------------------------------------------------------
         edt_wishlist_search = findViewById(R.id.edt_wishlist_search);
         edt_wishlist_search.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text=s.toString();
                 Filter(text);
-
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) {}
         });
+        ///----------------------------------------------------------------------------------------------------------------------------
+
+        /// Load Data
         new WishlistsActivity.LoadDataTask().execute();
     }
 
+    /// Required for bottom navigation menu transition animation
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
 
@@ -129,13 +131,12 @@ public class WishlistsActivity extends AppCompatActivity {
         return(super.onOptionsItemSelected(item));
     }
 
+    /// Load Les Wishlists
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
         WishlistRepository wishlistRepository;
         FriendRepository friendRepository;
         ListAndUserRepository listAndUserRepository;
-        List<Wishlist> wishlistList;
-        List<Friend> friendList;
         ArrayList<ListAndUser> listAndUserArrayList;
         ArrayList<Integer> WishlistNumArrayList;
 
@@ -154,9 +155,7 @@ public class WishlistsActivity extends AppCompatActivity {
             wishlistArrayList_search = new ArrayList<>();
             listAndUserArrayList = new ArrayList<>();
             WishlistNumArrayList = new ArrayList<>();
-
             String username = getUsername();
-
 
             ///get user List
             List<ListAndUser> foo = listAndUserRepository.getIDUser(username);
@@ -164,7 +163,6 @@ public class WishlistsActivity extends AppCompatActivity {
             {
                 WishlistNumArrayList.add(listAndUser.getNum_list());
             }
-
 
             /// convert Num_List into wishlists
             for(int num : WishlistNumArrayList)
@@ -175,12 +173,9 @@ public class WishlistsActivity extends AppCompatActivity {
                     wishlistArrayList.add(wishlist);
                     wishlistArrayList_search.add(wishlist);
                 }
-
             }
             return null;
         }
-
-
 
         @Override
         protected void onPostExecute(Void aVoid){
@@ -205,7 +200,7 @@ public class WishlistsActivity extends AppCompatActivity {
         {
             for( Wishlist wishlist : wishlistArrayList_search)
             {
-                if(wishlist.getName().toString().toLowerCase(Locale.getDefault()).contains(charText))
+                if(wishlist.getName().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     wishlistArrayList.add(wishlist);
                 }
@@ -220,22 +215,16 @@ public class WishlistsActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
+    /// If you go back to this activity, reload the data
     @Override
     protected void onRestart(){
         super.onRestart();
         new WishlistsActivity.LoadDataTask().execute();
     }
 
+    /// Give logged user ID
     public String getUsername(){
-        // Retrieving the value using its keys
-        // the file name must be same in both saving
-        // and retrieving the data
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
-
-        // The value will be default as empty string
-        // because for the very first time
-        // when the app is opened,
-        // there is nothing to show
         return sh.getString("ID", "");
     }
 

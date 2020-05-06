@@ -16,6 +16,8 @@ import java.util.List;
 
 public class ViewActivity extends AppCompatActivity {
 
+    //////// A Supprimer ?
+
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;

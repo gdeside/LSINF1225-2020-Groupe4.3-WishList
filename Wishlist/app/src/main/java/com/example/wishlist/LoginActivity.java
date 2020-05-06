@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
                 // as the data fetched from edittext
                 myEdit.putString("ID", edt_ID_login.getText().toString());
 
-
                 // Once the changes have been made,
                 // we need to commit to apply those changes made,
                 // otherwise, it will throw an error

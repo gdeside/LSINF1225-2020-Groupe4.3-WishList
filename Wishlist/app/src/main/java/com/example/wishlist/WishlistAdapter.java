@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.wishlist.Classesapp.ListAndUser;
+import com.example.wishlist.Classesapp.ListAndUserRepository;
 import com.example.wishlist.Classesapp.Wishlist;
 
 import java.util.ArrayList;
@@ -52,12 +54,11 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_wishlist, parent, false);
-
         MyViewHolder myViewHolder = new MyViewHolder(view);
-
         return myViewHolder;
     }
 
+    /// What happens if you click on a card
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         TextView tv_card_view_name = holder.tv_card_view_name;
@@ -66,8 +67,12 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
         Button btn_card_view_title = holder.btn_card_view_title;
         LinearLayout ll_card_wishlist = holder.ll_card_wishlist;
 
+        ListAndUserRepository listAndUserRepository = new ListAndUserRepository(context);
+
+        int wishlist_num = dataset.get(position).getNum_list();
+
         tv_card_view_name.setText(dataset.get(position).getName() + "");
-        tv_card_view_creator.setText(dataset.get(position).getCreator() + "");
+        tv_card_view_creator.setText(listAndUserRepository.showCreator(wishlist_num));
 
         if (dataset.get(position).getOption())
             img_card_view_privacy.setImageResource(R.drawable.cadenas2);
@@ -78,7 +83,6 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyView
             @Override
             public void onClick(View v) {
                 String wishlist_name = dataset.get(position).getName();
-                String wishlist_creator = dataset.get(position).getCreator();
                 String wishlist_description = dataset.get(position).getDescription();
                 Boolean wishlist_option = dataset.get(position).getOption();
                 int wishlist_num = dataset.get(position).getNum_list();
