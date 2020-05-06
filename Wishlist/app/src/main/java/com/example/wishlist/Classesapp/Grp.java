@@ -16,8 +16,7 @@ public class Grp {
     @NonNull
     private String name;
 
-    public Grp(Integer ID, String name) {
-        this.ID = ID;
+    public Grp(String name) {
         this.name = name;
     }
 

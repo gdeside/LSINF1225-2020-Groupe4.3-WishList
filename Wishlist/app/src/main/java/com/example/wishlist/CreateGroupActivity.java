@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.wishlist.Classesapp.GrpAndUserRepository;
+import com.example.wishlist.Classesapp.Grp;
 import com.example.wishlist.Classesapp.GrpRepository;
 
 public class CreateGroupActivity extends AppCompatActivity {
@@ -22,17 +22,15 @@ public class CreateGroupActivity extends AppCompatActivity {
             if (name_group.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(),"Please fills Details", Toast.LENGTH_LONG).show();
             }else {
+                Grp grp=new Grp(namegrp);
+                grpRepository.InsertTask(grp);
                 String searcher=searchfriend.getQuery().toString();
                 namegrp=name_group.getText().toString().trim();
-                if (searcher.isEmpty()){
-                    //Grp grp=new Grp(namegrp);
-                    //grpRepository.InsertTask(grp);
-                }else {
-                    GrpAndUserRepository grpAndUserRepository=new GrpAndUserRepository(getApplicationContext());
-                    //Grp grp=new Grp(namegrp);
-                    //grpRepository.InsertTask(grp);
+                if (!searcher.isEmpty()){
+                    //vérifier si existe
                     //grpAndUserRepository.InsertTask();
                     //plus rajouter le premier membre
+
                 }
 
             }
