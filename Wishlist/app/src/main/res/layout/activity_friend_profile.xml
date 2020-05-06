@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_light"
+    android:background="@drawable/gradient"
     tools:context=".FriendProfileActivity">
 
     <include
@@ -21,11 +21,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginRight="27dp"
-        android:background="@android:color/holo_red_light"
+        android:background="@color/fingradient"
         android:contentDescription="@string/edit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_settings_black_24dp" />
 
     <ImageView
