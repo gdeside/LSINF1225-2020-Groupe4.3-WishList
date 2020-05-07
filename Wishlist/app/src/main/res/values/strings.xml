@@ -32,4 +32,5 @@
     <string name="deletefriend">Delete Friendship</string>
     <string name="description">Description</string>
     <string name="price">Price</string>
+    <string name="nbmemebres">Nombre de membres</string>
 </resources>
