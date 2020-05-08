@@ -59,6 +59,12 @@ public class GrpRepository {
                 grpDatabase.grpDAO().updateTask(grp);
                 return null;
             }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                Toast.makeText(context, "Group updated", Toast.LENGTH_LONG).show();
+            }
         }.execute();
     }
 

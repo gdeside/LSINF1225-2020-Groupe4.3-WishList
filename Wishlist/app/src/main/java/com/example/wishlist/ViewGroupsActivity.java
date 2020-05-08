@@ -97,7 +97,6 @@ public class ViewGroupsActivity extends AppCompatActivity {
 
         /// Load Data
         new LoadDataTask().execute();
-        grpArrayList.add(new Grp("Test2"));
     }
 
     /// Load Data
@@ -125,7 +124,6 @@ public class ViewGroupsActivity extends AppCompatActivity {
                 Grp grp = grpRepository.getByID(grpAndUser.getId_grp());
                 grpArrayList.add(grp);
             }
-            grpArrayList.add(new Grp("Test"));
             return null;
         }
 

@@ -2,6 +2,7 @@ package com.example.wishlist;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,24 +78,29 @@ public class GrpAdapter extends RecyclerView.Adapter<GrpAdapter.MyViewHolder> {
 
         if((Activity) ActivityContext instanceof ViewGroupsActivity)
         {
-           //setOnClickUpdateGroup(ll_card_grp,final_pos,final_id_gorup);
+           setOnClickUpdateGroup(ll_card_grp,final_id_gorup);
         }
 
     }
 
     ////Pour ViewWishlistProduct
-    private void setOnClickUpdateGroup(final LinearLayout ll, final int pos, final  int id_group)
+    private void setOnClickUpdateGroup(final LinearLayout ll, final  int id_group)
     {
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                openUpdateProductActivity( id_group);
             }
         });
     }
     ///
 
+    public void openUpdateProductActivity(int id_group)
+    {
+        Intent intent = new Intent(ActivityContext, UpdateGroupActivity.class);
+        intent.putExtra("Group_ID",id_group);
+        ActivityContext.startActivity(intent);
+    }
     @Override
     public int getItemCount() {
         return dataset.size();

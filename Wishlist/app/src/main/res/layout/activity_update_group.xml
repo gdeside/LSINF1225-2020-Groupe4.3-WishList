@@ -7,19 +7,19 @@
     tools:context=".UpdateGroupActivity">
 
     <SearchView
-        android:id="@+id/up_group_seeach"
+        android:id="@+id/sw_update_group_friend"
         android:layout_width="364dp"
         android:layout_height="56dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="96dp"
         android:iconifiedByDefault="false"
         android:queryHint="@string/searchfriend"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/up_namegroup"
+        android:id="@+id/edt_update_group_name"
         android:layout_width="258dp"
         android:layout_height="36dp"
         android:layout_marginTop="328dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/up_savegroup"
+        android:id="@+id/btn_update_group_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
@@ -42,4 +42,15 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_update_group_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Add User"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sw_update_group_friend" />
 </androidx.constraintlayout.widget.ConstraintLayout>
