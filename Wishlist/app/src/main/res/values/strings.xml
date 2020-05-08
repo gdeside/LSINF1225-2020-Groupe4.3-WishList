@@ -33,4 +33,6 @@
     <string name="description">Description</string>
     <string name="price">Price</string>
     <string name="nbmemebres">Nombre de membres</string>
+    <string name="updateproduct">Update Product</string>
+    <string name="ranking">Ranking</string>
 </resources>
