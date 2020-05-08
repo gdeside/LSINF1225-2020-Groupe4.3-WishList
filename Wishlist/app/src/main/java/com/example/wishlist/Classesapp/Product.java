@@ -72,8 +72,11 @@ public class Product {
 
     public static Product[] populateData()
     {
+        Product product = new Product("Ordinateur", 999);
+        product.setNote((float) 4.5);
+    ;
         return new Product[]{
-                new Product("Ordinateur", 999),
+                product,
                 new Product("Smartphone", 599),
                 new Product("Une âme", 999999),
                 new Product("Bierre Corona",1)

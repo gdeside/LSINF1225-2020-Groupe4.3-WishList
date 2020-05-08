@@ -41,6 +41,8 @@ public class ViewProductActivity extends AppCompatActivity {
         FloatingActionButton createProduct_btn = findViewById(R.id.floatingProduct);
         createProduct_btn.setOnClickListener(CreateProduct_listener);
 
+        ProductRepository productRepository = new ProductRepository(getApplicationContext()); ///initiate Database to prefill with product
+
 
         ///---------------------------- Card Management --------------------------------------------
         recyclerView = (RecyclerView)findViewById(R.id.ViewProduct_recycler_view);
