@@ -9,18 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewFriendWishlistActivity">
-         </activity>
+        <activity android:name=".UpdateProduct"></activity>
+        <activity android:name=".ViewFriendWishlistActivity"></activity>
         <activity android:name=".UpdateGroupActivity" />
         <activity android:name=".WishlistAddProductActivity" />
-        <activity android:name=".UpdateFriendship">
-       </activity>
+        <activity android:name=".UpdateFriendship"></activity>
         <activity android:name=".ViewWishlistProductActivity" />
         <activity android:name=".FriendProfileActivity">
-        <!-- Parent activity meta-data to support 4.0 and lower -->
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.wishlist.FriendlistActivity" /></activity>
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.wishlist.FriendlistActivity" />
+        </activity>
         <activity android:name=".CreateFriendshipActivity" />
         <activity android:name=".CreateGroupActivity" />
         <activity android:name=".UpdateProfileActivity" />
@@ -77,8 +78,9 @@
         <activity
             android:name=".CreateAccountActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".HomeActivity" />
     </application>
 
