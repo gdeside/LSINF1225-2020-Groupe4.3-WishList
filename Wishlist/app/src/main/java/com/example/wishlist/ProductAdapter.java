@@ -3,6 +3,7 @@ package com.example.wishlist;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +93,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         {
             setOnClickViewWishlistProduct(ll_card_product,pos,num);
         }
+        else if((Activity) ActivityContext instanceof  ViewProductActivity)
+        {
+            setOnClickViewProductActivity(ll_card_product,pos);
+        }
 
     }
 
@@ -131,6 +136,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         });
     }
     ///
+
+    ////Pour ViewProductActivity
+    private void setOnClickViewProductActivity(final LinearLayout ll, final int pos)
+    {
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUpdateProductActivity(pos);
+            }
+        });
+    }
+    ///
+
+    public void openUpdateProductActivity(int pos)
+    {
+        Intent intent = new Intent(ActivityContext, UpdateProductActivity.class);
+        intent.putExtra("Product_name",dataset.get(pos).getName());
+        intent.putExtra("Product_lien",dataset.get(pos).getLien());
+        intent.putExtra("Product_prix",dataset.get(pos).getPrix());
+        intent.putExtra("Product_categorie",dataset.get(pos).getCategorie());
+        intent.putExtra("Product_note",dataset.get(pos).getNote());
+        ActivityContext.startActivity(intent);
+    }
 
     ///Nécessaire, je crois
     @Override

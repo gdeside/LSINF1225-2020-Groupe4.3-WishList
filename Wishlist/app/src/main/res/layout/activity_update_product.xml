@@ -4,52 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateProduct">
+    tools:context=".UpdateProductActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_product_icone"
         android:layout_width="140dp"
         android:layout_height="151dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <RatingBar
-        android:id="@+id/ratingBar2"
-        android:layout_width="285dp"
-        android:layout_height="60dp"
+        android:id="@+id/rb_update_product_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:numStars="5"
         android:scaleX="0.5"
         android:scaleY="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
+        android:layout_marginLeft="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_update_product_ranking"
+        />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edt_update_product_price"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="288dp"
-        android:background="@drawable/rounded_text"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="290dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/price"
@@ -57,13 +42,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_update_product_prix" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/edt_update_product_lien"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/link"
@@ -71,13 +56,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_update_product_lien" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/edt_update_product_categorie"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="536dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/category"
@@ -85,72 +70,72 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_update_product_categorie" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_update_product_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="616dp"
+        android:layout_marginTop="30dp"
         android:text="@string/updateproduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_update_product_categorie" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_update_product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginLeft="61dp"
-        android:layout_marginTop="258dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
         android:text="@string/friendName"
-        android:textSize="21sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_update_product_prix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="61dp"
         android:layout_marginLeft="61dp"
-        android:layout_marginTop="343dp"
+        android:layout_marginTop="10dp"
         android:text="@string/price"
         android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/rb_update_product_note"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_update_product_lien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="62dp"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="427dp"
+        android:layout_marginTop="10dp"
         android:text="@string/link"
         android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_update_product_price" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_update_product_categorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="61dp"
         android:layout_marginLeft="61dp"
-        android:layout_marginTop="508dp"
+        android:layout_marginTop="10dp"
         android:text="@string/category"
         android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_update_product_lien" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_update_product_ranking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="110dp"
         android:text="@string/ranking"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"

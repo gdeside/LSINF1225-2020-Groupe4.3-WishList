@@ -15,7 +15,7 @@ public class Product {
     @ColumnInfo(name = "Prix")
     private int prix;
 
-    @ColumnInfo(name = "Catégorie")
+    @ColumnInfo(name = "Categorie")
     private String categorie;
 
     @ColumnInfo(name = "Note")
@@ -27,6 +27,9 @@ public class Product {
     public Product(@NonNull String name, int prix) {
         this.name = name;
         this.prix = prix;
+        this.lien = "";
+        this.note=0;
+        this.categorie="";
     }
 
     @NonNull
@@ -34,9 +37,6 @@ public class Product {
         return name;
     }
 
-    public void setName(@NonNull String name) {
-        this.name = name;
-    }
 
     public int getPrix() {
         return prix;
@@ -51,7 +51,7 @@ public class Product {
     }
 
     public void setCategorie(String categorie) {
-        categorie = categorie;
+        this.categorie = categorie;
     }
 
     public int getNote() {
