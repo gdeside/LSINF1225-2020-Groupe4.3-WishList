@@ -37,8 +37,6 @@ public class FriendRepository {
                 Toast.makeText(context," is inserted",Toast.LENGTH_LONG).show();
             }
 
-
-
         }.execute();
     }
 

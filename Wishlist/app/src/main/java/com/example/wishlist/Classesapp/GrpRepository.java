@@ -22,25 +22,34 @@ public class GrpRepository {
         grpDatabase = Room.databaseBuilder(context, GrpDatabase.class, DB_NAME).build();
     }
 
-    public void InsertTask(final Grp grp)
+   public Long InsertTask(final Grp grp)
     {
-        new AsyncTask<Void,Void,Void>(){
-            @Override
-            protected Void doInBackground(Void... voids){
-                grpDatabase.grpDAO().insertTask(grp);
-                return null;
-            }
+        Long foo = Integer.toUnsignedLong(0);
+        try {
+            foo = new AsyncTask<Void, Void, Long>() {
+                @Override
+                protected Long doInBackground(Void... voids) {
+                    return grpDatabase.grpDAO().insertTask(grp);
+                }
 
-            @Override
-            protected  void onPostExecute(Void aVoid){
-                super.onPostExecute(aVoid);
-                Toast.makeText(context," is inserted",Toast.LENGTH_LONG).show();
-            }
+                @Override
+                protected void onPostExecute(Long result) {
+                    super.onPostExecute(result);
+                    Toast.makeText(context, " is inserted", Toast.LENGTH_LONG).show();
+                }
 
 
-
-        }.execute();
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return foo;
     }
+
+
 
     public void UpdateTask(final Grp grp)
     {
@@ -50,15 +59,6 @@ public class GrpRepository {
                 grpDatabase.grpDAO().updateTask(grp);
                 return null;
             }
-
-            @Override
-            protected  void onPostExecute(Void aVoid){
-                super.onPostExecute(aVoid);
-                Toast.makeText(context,"is updated",Toast.LENGTH_LONG).show();
-            }
-
-
-
         }.execute();
     }
 
@@ -73,21 +73,21 @@ public class GrpRepository {
     }
 
 
-    public List<Grp> getByID(final int ID)
+    public Grp getByID(final int ID)
     {
         List<Grp> grpList = grpDatabase.grpDAO().getID(ID);
-        return grpList;
+        return grpList.get(0);
     }
 
 
-    /*public List<Grp> getAllGrp(final String ID)
+    public List<Grp> getAllGrp(final int ID)
     {
         List<Grp> FOO = new ArrayList<>();
         try {
             FOO = new AsyncTask<Void, Void, List<Grp>>() {
                 @Override
                 protected List<Grp> doInBackground(Void... voids) {
-                    List<Grp> grpList = grpDatabase.grpDAO().getAllGrp(ID);
+                    List<Grp> grpList = grpDatabase.grpDAO().getID(ID);
                     return grpList;
                 }
 
@@ -104,7 +104,7 @@ public class GrpRepository {
             e.printStackTrace();//handle it the way you like
         }
         return FOO;
-    }*/
+    }
 
 
 

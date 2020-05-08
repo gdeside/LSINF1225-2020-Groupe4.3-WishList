@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -83,6 +84,10 @@ public class WishlistsActivity extends AppCompatActivity {
                          startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
                          overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
+                    case R.id.bottomNavGroup_btn :
+                        startActivity(new Intent(getApplicationContext(),ViewGroupsActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        return true;
                 }
                 return false;
             }
@@ -117,6 +122,12 @@ public class WishlistsActivity extends AppCompatActivity {
 
         /// Load Data
         new WishlistsActivity.LoadDataTask().execute();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     /// Required for bottom navigation menu transition animation

@@ -82,20 +82,52 @@ public class GrpAndUserRepository {
         return grpAndUserList;
     }
 
+    public List<GrpAndUser> getAllGrpAndUser_unsync(final String ID)
+    {
+        List<GrpAndUser> grpAndUserList = grpAndUserDatabase.grpAndUserDAO().getGroupsByUser(ID);
+        return grpAndUserList;
+    }
 
-    /*public List<GrpAndUser> getAllGrpAndUser(final String ID)
+
+    public List<GrpAndUser> getAllGrpAndUser(final String ID)
     {
         List<GrpAndUser> FOO = new ArrayList<>();
-        try {
+       try {
             FOO = new AsyncTask<Void, Void, List<GrpAndUser>>() {
                 @Override
                 protected List<GrpAndUser> doInBackground(Void... voids) {
-                    List<GrpAndUser> grpAndUserList = grpAndUserDatabase.grpAndUserDAO().getAllGrpAndUser(ID);
+                    List<GrpAndUser> grpAndUserList = grpAndUserDatabase.grpAndUserDAO().getGroupsByUser(ID);
                     return grpAndUserList;
                 }
 
                 @Override
                 protected void onPostExecute(List<GrpAndUser> result) {
+                    super.onPostExecute(result);
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
+
+
+    public int getSizeGroup(final int ID)
+    {
+        int FOO = 0;
+        try {
+            FOO = new AsyncTask<Void, Void, Integer>() {
+                @Override
+                protected Integer doInBackground(Void... voids) {
+                    List<GrpAndUser> grpAndUserList = grpAndUserDatabase.grpAndUserDAO().getUsersByID(ID);
+                    return grpAndUserList.size();
+                }
+
+                @Override
+                protected void onPostExecute(Integer result) {
                     super.onPostExecute(result);
 
                 }
@@ -107,8 +139,7 @@ public class GrpAndUserRepository {
             e.printStackTrace();//handle it the way you like
         }
         return FOO;
-    }*/
-
+    }
 
 
 

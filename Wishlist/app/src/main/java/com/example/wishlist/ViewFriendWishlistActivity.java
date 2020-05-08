@@ -103,6 +103,10 @@ public class ViewFriendWishlistActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
+                    case R.id.bottomNavGroup_btn :
+                        startActivity(new Intent(getApplicationContext(),ViewGroupsActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        return true;
                 }
                 return false;
             }

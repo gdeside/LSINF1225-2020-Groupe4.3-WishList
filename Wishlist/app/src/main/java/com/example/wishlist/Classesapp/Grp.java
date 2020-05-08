@@ -8,24 +8,24 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Grp {
+
     @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID_Group")
-    private Integer ID;
+    private int ID;
 
     @NonNull
     private String name;
 
-    public Grp(String name) {
+    public Grp(@NonNull String name) {
         this.name = name;
     }
 
-    @NonNull
-    public Integer getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(@NonNull Integer ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 

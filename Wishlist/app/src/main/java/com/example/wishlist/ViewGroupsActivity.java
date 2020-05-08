@@ -13,40 +13,43 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.wishlist.Classesapp.Product;
-import com.example.wishlist.Classesapp.ProductRepository;
+import com.example.wishlist.Classesapp.Grp;
+import com.example.wishlist.Classesapp.GrpAndUser;
+import com.example.wishlist.Classesapp.GrpAndUserRepository;
+import com.example.wishlist.Classesapp.GrpRepository;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewProductActivity extends AppCompatActivity {
+public class ViewGroupsActivity extends AppCompatActivity {
 
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    ArrayList<Product> productArrayList;
+    ArrayList<Grp> grpArrayList;
 
-    private View.OnClickListener CreateProduct_listener = new View.OnClickListener() {
+    private View.OnClickListener CreateGrp_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            openCreateProductActivity();
+            openCreateGroupActivity();
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_product);
+        setContentView(R.layout.activity_view_groups);
 
-        FloatingActionButton createProduct_btn = findViewById(R.id.floatingProduct);
-        createProduct_btn.setOnClickListener(CreateProduct_listener);
-
-        ProductRepository productRepository = new ProductRepository(getApplicationContext()); ///initiate Database to prefill with product
+        FloatingActionButton createGrp_btn = findViewById(R.id.floatingGroup);
+        createGrp_btn.setOnClickListener(CreateGrp_listener);
 
 
+
+       
+        
         ///---------------------------- Card Management --------------------------------------------
-        recyclerView = (RecyclerView)findViewById(R.id.ViewProduct_recycler_view);
+        recyclerView = (RecyclerView)findViewById(R.id.ViewGroup_recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -59,7 +62,7 @@ public class ViewProductActivity extends AppCompatActivity {
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
 
         //Set Wishlists Button Selected
-        navigationView.setSelectedItemId(R.id.bottomNavProducts_btn);
+        navigationView.setSelectedItemId(R.id.bottomNavGroup_btn);
 
         ///Perform ItemSelected
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -79,12 +82,12 @@ public class ViewProductActivity extends AppCompatActivity {
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                     case R.id.bottomNavProducts_btn :
-                        //startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
-                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                     case R.id.bottomNavGroup_btn :
-                        startActivity(new Intent(getApplicationContext(),ViewGroupsActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        //startActivity(new Intent(getApplicationContext(),ViewGroupsActivity.class));
+                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                 }
                 return false;
@@ -93,49 +96,64 @@ public class ViewProductActivity extends AppCompatActivity {
         ///-----------------------------------------------------------------------------------------
 
         /// Load Data
-        new ViewProductActivity.LoadDataTask().execute();
+        new LoadDataTask().execute();
+        grpArrayList.add(new Grp("Test2"));
     }
 
     /// Load Data
     class LoadDataTask extends AsyncTask<Void,Void,Void>
     {
-        ProductRepository productRepository;
-        List<Product> productList;
-
+        GrpRepository grpRepository;
+        GrpAndUserRepository grpAndUserRepository;
+        String username;
 
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
-            productRepository= new ProductRepository(getApplicationContext());
+            grpRepository= new GrpRepository(getApplicationContext());
+            grpAndUserRepository = new GrpAndUserRepository(getApplicationContext());
+            username = getUsername();
+            grpArrayList = new ArrayList<>();
         }
 
         @Override
         protected Void doInBackground(Void... voids)
         {
-            productList = productRepository.getProducts();
-            productArrayList = new ArrayList<>();
-
-            for(int i =0; i <productList.size();i++)
+            List<GrpAndUser> grpAndUserList = grpAndUserRepository.getAllGrpAndUser_unsync(username);
+            for(GrpAndUser grpAndUser : grpAndUserList)
             {
-                productArrayList.add(productList.get(i));
+                Grp grp = grpRepository.getByID(grpAndUser.getId_grp());
+                grpArrayList.add(grp);
             }
+            grpArrayList.add(new Grp("Test"));
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid){
             super.onPostExecute(aVoid);
-            ProductAdapter productAdapter = new ProductAdapter(productArrayList, -1,ViewProductActivity.this,getApplicationContext()); ///wishlist num == -1 because we're not in a list.
-            recyclerView.setAdapter(productAdapter);
+            GrpAdapter grpAdapter = new GrpAdapter(grpArrayList,ViewGroupsActivity.this,getApplicationContext());
+            recyclerView.setAdapter(grpAdapter);
         }
     }
 
-    public void openCreateProductActivity()
+    public void openCreateGroupActivity()
     {
-        Intent intent = new Intent(this, CreateProductActivity.class);
+        Intent intent = new Intent(this, CreateGroupActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
     }
 
+    /// Give logged user ID
+    public String getUsername(){
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_APPEND);
+        return sh.getString("ID", "");
+    }
 
+    /// If you go back to this activity, reload the data
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        new ViewGroupsActivity.LoadDataTask().execute();
+    }
 }

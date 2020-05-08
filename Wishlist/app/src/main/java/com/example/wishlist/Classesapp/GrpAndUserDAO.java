@@ -23,5 +23,8 @@ public interface GrpAndUserDAO {
     @Query("Select * from grpAndUser where ID_Grp == :id_grp")
     List<GrpAndUser> getUsersByID(int id_grp);
 
+    @Query("Select * from grpAndUser where ID_User == :id_user")
+    List<GrpAndUser> getGroupsByUser(String id_user);
+
 
 }
