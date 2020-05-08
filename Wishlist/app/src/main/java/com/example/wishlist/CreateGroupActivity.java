@@ -18,10 +18,16 @@ public class CreateGroupActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             GrpRepository grpRepository=new GrpRepository(getApplicationContext());
+            namegrp=name_group.getText().toString().trim();
 
             if (name_group.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(),"Please fills Details", Toast.LENGTH_LONG).show();
-            }else {
+            }
+            else if(grpRepository.isIDUsed(namegrp))
+            {
+                Toast.makeText(getApplicationContext(),"Name Already Used", Toast.LENGTH_LONG).show();
+            }
+            else {
                 Grp grp=new Grp(namegrp);
                 grpRepository.InsertTask(grp);
                 String searcher=searchfriend.getQuery().toString();
@@ -30,9 +36,7 @@ public class CreateGroupActivity extends AppCompatActivity {
                     //vérifier si existe
                     //grpAndUserRepository.InsertTask();
                     //plus rajouter le premier membre
-
                 }
-
             }
         }
     };

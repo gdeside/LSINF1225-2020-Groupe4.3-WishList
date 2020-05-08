@@ -72,6 +72,33 @@ public class GrpRepository {
         }.execute();
     }
 
+    ///Check if ID is used (Grp Creation)
+    public Boolean isIDUsed(final String ID)
+    {
+        Boolean FOO = false;
+        try {
+            FOO = new AsyncTask<Void, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Void... voids) {
+                    List<Grp> grpList = grpDatabase.grpDAO().getID(ID);
+                    return grpList.size() > 0;
+                }
+
+                @Override
+                protected void onPostExecute(Boolean result) {
+                    super.onPostExecute(result);
+
+                }
+            }.execute().get();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace(); //handle it the way you like
+        } catch (ExecutionException e) {
+            e.printStackTrace();//handle it the way you like
+        }
+        return FOO;
+    }
+
 
 
 
