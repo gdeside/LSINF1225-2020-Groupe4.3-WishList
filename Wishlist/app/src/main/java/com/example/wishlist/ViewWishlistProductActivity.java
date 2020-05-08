@@ -125,8 +125,8 @@ public class ViewWishlistProductActivity extends AppCompatActivity {
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                     case R.id.bottomNavHome_btn :
-                        ///startActivity(new Intent(getApplicationContext(), WishlistsActivity.class));
-                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
+                        startActivity(new Intent(getApplicationContext(), WishlistsActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Animation entre écran
                         return true;
                     case R.id.bottomNavProducts_btn :
                         startActivity(new Intent(getApplicationContext(),ViewProductActivity.class));
