@@ -40,6 +40,7 @@ public class CreateProductActivity extends AppCompatActivity {
 
                 Product product = new Product(name,price);
                 product.setCategorie(category);
+                product.setNote(ratingBar.getRating());
                 productRepository.InsertTask(product);
                 openViewProductActivity();
             }

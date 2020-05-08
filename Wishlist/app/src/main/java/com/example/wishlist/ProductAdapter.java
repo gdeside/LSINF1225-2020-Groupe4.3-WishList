@@ -78,8 +78,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         LinearLayout ll_card_product = holder.ll_card_product;
 
         tv_card_view_product_name.setText(dataset.get(position).getName() + "");
-        tv_card_view_product_price.setText(Integer.toString(dataset.get(position).getPrix()));
-        //ratingBar_note.setNumStars(dataset.get(position).getNote());
+        tv_card_view_product_price.setText(Integer.toString(dataset.get(position).getPrix())+"€");
+        ratingBar_note.setRating( dataset.get(position).getNote());
 
 
         final int pos = position;

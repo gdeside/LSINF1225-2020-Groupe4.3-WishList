@@ -19,7 +19,7 @@ public class Product {
     private String categorie;
 
     @ColumnInfo(name = "Note")
-    private int note;
+    private float note;
 
     @ColumnInfo(name = "Lien")
     private String lien;
@@ -54,11 +54,11 @@ public class Product {
         this.categorie = categorie;
     }
 
-    public int getNote() {
+    public float getNote() {
         return note;
     }
 
-    public void setNote(int note) {
+    public void setNote(float note) {
         this.note = note;
     }
 

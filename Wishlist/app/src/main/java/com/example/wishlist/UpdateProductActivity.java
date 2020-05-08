@@ -20,7 +20,8 @@ public class UpdateProductActivity extends AppCompatActivity {
     RatingBar product_note;
     Button save_change;
     String name,lien,categorie;
-    int prix,note;
+    int prix;
+    float note;
 
     private View.OnClickListener SaveChange_Listener = new View.OnClickListener() {
         @Override
@@ -28,7 +29,7 @@ public class UpdateProductActivity extends AppCompatActivity {
             ProductRepository productRepository = new ProductRepository(getApplicationContext());
 
             prix = Integer.parseInt(product_price.getText().toString());
-            note = ((int) product_note.getRating())*2;
+            note = product_note.getRating();
             categorie = product_categorie.getText().toString().trim();
             lien = product_lien.getText().toString().trim();
 
@@ -68,7 +69,7 @@ public class UpdateProductActivity extends AppCompatActivity {
             lien = data.getString("Product_lien","");
             prix = data.getInt("Product_prix");
             categorie = data.getString("Product_categorie","");
-            note = data.getInt("Product_note",0);
+            note = data.getFloat("Product_note",0);
         }
         ///-----------------------------------------------------------------------------------------
 
@@ -76,7 +77,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         product_name.setText(name);
         product_categorie.setText(categorie);
         product_lien.setText(lien);
-        product_note.setRating(((float) note)/2);
+        product_note.setRating(note);
         product_price.setText(Integer.toString(prix));
         ///-----------------------------------------------------------------------------------------
     }
