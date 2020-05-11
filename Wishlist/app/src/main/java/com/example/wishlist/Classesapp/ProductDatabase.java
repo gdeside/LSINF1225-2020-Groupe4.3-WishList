@@ -1,6 +1,7 @@
 package com.example.wishlist.Classesapp;
 
 import android.content.Context;
+import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -21,6 +22,7 @@ public abstract class ProductDatabase extends RoomDatabase {
     public synchronized static ProductDatabase getInstance(Context context) {
         if (INSTANCE == null) {
             INSTANCE = buildDatabase(context);
+            Prepopulate(Product.populateData());
         }
         return INSTANCE;
     }
@@ -33,15 +35,26 @@ public abstract class ProductDatabase extends RoomDatabase {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
                         super.onCreate(db);
-                        Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
+                        /*Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
                             @Override
                             public void run() {
                                 getInstance(context).productDAO().insertAll(Product.populateData());
                             }
-                        });
+                        }); */
                     }
                 })
                 .build();
+    }
+
+    public static void Prepopulate(final Product[] products)
+    {
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+               INSTANCE.productDAO().insertAll(products);
+                return null;
+            }
+        }.execute();
     }
 
 
