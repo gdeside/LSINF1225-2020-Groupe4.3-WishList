@@ -49,13 +49,11 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 New_name = up_name.getText().toString().trim();
                 New_surname = up_surname.getText().toString().trim();
                 description=up_description.getText().toString().trim();
-                ///birthday= (Date)up_date.getText().toString().trim();
-                DateFormat dateFormat=new SimpleDateFormat("dd/mm/yyyy");
-                ///birth=dateFormat.format(birthday);
+                birth=up_date.getText().toString().trim();
 
                 User user = new User(getUsername(),New_password,New_name,New_surname);
                 user.setDescription(description);
-                ///user.setDOB(birth);
+                user.setDOB(birth);
                 userRepository.UpdateTask(user);
                 openProfileActivity();
             }
@@ -65,7 +63,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
     EditText  up_name, up_surname, up_password,up_description,up_date;
     TextView profile_id;
     ImageView delete_profile;
-    Date birthday;
     String  New_name, New_surname, New_password,description,birth;
 
 

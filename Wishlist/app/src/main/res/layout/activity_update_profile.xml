@@ -128,7 +128,7 @@
         android:background="@drawable/rounded_text"
         android:ems="10"
         android:hint="@string/birthday"
-        android:inputType="date"
+        android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
